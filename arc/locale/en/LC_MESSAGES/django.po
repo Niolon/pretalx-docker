@@ -1,0 +1,4272 @@
+# SPDX-FileCopyrightText: 2026 Paul Niklas Ruth
+# SPDX-License-Identifier: Apache-2.0
+#
+# Local English overrides: reword pretalx's conference vocabulary for a PhD
+# position application page. Only strings listed here change; everything else
+# falls back to upstream English automatically.
+#
+# Compile with:  manage.py compilemessages -l en
+# Do NOT run `just makemessages` — with --all it regenerates this file against
+# every upstream msgid.
+msgid ""
+msgstr ""
+"Project-Id-Version: ARC Applications\n"
+"Report-Msgid-Bugs-To: \n"
+"PO-Revision-Date: 2026-09-04 00:00+0100\n"
+"Last-Translator: ARC\n"
+"Language-Team: British English\n"
+"Language: en\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+
+# --- Tier A: landing page, CfP page, wizard, my-applications
+# -----------------
+#: pretalx/cfp/templates/cfp/event/cfp.html
+#: pretalx/cfp/templates/cfp/event/index.html
+msgid "Submit a proposal"
+msgstr "Apply for this position"
+
+#: pretalx/cfp/templates/cfp/event/cfp.html pretalx/cfp/views/wizard.py
+msgid "Proposals are closed"
+msgstr "Applications are closed"
+
+#: pretalx/agenda/phrases.py
+msgid "Edit or view your proposals"
+msgstr "View or edit your applications"
+
+#: pretalx/common/templates/common/base.html
+msgid "My proposals"
+msgstr "My applications"
+
+#: pretalx/cfp/templates/cfp/event/user_submissions.html
+msgid "Your proposals"
+msgstr "Your applications"
+
+#: pretalx/cfp/templates/cfp/event/submission_base.html
+#: pretalx/orga/templates/orga/submission/content.html
+msgid "Create proposal"
+msgstr "New application"
+
+#: pretalx/cfp/templates/cfp/event/submission_base.html
+#: pretalx/cfp/templates/cfp/event/user_submission_edit.html
+msgid "Submit proposal"
+msgstr "Submit application"
+
+#: pretalx/cfp/templates/cfp/event/user_submissions.html
+msgid "Create a new proposal"
+msgstr "Start a new application"
+
+#: pretalx/cfp/templates/cfp/event/user_submissions.html
+msgid "Edit proposal"
+msgstr "Edit application"
+
+#: pretalx/cfp/templates/cfp/event/user_submissions.html
+msgid "Open proposal"
+msgstr "Open application"
+
+#: pretalx/cfp/templates/cfp/event/cfp.html
+#, python-format
+msgid ""
+"Submissions close on %(deadline)s (%(timezone)s), %(until_string)s from now."
+msgstr ""
+"Applications close on %(deadline)s (%(timezone)s), %(until_string)s from "
+"now."
+
+#: pretalx/cfp/templates/cfp/event/cfp.html
+#, python-format
+msgid "Submissions closed on %(deadline)s (%(timezone)s)."
+msgstr "Applications closed on %(deadline)s (%(timezone)s)."
+
+#: pretalx/cfp/templates/cfp/event/cfp.html
+#, python-format
+msgid "Submissions open on %(opening)s (%(timezone)s)."
+msgstr "Applications open on %(opening)s (%(timezone)s)."
+
+#: pretalx/cfp/flow/steps.py
+msgid ""
+"Congratulations, you’ve submitted your proposal! You can continue to make "
+"changes to it up to the submission deadline, and you will be notified of any"
+" changes or questions."
+msgstr ""
+"Your application has been submitted. You can keep editing it until the "
+"deadline, and we will email you at every step."
+
+#: pretalx/cfp/flow/steps.py
+msgid ""
+"Your draft was saved. You can continue to edit it as long as the CfP is "
+"open."
+msgstr ""
+"Your draft was saved. You can come back and finish it any time before the "
+"deadline."
+
+# --- Tier B: strings that are actively wrong for a job application ----------
+#: pretalx/cfp/templates/cfp/event/user_profile.html
+msgid ""
+"This data will be displayed publicly if your proposal is accepted. It is "
+"also visible to reviewers."
+msgstr ""
+"This information is visible to reviewers and organisers. It must not be "
+"published unless you have explicitly agreed to publication."
+
+#: pretalx/cfp/templates/cfp/event/login.html
+msgid ""
+"You do not need an account to view the event, or submit feedback, or receive"
+" schedule updates. You’ll only need an account if you participate in the "
+"event as speaker or as an organiser."
+msgstr ""
+"You need an account to apply, and to check the status of your application "
+"later."
+
+#: pretalx/cfp/templates/cfp/event/user_submissions.html
+msgid "It seems like you haven’t submitted anything to this event yet."
+msgstr "You have not submitted an application yet."
+
+#: pretalx/cfp/templates/cfp/event/user_submissions.html
+msgid ""
+"If you did not, why not go ahead and create a proposal now? We’d love to "
+"hear from you!"
+msgstr "If you would like to apply, you can start now."
+
+#: pretalx/cfp/templates/cfp/event/user_submissions.html
+msgid "Submit something now!"
+msgstr "Start your application"
+
+#: pretalx/cfp/templates/cfp/event/user_submission_edit.html
+#: pretalx/cfp/templates/cfp/event/user_submission_withdraw.html
+msgid "Withdraw proposal"
+msgstr "Withdraw application"
+
+#: pretalx/cfp/templates/cfp/event/user_submission_withdraw.html
+msgid "Do you really want to withdraw your proposal?"
+msgstr "Do you really want to withdraw your application?"
+
+#: pretalx/cfp/templates/cfp/event/user_submission_edit.html
+msgid ""
+"You can withdraw your proposal from the selection process here. You cannot "
+"undo this - if you are just uncertain if you can or should hold your "
+"session, please contact the organiser instead."
+msgstr ""
+"You can withdraw your application from the selection procedure here. This "
+"cannot be undone. If you are simply unsure, please get in touch instead."
+
+#: pretalx/person/models/user.py
+msgid ""
+"Your email address will be used for password resets and notification about "
+"your event/proposals."
+msgstr "We will use this address for everything to do with your application."
+
+# --- Tier C: polish --------------------------------------------------------
+#: pretalx/submission/enums.py pretalx/submission/phrases.py
+msgctxt "proposal status"
+msgid "submitted"
+msgstr "received"
+
+#: pretalx/submission/phrases.py
+msgctxt "proposal status"
+msgid "in review"
+msgstr "under review"
+
+#: pretalx/submission/phrases.py
+msgctxt "proposal status"
+msgid "not accepted"
+msgstr "not shortlisted"
+
+#: pretalx/cfp/templates/cfp/event/submission_base.html
+msgid "or save as draft for now"
+msgstr "or save and finish later"
+
+#: pretalx/cfp/templates/cfp/event/submission_base.html
+msgid ""
+"You can save your proposal as a draft and submit it later. Organisers will "
+"not be able to see your proposal, though they will be able to send you "
+"reminder emails about the upcoming deadline."
+msgstr ""
+"You can save an unfinished application and come back to it. We cannot see "
+"drafts — we can only send you a reminder before the deadline."
+
+#: pretalx/cfp/phrases.py
+msgid "Your proposal has been withdrawn."
+msgstr "Your application has been withdrawn."
+
+#: pretalx/cfp/templates/cfp/includes/user_submission_header.html
+msgid ""
+"This is a draft proposal. It will never be visible to anybody else, unless "
+"you submit it or explicitly share it."
+msgstr ""
+"This is an unfinished application. We cannot see it until you submit it."
+
+# --- Tier E: reviewer and organiser pages -----------------------------------
+# The selection committee sees the pretalx backend, so the same vocabulary has
+# to hold there. These msgids are shared with the wider organiser UI, which is
+# fine on a single-purpose instance.
+# Core nouns
+#: pretalx/orga/templates/orga/submission/content.html
+msgid "Proposal"
+msgid_plural "Proposals"
+msgstr[0] "Application"
+msgstr[1] "Applications"
+
+#: pretalx/orga/tables/submission.py pretalx/orga/views/admin.py
+msgid "Proposals"
+msgstr "Applications"
+
+#: pretalx/orga/templates/orga/includes/dashboard_block_event.html
+msgid "proposal"
+msgid_plural "proposals"
+msgstr[0] "application"
+msgstr[1] "applications"
+
+#: pretalx/orga/templates/orga/submission/content.html
+msgid "Speaker"
+msgid_plural "Speakers"
+msgstr[0] "Applicant"
+msgstr[1] "Applicants"
+
+#: pretalx/orga/templates/orga/base.html
+msgid "Speakers"
+msgstr "Applicants"
+
+#: pretalx/orga/templates/orga/organiser/speaker_list.html
+msgid "speaker"
+msgid_plural "speakers"
+msgstr[0] "applicant"
+msgstr[1] "applicants"
+
+#: pretalx/agenda/templates/agenda/speaker.html
+msgid "Session"
+msgid_plural "Sessions"
+msgstr[0] "Interview"
+msgstr[1] "Interviews"
+
+#: pretalx/orga/templates/orga/settings/form.html
+msgid "Sessions"
+msgstr "Interviews"
+
+#: pretalx/orga/templates/orga/submission/list.html
+msgid "session"
+msgid_plural "sessions"
+msgstr[0] "interview"
+msgstr[1] "interviews"
+
+#: pretalx/orga/tables/cfp.py pretalx/submission/models/submission.py
+msgid "Session type"
+msgstr "Interview type"
+
+#: pretalx/orga/templates/orga/base.html pretalx/orga/views/cfp.py
+msgid "Session types"
+msgstr "Interview types"
+
+#: pretalx/orga/templates/orga/base.html
+msgid "Call for Proposals"
+msgstr "Application form"
+
+# Review dashboard and queue
+#: pretalx/orga/templates/orga/review/dashboard.html
+#, python-format
+msgid "%(count)s proposal is waiting for your review."
+msgid_plural "%(count)s proposals are waiting for your review."
+msgstr[0] "%(count)s application is waiting for your review."
+msgstr[1] "%(count)s applications are waiting for your review."
+
+#: pretalx/orga/views/dashboard.py
+msgid "proposal is waiting for your review."
+msgid_plural "proposals are waiting for your review."
+msgstr[0] "application is waiting for your review."
+msgstr[1] "applications are waiting for your review."
+
+#: pretalx/orga/templates/orga/review/bulk.html
+#, python-format
+msgid "Or review the missing proposal here."
+msgid_plural "Or review the missing %(count)s proposals one-by-one."
+msgstr[0] "Or review the missing application here."
+msgstr[1] "Or review the missing %(count)s applications one by one."
+
+#: pretalx/orga/templates/orga/review/dashboard.html
+msgid "You have no proposals left to review!"
+msgstr "You have no applications left to review."
+
+#: pretalx/orga/templates/orga/review/dashboard.html
+msgid "You don’t seem to have any proposals yet."
+msgstr "There are no applications yet."
+
+#: pretalx/orga/templates/orga/review/dashboard.html
+msgid "No proposals found matching your filters."
+msgstr "No applications match your filters."
+
+#: pretalx/orga/templates/orga/review/bulk.html
+msgid "Or review all proposals at once."
+msgstr "Or review all applications at once."
+
+#: pretalx/orga/templates/orga/submission/review.html
+msgid "Go to random next unreviewed proposal"
+msgstr "Go to a random unreviewed application"
+
+#: pretalx/orga/templates/orga/submission/review.html
+msgid "Go to random next unreviewed proposal, mark this one as skipped"
+msgstr "Skip this one and go to a random unreviewed application"
+
+#: pretalx/orga/templates/orga/submission/review.html
+msgid "You’re not allowed to review or see reviews for your own proposals."
+msgstr "You cannot review your own application, or see its reviews."
+
+#: pretalx/orga/templates/orga/submission/review.html
+msgid "Other proposals"
+msgstr "Other applications"
+
+#: pretalx/orga/templates/orga/submission/review.html
+msgid "Other proposals by this speaker:"
+msgstr "Other applications by this applicant:"
+
+# Tagging and bulk actions
+#: pretalx/orga/templates/orga/review/bulk_tag.html
+msgid "Bulk tag proposals"
+msgstr "Tag applications in bulk"
+
+#: pretalx/orga/templates/orga/review/bulk_tag.html
+msgid "Select proposals below and add or remove tags in bulk."
+msgstr "Select applications below and add or remove tags in bulk."
+
+#: pretalx/orga/views/review.py
+msgid "No proposals were selected."
+msgstr "No applications were selected."
+
+#: pretalx/orga/views/review.py
+#, python-brace-format
+msgid "Added tags to {count} proposals."
+msgstr "Added tags to {count} applications."
+
+#: pretalx/orga/views/review.py
+#, python-brace-format
+msgid "Removed tags from {count} proposals."
+msgstr "Removed tags from {count} applications."
+
+#: pretalx/orga/views/review.py
+#, python-brace-format
+msgid "We were unable to change the state of {count} proposals."
+msgstr "We were unable to change the state of {count} applications."
+
+#: pretalx/orga/views/review.py
+#, python-brace-format
+msgid "We were unable to change the state of all {count} proposals."
+msgstr "We were unable to change the state of all {count} applications."
+
+# Reviewer assignment and review-phase settings
+#: pretalx/orga/templates/orga/review/assignment.html
+msgid "Assign proposals to reviewers"
+msgstr "Assign applications to reviewers"
+
+#: pretalx/orga/templates/orga/review/assignment.html
+msgid "Assign reviewers to proposals"
+msgstr "Assign reviewers to applications"
+
+#: pretalx/orga/templates/orga/review/assignment.html
+msgid ""
+"Reviewers can be assigned to tracks by way of review teams. If you require "
+"more granular assignments, you can also assign reviewers to proposals "
+"individually."
+msgstr ""
+"Reviewers are assigned by way of review teams. If you need more granular "
+"assignments, you can also assign reviewers to individual applications."
+
+#: pretalx/orga/forms/review.py
+msgid "Only assigned proposals"
+msgstr "Only assigned applications"
+
+#: pretalx/orga/forms/review.py
+msgid "Reviewers may see these proposals"
+msgstr "Reviewers may see these applications"
+
+#: pretalx/orga/forms/review.py
+msgid "Reviewers can accept and reject proposals"
+msgstr "Reviewers can shortlist applications or mark them as not shortlisted"
+
+#: pretalx/orga/forms/review.py
+msgid "Reviewers can tag proposals"
+msgstr "Reviewers can tag applications"
+
+#: pretalx/orga/forms/review.py
+msgid "Reviewers can see speaker names"
+msgstr "Reviewers can see applicant names"
+
+#: pretalx/orga/forms/review.py
+msgid "Speakers can modify their proposals before acceptance"
+msgstr "Applicants can edit their application before a decision"
+
+#: pretalx/orga/forms/review.py
+msgid "After reviewing the proposal"
+msgstr "After reviewing the application"
+
+# Misc organiser surface reachable from the review pages
+#: pretalx/orga/templates/orga/submission/content.html
+msgid "Send email to speakers"
+msgstr "Email applicants"
+
+#: pretalx/orga/templates/orga/base.html
+msgid "Add new session or proposal"
+msgstr "Add an application"
+
+#: pretalx/orga/templates/orga/submission/content.html
+msgid "This proposal was created using an access code:"
+msgstr "This application was created using an access code:"
+
+#: pretalx/orga/views/cfp.py
+#, python-brace-format
+msgid "Unknown proposal: {}"
+msgstr "Unknown application: {}"
+
+#: pretalx/submission/models/submission.py
+msgid "The unique ID of a proposal is used in the proposal URL and in exports"
+msgstr "The unique ID of an application is used in its URL and in exports"
+
+#: pretalx/person/models/information.py
+msgid "Speaker Information"
+msgstr "Applicant information"
+
+# Found by rendering the pages rather than from django.pot, which is stale
+# relative to the current source for these.
+#: pretalx/orga/templates/orga/base.html
+msgid "Go to sessions"
+msgstr "Go to applications"
+
+#: pretalx/orga/templates/orga/base.html
+#: pretalx/orga/templates/orga/speaker/list.html
+msgid "Add new speaker"
+msgstr "Add an applicant"
+
+#: pretalx/orga/tables/speaker.py
+msgid "Speaker type"
+msgstr "Applicant type"
+
+#: pretalx/orga/tables/submission.py
+msgid "Number of speakers"
+msgstr "Number of applicants"
+
+#: pretalx/orga/tables/speaker.py
+msgid "Accepted Proposals"
+msgstr "Shortlisted applications"
+
+# Review settings help texts (organiser-facing, but they describe the
+# reviewers' workflow, so the vocabulary has to match).
+#: pretalx/submission/interfaces/forms/review.py
+msgid ""
+"Please give a fair review on why you’d like to see this proposal at the "
+"conference, or why you think it would not be a good fit."
+msgstr ""
+"Please give a fair assessment of this application: what speaks for the "
+"candidate, and what gives you pause."
+
+#: pretalx/orga/forms/review.py
+msgid ""
+"If you select “all”, reviewers can review all proposals that their teams "
+"have access to (so either all, or specific tracks). In this mode, assigned "
+"proposals will be highlighted and will be shown first in the review "
+"workflow. "
+msgstr ""
+"If you select “all”, reviewers can review every application their team has "
+"access to. Applications assigned to them are highlighted and shown first."
+
+#: pretalx/orga/forms/review.py
+msgid ""
+"By default, modification of proposals is locked after the CfP ends, and is "
+"re-enabled once the proposal was accepted."
+msgstr ""
+"By default, applicants can no longer edit their application once the "
+"deadline has passed."
+
+#: pretalx/orga/templates/orga/settings/review.html
+#, python-format
+msgid ""
+"If you require neither a review score nor a review text, reviewers will be "
+"offered an additional %(quotation_open)sAbstain%(quotation_close)s button "
+"when reviewing proposals."
+msgstr ""
+"If you require neither a review score nor a review text, reviewers get an "
+"extra %(quotation_open)sAbstain%(quotation_close)s button when reviewing "
+"applications."
+
+#: pretalx/orga/templates/orga/event/dashboard.html
+msgid ""
+"Your event will no longer be publicly visible: the schedule, session and "
+"speaker pages will only be accessible to you and your team."
+msgstr ""
+"This page will no longer be publicly visible: applicants will not be able to"
+" reach the application form or their own application."
+
+# Application detail / edit page (organiser and reviewers with edit rights)
+#: pretalx/submission/models/submission.py
+msgid "Proposal title"
+msgstr "Application title"
+
+#: pretalx/orga/forms/export.py
+msgid "Proposal titles"
+msgstr "Application titles"
+
+#: pretalx/common/text/phrases.py
+msgid ""
+"Internal notes for other organisers/reviewers. Not visible to the speakers "
+"or the public."
+msgstr ""
+"Internal notes for the hiring committee. Not visible to the applicant."
+
+#: pretalx/submission/models/submission.py
+msgid "Show this session in public list of featured sessions."
+msgstr "Feature this application on the public page."
+
+# Activity log entries (shown on the dashboard and per-application history)
+#: pretalx/common/log.py
+msgid "The proposal was accepted."
+msgstr "The application was shortlisted."
+
+#: pretalx/common/log.py
+msgid "The proposal was rejected."
+msgstr "The application was not shortlisted."
+
+#: pretalx/common/log.py
+msgid "The proposal was added."
+msgstr "The application was added."
+
+#: pretalx/common/log.py
+msgid "The proposal has been deleted."
+msgstr "The application has been deleted."
+
+#: pretalx/common/log.py
+msgid "The proposal was modified."
+msgstr "The application was modified."
+
+#: pretalx/common/log.py
+msgid "The proposal was withdrawn."
+msgstr "The application was withdrawn."
+
+#: pretalx/common/log.py
+msgid "The proposal was cancelled."
+msgstr "The application was cancelled."
+
+#: pretalx/common/log.py
+msgid "The proposal was confirmed."
+msgstr "The applicant confirmed their interest."
+
+#: pretalx/common/log.py
+msgid "The proposal was unconfirmed."
+msgstr "The applicant withdrew their confirmation."
+
+#: pretalx/common/log.py
+msgid "A speaker was added to the proposal."
+msgstr "An applicant was added to the application."
+
+#: pretalx/common/log.py
+msgid "A speaker was removed from the proposal."
+msgstr "An applicant was removed from the application."
+
+#: pretalx/common/log.py
+msgid "A speaker was invited to the proposal."
+msgstr "An applicant was invited to the application."
+
+#: pretalx/common/log.py
+msgid "A proposal comment was added."
+msgstr "A committee comment was added."
+
+#: pretalx/common/log.py
+msgid "A proposal comment was deleted."
+msgstr "A committee comment was deleted."
+
+# Reviewer assignment page
+#: pretalx/orga/templates/orga/review/assignment.html
+#, python-format
+msgid ""
+"Reviewers will be able to see and review <strong>only their "
+"assigned</strong> proposals. You can change this in your <a "
+"href=\"%(href)s\">review settings</a>."
+msgstr ""
+"Reviewers will see and review <strong>only the applications assigned to "
+"them</strong>. You can change this in your <a href=\"%(href)s\">review "
+"settings</a>."
+
+#: pretalx/orga/templates/orga/review/assignment.html
+#, python-format
+msgid ""
+"Reviewers will be able to see and review <strong>all proposals</strong>, but"
+" their assigned reviews will appear highlighted, and they will be directed "
+"to them first. You can change this in your <a href=\"%(href)s\" >review "
+"settings</a>."
+msgstr ""
+"Reviewers will see and review <strong>all applications</strong>, but the "
+"ones assigned to them appear highlighted and come first. You can change this"
+" in your <a href=\"%(href)s\">review settings</a>."
+
+#: pretalx/orga/templates/orga/review/assignment.html
+msgid ""
+"This is where you can assign reviewers to specific proposals! Please use "
+"this drop-down to switch between the two assignment modes (assigning "
+"reviewers to proposals or proposals to reviewers)."
+msgstr ""
+"Assign reviewers to individual applications here. Use the drop-down to "
+"switch between the two assignment modes: reviewers to applications, or "
+"applications to reviewers."
+
+# Review export and CfP editor preview
+#: pretalx/orga/forms/export.py
+msgid "Proposal ID"
+msgstr "Application ID"
+
+#: pretalx/orga/templates/orga/cfp/editor.html
+msgid "Session (30 minutes)"
+msgstr "Interview (30 minutes)"
+
+#: pretalx/submission/models/submission.py
+msgid "Don’t record this session."
+msgstr "Do not record."
+
+#: pretalx/submission/models/submission.py
+msgid "Session image"
+msgstr "Image"
+
+#: pretalx/submission/models/submission.py
+msgid "Additional speakers"
+msgstr "Additional applicants"
+
+#: pretalx/agenda/phrases.py
+msgid "Thanks, we (and our speakers) appreciate your feedback!"
+msgstr "Thanks, we (and our applicants) appreciate your feedback!"
+
+#: pretalx/agenda/phrases.py
+msgid "This session will not be recorded."
+msgstr "This interview will not be recorded."
+
+#: pretalx/agenda/phrases.py
+msgid "View conference schedule"
+msgstr "View interview schedule"
+
+#: pretalx/agenda/phrases.py
+msgid "View schedule preview"
+msgstr "View interview schedule preview"
+
+#: pretalx/agenda/templates/agenda/changelog.html
+#: pretalx/agenda/templates/agenda/schedule.html
+msgid "Schedule changes"
+msgstr "Interview schedule changes"
+
+#: pretalx/agenda/templates/agenda/changelog_block.html
+msgid "We have new sessions!"
+msgstr "We have new interviews!"
+
+#: pretalx/agenda/templates/agenda/changelog_block.html
+msgid "We have a new session: "
+msgstr "We have a new interview: "
+
+#: pretalx/agenda/templates/agenda/changelog_block.html
+msgid "Sadly, we had to cancel sessions:"
+msgstr "Sadly, we had to cancel interviews:"
+
+#: pretalx/agenda/templates/agenda/changelog_block.html
+msgid "Sadly, we had to cancel a session:"
+msgstr "Sadly, we had to cancel an interview:"
+
+#: pretalx/agenda/templates/agenda/changelog_block.html
+msgid ""
+"We had to move some sessions, so if you were planning on seeing them, check "
+"their new dates or locations:"
+msgstr ""
+"We had to move some interviews, so if you were planning on seeing them, "
+"check their new dates or locations:"
+
+#: pretalx/agenda/templates/agenda/changelog_block.html
+msgid "We have moved a session around: "
+msgstr "We have moved an interview around: "
+
+#: pretalx/agenda/templates/agenda/featured.html
+msgid "Welcome to our list of featured sessions!"
+msgstr "Welcome to our list of featured interviews!"
+
+#: pretalx/agenda/templates/agenda/featured.html
+msgid ""
+"We prepared a list of exciting sessions, so you can get a feel for our "
+"conference. Please keep in mind that this is not our full schedule. We will "
+"follow up with the full schedule in time, stay tuned!"
+msgstr ""
+"We prepared a list of exciting interviews, so you can get a feel for our "
+"recruitment process. Please keep in mind that this is not our full interview"
+" schedule. We will follow up with the full interview schedule in time, stay "
+"tuned!"
+
+#: pretalx/agenda/templates/agenda/featured.html
+msgid ""
+"In the near future you will see a curated list of sessions we’d like to show"
+" off here. Right now we are busy reviewing proposals.<br> Check back later!"
+msgstr ""
+"In the near future you will see a curated list of interviews we’d like to "
+"show off here. Right now we are busy reviewing applications.<br> Check back "
+"later!"
+
+#: pretalx/agenda/templates/agenda/feed/description.html
+#, python-format
+msgid "A new %(event_name)s schedule has been released!"
+msgstr "A new %(event_name)s interview schedule has been released!"
+
+#: pretalx/agenda/templates/agenda/feed/description.html
+#, python-format
+msgid "The first %(event_name)s schedule has been released!"
+msgstr "The first %(event_name)s interview schedule has been released!"
+
+#: pretalx/agenda/templates/agenda/feedback.html
+msgid ""
+"This feedback is for you personally, not for all speakers in this session."
+msgstr ""
+"This feedback is for you personally, not for all applicants in this "
+"interview."
+
+#: pretalx/agenda/templates/agenda/feedback_form.html
+msgid ""
+"Feedback is a valuable tool for speakers to improve their content and "
+"presentation. Even short feedback can prove valuable to a speaker! Please "
+"take the time and communicate your thoughts in a constructive way."
+msgstr ""
+"Feedback is a valuable tool for applicants to improve their content and "
+"presentation. Even short feedback can prove valuable to an applicant! Please"
+" take the time and communicate your thoughts in a constructive way."
+
+#: pretalx/agenda/templates/agenda/feedback_form.html
+msgid "You can’t give feedback for this session at this time."
+msgstr "You can’t give feedback for this interview at this time."
+
+#: pretalx/agenda/templates/agenda/includes/signup.html
+#: pretalx/agenda/templates/agenda/session_block.html
+#: pretalx/agenda/views/schedule.py
+msgid "You are signed up for this session."
+msgstr "You are signed up for this interview."
+
+#: pretalx/agenda/templates/agenda/includes/signup.html
+#: pretalx/agenda/templates/agenda/session_block.html
+#: pretalx/agenda/views/schedule.py pretalx/submission/domain/signup.py
+msgid "This session is currently full."
+msgstr "This interview is currently full."
+
+#: pretalx/agenda/templates/agenda/includes/signup.html
+msgid "This session requires attendees to sign up."
+msgstr "This interview requires attendees to sign up."
+
+#: pretalx/agenda/templates/agenda/includes/signup.html
+msgid "You cannot sign up for this session with this account."
+msgstr "You cannot sign up for this interview with this account."
+
+#: pretalx/agenda/templates/agenda/includes/signup.html
+msgid "Sign up for this session"
+msgstr "Sign up for this interview"
+
+#: pretalx/agenda/templates/agenda/includes/signup.html
+msgid "Please confirm that you want to sign up for this session."
+msgstr "Please confirm that you want to sign up for this interview."
+
+#: pretalx/agenda/templates/agenda/schedule.html
+#, python-format
+msgid ""
+"To see our schedule, please either enable JavaScript or go <a "
+"href=\"%(href)s\">here</a> for our NoJS schedule."
+msgstr ""
+"To see our interview schedule, please either enable JavaScript or go <a "
+"href=\"%(href)s\">here</a> for our NoJS interview schedule."
+
+#: pretalx/agenda/templates/agenda/schedule_nojs.html
+#, python-format
+msgid ""
+"To see our schedule with full functionality, like timezone conversion and "
+"personal scheduling, please enable JavaScript and go <a "
+"href=\"%(href)s\">here</a>."
+msgstr ""
+"To see our interview schedule with full functionality, like timezone "
+"conversion and personal scheduling, please enable JavaScript and go <a "
+"href=\"%(href)s\">here</a>."
+
+#: pretalx/agenda/templates/agenda/schedule_nojs.html
+#, python-format
+msgid "No sessions on %(weekday)s, %(current_day)s."
+msgstr "No interviews on %(weekday)s, %(current_day)s."
+
+#: pretalx/agenda/templates/agenda/talk.html
+msgid "Favourite this session"
+msgstr "Favourite this interview"
+
+#: pretalx/agenda/templates/agenda/talk.html
+msgid "Remove this session from your favourites"
+msgstr "Remove this interview from your favourites"
+
+#: pretalx/agenda/templates/agenda/talk.html
+msgid "This session’s header image"
+msgstr "This interview’s header image"
+
+#: pretalx/agenda/templates/agenda/talk.html
+msgid "This speaker also appears in:"
+msgstr "This applicant also appears in:"
+
+#: pretalx/agenda/views/ascii.py
+msgid "No speakers"
+msgstr "No applicants"
+
+#: pretalx/agenda/views/schedule.py
+msgid "Our schedule is not live yet."
+msgstr "Our interview schedule is not live yet."
+
+#: pretalx/agenda/views/schedule.py
+msgid ""
+"You're currently not logged in, so your favourited sessions will only be "
+"stored locally in your browser."
+msgstr ""
+"You're currently not logged in, so your favourited interviews will only be "
+"stored locally in your browser."
+
+#: pretalx/agenda/views/schedule.py
+msgid "No sessions match your current filters."
+msgstr "No interviews match your current filters."
+
+#: pretalx/agenda/views/schedule.py
+msgid "An error occurred while loading the schedule. Please try again later."
+msgstr ""
+"An error occurred while loading the interview schedule. Please try again "
+"later."
+
+#: pretalx/agenda/views/schedule.py
+msgid "The schedule is not yet available. Please check back later!"
+msgstr "The interview schedule is not yet available. Please check back later!"
+
+#: pretalx/agenda/views/schedule.py
+msgid "Only sessions requiring signup"
+msgstr "Only interviews requiring signup"
+
+#: pretalx/agenda/views/schedule.py
+msgid "Hide full sessions"
+msgstr "Hide full interviews"
+
+#: pretalx/agenda/views/schedule.py
+msgid "Your signed-up sessions could not be loaded. Please try again later."
+msgstr ""
+"Your signed-up interviews could not be loaded. Please try again later."
+
+#: pretalx/agenda/views/schedule.py pretalx/common/log.py
+#: pretalx/mail/interfaces/forms/queued_mail.py pretalx/orga/tables/cfp.py
+#: pretalx/orga/templates/orga/base.html pretalx/orga/views/cfp.py
+#: pretalx/submission/interfaces/forms/submission.py
+#: pretalx/submission/models/access_code.py
+#: pretalx/submission/models/question.py
+msgid "Tracks"
+msgstr "Application streams"
+
+#: pretalx/agenda/views/talk.py
+#, python-brace-format
+msgid "The session “{title}” at {event}"
+msgstr "The interview “{title}” at {event}"
+
+#: pretalx/cfp/flow/steps.py
+msgid ""
+"We’re glad that you want to contribute to our event with your proposal. "
+"Let’s get started, this won’t take long."
+msgstr ""
+"We’re glad that you want to apply to this call. Let’s get started — it won’t"
+" take long."
+
+#: pretalx/cfp/flow/steps.py
+msgid "Before we can save your proposal, we have some more questions for you."
+msgstr ""
+"Before we can save your application, we have a few more questions for you."
+
+#: pretalx/cfp/flow/steps.py
+msgid "That’s it about your proposal! We now just need a way to contact you."
+msgstr ""
+"That’s everything about your application. We now need your contact details."
+
+#: pretalx/cfp/flow/steps.py
+msgid ""
+"To create your proposal, you need an account on this page. This not only "
+"gives us a way to contact you, it also gives you the possibility to edit "
+"your proposal or to view its current state."
+msgstr ""
+"You need an account to apply. It lets us contact you and lets you edit your "
+"application or check its status."
+
+#: pretalx/cfp/flow/steps.py
+msgid ""
+"This information will be publicly displayed next to your session - you can "
+"always edit for as long as proposals are still open."
+msgstr ""
+"This information is part of your application and is visible to the "
+"recruitment team. You can edit it while applications are open."
+
+#: pretalx/cfp/phrases.py
+msgid ""
+"Your proposal can’t be withdrawn at this time – please contact us if you "
+"need to withdraw your proposal!"
+msgstr ""
+"Your application can’t be withdrawn at this time – please contact us if you "
+"need to withdraw your application!"
+
+#: pretalx/cfp/phrases.py
+msgid "Your session has been confirmed – we’re looking forward to seeing you!"
+msgstr ""
+"Your interview attendance is confirmed — we look forward to meeting you!"
+
+#: pretalx/cfp/phrases.py
+msgid ""
+"This proposal has already been confirmed – we’re looking forward to seeing "
+"you!"
+msgstr ""
+"You have already confirmed your interview attendance — we look forward to "
+"meeting you!"
+
+#: pretalx/cfp/phrases.py
+msgid ""
+"This proposal cannot be confirmed at this time – please contact us if you "
+"think this is an error."
+msgstr ""
+"This application cannot be confirmed at this time – please contact us if you"
+" think this is an error."
+
+#: pretalx/cfp/phrases.py
+msgid ""
+"This proposal cannot be edited at this time. Please contact the organisers "
+"if you need to make changes."
+msgstr ""
+"This application cannot be edited at this time. Please contact the "
+"organisers if you need to make changes."
+
+#: pretalx/cfp/phrases.py
+msgctxt "field: speaker's email address"
+msgid "Speaker email"
+msgstr "Applicant email address"
+
+#: pretalx/cfp/phrases.py
+#, python-brace-format
+msgid "{inviting_speaker} invites you to join their session!"
+msgstr "{inviting_speaker} invites you to join their interview!"
+
+#: pretalx/cfp/phrases.py
+#, python-brace-format
+msgid ""
+"Hi!\n"
+"\n"
+"I’d like to invite you to be a speaker in the session\n"
+"\n"
+"  “{proposal_title}”\n"
+"\n"
+"at {event_name}. Please follow this link to join:\n"
+"\n"
+"  {url}\n"
+"\n"
+"I’m looking forward to it!\n"
+"{inviting_speaker}"
+msgstr ""
+"Hi!\n"
+"\n"
+"I’d like to invite you to be an applicant in the interview\n"
+"\n"
+"  “{proposal_title}”\n"
+"\n"
+"at {event_name}. Please follow this link to join:\n"
+"\n"
+"  {url}\n"
+"\n"
+"I’m looking forward to it!\n"
+"{inviting_speaker}"
+
+#: pretalx/cfp/phrases.py
+msgid "You are now part of this proposal! Please fill in your profile below."
+msgstr ""
+"You are now part of this application! Please fill in your profile below."
+
+#: pretalx/cfp/phrases.py
+msgid ""
+"We are experiencing difficulties when sending emails, but your session was "
+"submitted successfully!"
+msgstr ""
+"We are experiencing difficulties when sending emails, but your interview was"
+" submitted successfully!"
+
+#: pretalx/cfp/templates/cfp/event/invitation.html
+msgid ""
+"Unfortunately, you cannot accept this invitation at the moment. This may be "
+"because the invitation has expired, or because the proposal cannot be edited"
+" any more."
+msgstr ""
+"Unfortunately, you cannot accept this invitation at the moment. This may be "
+"because the invitation has expired, or because the application cannot be "
+"edited any more."
+
+#: pretalx/cfp/templates/cfp/event/invitation.html
+msgid "Please contact the conference organisers for more information."
+msgstr ""
+"Please contact the recruitment process organisers for more information."
+
+#: pretalx/cfp/templates/cfp/event/invitation.html
+#, python-format
+msgid ""
+"You, %(name)s, have been invited to be a speaker for the session “%(talk)s”."
+" Do you accept the invitation?"
+msgstr ""
+"You, %(name)s, have been invited to be an applicant for the interview "
+"“%(talk)s”. Do you accept the invitation?"
+
+#: pretalx/cfp/templates/cfp/event/login.html
+msgid ""
+"If you already created a proposal for a different event on this server, you "
+"can re-use your account to log in for this event."
+msgstr ""
+"If you already created an application for a different call on this server, "
+"you can re-use your account to log in for this call."
+
+#: pretalx/cfp/templates/cfp/event/recover.html
+msgid "Set your password to access your profile and proposals"
+msgstr "Set your password to access your profile and applications"
+
+#: pretalx/cfp/templates/cfp/event/submission_questions.html
+#: pretalx/orga/templates/orga/cfp/editor.html
+msgid "… about your proposal:"
+msgstr "… about your application:"
+
+#: pretalx/cfp/templates/cfp/event/submission_user.html
+msgid ""
+"Organisers will not be able to see your draft or your email address. They "
+"will be able to send you reminders about your pending proposal draft closer "
+"to the deadline."
+msgstr ""
+"Organisers will not be able to see your draft or your email address. They "
+"will be able to send you reminders about your pending application draft "
+"closer to the deadline."
+
+#: pretalx/cfp/templates/cfp/event/user_profile.html
+msgid ""
+"I really do want to delete my account, losing access to my proposals and "
+"sessions, and overriding my public and private data."
+msgstr ""
+"I really do want to delete my account, losing access to my applications and "
+"interviews, and overriding my public and private data."
+
+#: pretalx/cfp/templates/cfp/event/user_submission_confirm.html
+msgid ""
+"By confirming your proposal, you agree that you are able and willing to "
+"participate in this event and present the content of this proposal. The "
+"proposal data, such as title, abstract, description, and any uploads you "
+"provided, can be made publicly available once the proposal is confirmed."
+msgstr ""
+"By confirming, you agree that you are willing and available to attend an "
+"interview for this application. Your application data must remain private "
+"unless you have explicitly agreed to publication."
+
+#: pretalx/cfp/templates/cfp/event/user_submission_confirm.html
+msgid ""
+"Please provide us with your available hours during the event, so that we can"
+" schedule your session accordingly:"
+msgstr ""
+"Please mark the times when you are available during the interview period. We"
+" will use them when assigning your interview slot:"
+
+#: pretalx/cfp/templates/cfp/event/user_submission_confirm_error.html
+msgid "Proposal not found"
+msgstr "Application not found"
+
+#: pretalx/cfp/templates/cfp/event/user_submission_confirm_error.html
+msgid ""
+"The proposal you’re trying to confirm either does not exist or does not "
+"belong to the account you’re currently logged in with. Try logging in with a"
+" different account, or contact the event organisers for further information."
+msgstr ""
+"The application you’re trying to confirm either does not exist or does not "
+"belong to the account you’re currently logged in with. Try logging in with a"
+" different account, or contact the call organisers for further information."
+
+#: pretalx/cfp/templates/cfp/event/user_submission_discard.html
+msgid ""
+"Do you really want to discard your draft proposal? All data will be lost."
+msgstr ""
+"Do you really want to discard your draft application? All data will be lost."
+
+#: pretalx/cfp/templates/cfp/event/user_submission_edit.html
+msgid "Attendees can leave feedback here after your session has taken place."
+msgstr ""
+"Attendees can leave feedback here after your interview has taken place."
+
+#: pretalx/cfp/templates/cfp/event/user_submission_edit.html
+msgid "Share proposal"
+msgstr "Share application"
+
+#: pretalx/cfp/templates/cfp/event/user_submission_edit.html
+msgid ""
+"If you need a review from a colleague or a friend here’s a link that you can"
+" send out for viewing your proposal:"
+msgstr ""
+"If you need a review from a colleague or a friend here’s a link that you can"
+" send out for viewing your application:"
+
+#: pretalx/cfp/templates/cfp/event/user_submission_edit.html
+msgid "Discard draft proposal"
+msgstr "Discard draft application"
+
+#: pretalx/cfp/templates/cfp/event/user_submission_edit.html
+msgid ""
+"You can discard your draft proposal here. You cannot undo this - if you are "
+"just uncertain if you can or should submit your proposal, please contact the"
+" organiser instead."
+msgstr ""
+"You can discard your draft application here. You cannot undo this - if you "
+"are just uncertain if you can or should submit your application, please "
+"contact the organiser instead."
+
+#: pretalx/cfp/templates/cfp/event/user_submission_edit.html
+msgid "Cancel proposal"
+msgstr "Cancel application"
+
+#: pretalx/cfp/templates/cfp/event/user_submission_edit.html
+msgid ""
+"As your proposal has been accepted already, please contact the event’s "
+"organisers to cancel it. The best way to reach out would be an answer to "
+"your acceptance email."
+msgstr ""
+"As your application has been accepted already, please contact the call’s "
+"organisers to cancel it. The best way to reach out would be an answer to "
+"your acceptance email."
+
+#: pretalx/cfp/templates/cfp/includes/submission_resources_form.html
+msgid "This proposal has no resources yet."
+msgstr "This application has no resources yet."
+
+#: pretalx/cfp/templates/cfp/includes/user_submission_header.html
+msgid "Invite co-speaker"
+msgstr "Invite co-applicant"
+
+#: pretalx/cfp/templates/cfp/includes/user_submission_header.html
+msgid ""
+"Attendees are required to sign up for this session in advance. If you’d like"
+" to change how many people can sign up to this session, please get in touch "
+"with the organisers."
+msgstr ""
+"Attendees are required to sign up for this interview in advance. If you’d "
+"like to change how many people can sign up to this interview, please get in "
+"touch with the organisers."
+
+#: pretalx/cfp/templates/cfp/index.html
+#: pretalx/orga/templates/orga/admin/user_detail.html
+#: pretalx/orga/templates/orga/base.html pretalx/orga/templates/orga/user.html
+msgid "Events"
+msgstr "Calls"
+
+#: pretalx/cfp/templates/cfp/index.html
+msgid "No events are currently ongoing."
+msgstr "No calls are currently ongoing."
+
+#: pretalx/cfp/templates/cfp/index.html
+msgid "Upcoming events"
+msgstr "Upcoming calls"
+
+#: pretalx/cfp/templates/cfp/index.html
+msgid "Past events"
+msgstr "Past calls"
+
+#: pretalx/common/forms/fields.py
+msgid "Form submission failed."
+msgstr "Form application failed."
+
+#: pretalx/common/forms/widgets.py
+#, python-brace-format
+msgid "{count} events"
+msgstr "{count} calls"
+
+#: pretalx/common/log.py pretalx/orga/templates/orga/base.html
+#: pretalx/orga/views/schedule.py
+msgid "Rooms"
+msgstr "Interview rooms"
+
+#: pretalx/common/log.py
+msgid "Schedules"
+msgstr "Interview schedules"
+
+#: pretalx/common/log.py
+msgid "Slots"
+msgstr "Interview slots"
+
+#: pretalx/common/log.py pretalx/event/domain/stages.py
+#: pretalx/orga/templates/orga/admin/user_detail.html
+#: pretalx/orga/templates/orga/mails/_placeholder_group.html
+#: pretalx/orga/templates/orga/organiser/list.html pretalx/orga/views/event.py
+msgid "Event"
+msgid_plural "Events"
+msgstr[0] "Call"
+msgstr[1] "Calls"
+
+#: pretalx/common/log.py
+msgctxt "history filter category"
+msgid "Schedule"
+msgstr "Interview schedule"
+
+#: pretalx/common/log.py
+msgid "Room created"
+msgstr "Interview room created"
+
+#: pretalx/common/log.py
+msgid "Room modified"
+msgstr "Interview room modified"
+
+#: pretalx/common/log.py
+msgid "Room deleted"
+msgstr "Interview room deleted"
+
+#: pretalx/common/log.py
+msgid "CfP modified"
+msgstr "application form modified"
+
+#: pretalx/common/log.py
+#, python-brace-format
+msgid "The event {name} ({slug}) by {organiser} was deleted."
+msgstr "The call {name} ({slug}) by {organiser} was deleted."
+
+#: pretalx/common/log.py
+#, python-brace-format
+msgid "A speaker invitation was sent to {email}."
+msgstr "An applicant invitation was sent to {email}."
+
+#: pretalx/common/log.py
+#, python-brace-format
+msgid "A speaker invitation to {email} was accepted."
+msgstr "An applicant invitation to {email} was accepted."
+
+#: pretalx/common/log.py
+#, python-brace-format
+msgid "A speaker invitation to {email} was retracted."
+msgstr "An applicant invitation to {email} was retracted."
+
+#: pretalx/common/log.py
+msgid "The CfP has been modified."
+msgstr "The application form has been modified."
+
+#: pretalx/common/log.py
+msgid "The event was made public."
+msgstr "The call was made public."
+
+#: pretalx/common/log.py
+msgid "The event has been added."
+msgstr "The call has been added."
+
+#: pretalx/common/log.py
+msgid "The event was deactivated."
+msgstr "The call was deactivated."
+
+#: pretalx/common/log.py
+msgid "The event was deleted."
+msgstr "The call was deleted."
+
+#: pretalx/common/log.py
+msgid "The event was modified."
+msgstr "The call was modified."
+
+#: pretalx/common/log.py pretalx/orga/views/cfp.py
+msgid "The CfP configuration was reset to defaults."
+msgstr "The application form configuration was reset to defaults."
+
+#: pretalx/common/log.py
+msgid "A new room was added."
+msgstr "A new interview room was added."
+
+#: pretalx/common/log.py
+msgid "A room was modified."
+msgstr "An interview room was modified."
+
+#: pretalx/common/log.py
+msgid "A room was deleted."
+msgstr "An interview room was deleted."
+
+#: pretalx/common/log.py
+msgid "A new schedule version was released."
+msgstr "A new interview schedule version was released."
+
+#: pretalx/common/log.py
+msgid "A proposal resource was added."
+msgstr "An application resource was added."
+
+#: pretalx/common/log.py
+msgid "A proposal resource was deleted."
+msgstr "An application resource was deleted."
+
+#: pretalx/common/log.py
+msgid "A proposal resource was modified."
+msgstr "An application resource was modified."
+
+#: pretalx/common/log.py
+msgid "The speaker order was changed."
+msgstr "The applicant order was changed."
+
+#: pretalx/common/log.py
+msgid "A speaker invitation was sent."
+msgstr "An applicant invitation was sent."
+
+#: pretalx/common/log.py
+msgid "A speaker invitation was accepted."
+msgstr "An applicant invitation was accepted."
+
+#: pretalx/common/log.py
+msgid "A speaker invitation was retracted."
+msgstr "An applicant invitation was retracted."
+
+#: pretalx/common/log.py
+msgid "A session type was added."
+msgstr "An interview type was added."
+
+#: pretalx/common/log.py
+msgid "A session type was deleted."
+msgstr "An interview type was deleted."
+
+#: pretalx/common/log.py pretalx/orga/views/cfp.py
+msgid "The session type has been made default."
+msgstr "The interview type has been made default."
+
+#: pretalx/common/log.py
+msgid "A session type was modified."
+msgstr "An interview type was modified."
+
+#: pretalx/common/log.py
+msgid "An attendee signed up for the session."
+msgstr "An attendee signed up for the interview."
+
+#: pretalx/common/log.py
+msgid "A track was added."
+msgstr "An application stream was added."
+
+#: pretalx/common/log.py
+msgid "A track was deleted."
+msgstr "An application stream was deleted."
+
+#: pretalx/common/log.py
+msgid "A track was modified."
+msgstr "An application stream was modified."
+
+#: pretalx/common/log.py
+msgid "A speaker has been marked as arrived."
+msgstr "An applicant has been marked as arrived."
+
+#: pretalx/common/log.py
+msgid "A speaker has been marked as not arrived."
+msgstr "An applicant has been marked as not arrived."
+
+#: pretalx/common/log.py
+msgid "A speaker information note was added."
+msgstr "An applicant information note was added."
+
+#: pretalx/common/log.py
+msgid "A speaker information note was modified."
+msgstr "An applicant information note was modified."
+
+#: pretalx/common/log.py
+msgid "A speaker information note was deleted."
+msgstr "An applicant information note was deleted."
+
+#: pretalx/common/log.py
+msgid "The speaker was modified."
+msgstr "The applicant was modified."
+
+#: pretalx/common/templates/common/base.html
+#: pretalx/orga/templates/orga/auth/base.html
+#: pretalx/orga/templates/orga/cfp/editor.html
+msgid "The event’s logo"
+msgstr "The call’s logo"
+
+#: pretalx/common/templates/common/error.html
+msgid "Event home"
+msgstr "Call home"
+
+#: pretalx/common/templates/common/includes/nonpublic.html
+msgid "This schedule-related page is non-public. Only organisers can see it."
+msgstr ""
+"This interview scheduling page is private. Only authorised organisers can "
+"see it."
+
+#: pretalx/common/templates/common/logs.html
+#: pretalx/orga/templates/orga/event/history_detail_content.html
+msgid "This change was performed by an event organiser."
+msgstr "This change was made by a call organiser."
+
+#: pretalx/common/templates/common/widgets/biography.html
+msgid "Use a biography from another event"
+msgstr "Use a biography from another call"
+
+#: pretalx/common/text/phrases.py
+msgid "Leave empty to use the default duration for the session type."
+msgstr "Leave empty to use the default duration for the interview type."
+
+#: pretalx/common/text/phrases.py
+msgid "Use this if you want an illustration to go with your proposal."
+msgstr "Use this if you want an illustration to go with your application."
+
+#: pretalx/common/validators.py
+msgid "Please either pick some events, or grant access to all your events!"
+msgstr "Please either pick some calls, or grant access to all your calls!"
+
+#: pretalx/event/domain/event.py
+#, python-brace-format
+msgid "Team {event.name}"
+msgstr "Team {event.name}"
+
+#: pretalx/event/domain/stages.py
+msgid "Configure the event"
+msgstr "Configure the call"
+
+#: pretalx/event/domain/stages.py
+msgid "Write a CfP"
+msgstr "Configure the application form"
+
+#: pretalx/event/domain/stages.py
+msgid "CfP is open"
+msgstr "Applications are open"
+
+#: pretalx/event/domain/stages.py
+msgid "Monitor proposals"
+msgstr "Monitor applications"
+
+#: pretalx/event/domain/stages.py
+msgid "Submit sessions for your speakers"
+msgstr "Add applications on behalf of applicants"
+
+#: pretalx/event/domain/stages.py
+msgid "Accept or reject proposals"
+msgstr "Shortlist or reject applications"
+
+#: pretalx/event/domain/stages.py
+msgid "Build your first schedule"
+msgstr "Build your first interview schedule"
+
+#: pretalx/event/domain/stages.py
+msgid "Release schedules as needed"
+msgstr "Release interview schedules as needed"
+
+#: pretalx/event/domain/stages.py
+msgid "Inform your speakers about the infrastructure"
+msgstr "Send applicants interview information"
+
+#: pretalx/event/domain/stages.py
+msgid "Provide a point of contact for the speakers"
+msgstr "Provide applicants with a point of contact"
+
+#: pretalx/event/domain/stages.py
+msgid "Enjoy the event!"
+msgstr "Complete the recruitment process"
+
+#: pretalx/event/domain/stages.py
+msgid "Embed session recordings if available"
+msgstr "Embed interview recordings if available"
+
+#: pretalx/event/domain/stages.py
+msgid "Release next event date?"
+msgstr "Release next call date?"
+
+#: pretalx/event/domain/team.py
+#, python-brace-format
+msgid ""
+"Hi!\n"
+"You have been invited to the {name} event organiser team - Please click here to accept:\n"
+"\n"
+"{invitation_link}\n"
+"\n"
+"See you there,\n"
+"The {organiser} team"
+msgstr ""
+"Hi!\n"
+"You have been invited to the {name} call organiser team - Please click here to accept:\n"
+"\n"
+"{invitation_link}\n"
+"\n"
+"See you there,\n"
+"The {organiser} team"
+
+#: pretalx/event/interfaces/forms/event.py
+msgid ""
+"Users will be able to use pretalx in these languages, and you will be able "
+"to provide all texts in these languages. If you don’t provide a text in the "
+"language a user selects, it will be shown in your event’s default language "
+"instead."
+msgstr ""
+"Users will be able to use pretalx in these languages, and you will be able "
+"to provide all texts in these languages. If you don’t provide a text in the "
+"language a user selects, it will be shown in your call’s default language "
+"instead."
+
+#: pretalx/event/interfaces/forms/event.py
+msgid "Users will be able to submit proposals in these languages."
+msgstr "Users will be able to submit applications in these languages."
+
+#: pretalx/event/interfaces/forms/event.py
+msgid "Show schedule publicly"
+msgstr "Publish interview schedule (includes applicant details)"
+
+#: pretalx/event/interfaces/forms/event.py
+msgid ""
+"Unset to hide your schedule, e.g. if you want to use the HTML export "
+"exclusively."
+msgstr ""
+"Leave this unticked. Enabling it makes confirmed interviews, applicant "
+"names, times and locations publicly accessible."
+
+#: pretalx/event/interfaces/forms/event.py
+msgid "Show featured sessions"
+msgstr "Publish featured applications"
+
+#: pretalx/event/interfaces/forms/event.py
+msgid "Until the first schedule is released"
+msgstr "Until the first interview schedule is released (not recommended)"
+
+#: pretalx/event/interfaces/forms/event.py
+msgid ""
+"Marking sessions as “featured” is a good way to show them before the first "
+"schedule release, or to highlight them once the schedule is visible."
+msgstr ""
+"Featured applications can be visible publicly, including when the interview "
+"schedule is hidden. For recruitment, select “Never”."
+
+#: pretalx/event/interfaces/forms/event.py
+msgid "Attendees will be able to send in feedback after a session is over."
+msgstr ""
+"Attendees will be able to send in feedback after an interview is over."
+
+#: pretalx/event/interfaces/forms/event.py
+msgid ""
+"If you publish your schedule via the HTML export, you will want the correct "
+"absolute URL to be set in various places. Please only set this value once "
+"you have published your schedule. Should end with a slash."
+msgstr ""
+"If you publish your interview schedule via the HTML export, you will want "
+"the correct absolute URL to be set in various places. Please only set this "
+"value once you have published your interview schedule. Should end with a "
+"slash."
+
+#: pretalx/event/interfaces/forms/event.py
+msgid "Ask search engines not to index the event pages"
+msgstr "Ask search engines not to index the call pages"
+
+#: pretalx/event/interfaces/forms/event.py
+msgid "Use tracks"
+msgstr "Use application streams"
+
+#: pretalx/event/interfaces/forms/event.py
+msgid "Do you organise your sessions by tracks?"
+msgstr "Do you organise your interviews by application streams?"
+
+#: pretalx/event/interfaces/forms/event.py
+#: pretalx/submission/models/submission.py
+msgid "Slot count"
+msgstr "Interview slot count"
+
+#: pretalx/event/interfaces/forms/event.py
+msgid "Can sessions be held multiple times?"
+msgstr "Can interviews be held multiple times?"
+
+#: pretalx/event/interfaces/forms/event.py
+msgid "Allow attendees to sign up for sessions."
+msgstr "Allow attendees to sign up for interviews."
+
+#: pretalx/event/interfaces/forms/event.py
+msgid "Tracks requiring signup"
+msgstr "Application streams requiring signup"
+
+#: pretalx/event/interfaces/forms/event.py
+msgid ""
+"Sessions in these tracks will require attendee signup by default. You can "
+"override this for individual sessions."
+msgstr ""
+"Interviews in these application streams will require attendee signup by "
+"default. You can override this for individual interviews."
+
+#: pretalx/event/interfaces/forms/event.py
+msgid "Session types requiring signup"
+msgstr "Interview types requiring signup"
+
+#: pretalx/event/interfaces/forms/event.py
+msgid ""
+"Sessions of these types will require attendee signup by default. You can "
+"override this for individual sessions."
+msgstr ""
+"Interviews of these types will require attendee signup by default. You can "
+"override this for individual interviews."
+
+#: pretalx/event/interfaces/forms/event.py
+msgid ""
+"Please contact your administrator if you need to change the short name of "
+"your event."
+msgstr ""
+"Please contact your administrator if you need to change the short name of "
+"your call."
+
+#: pretalx/event/interfaces/forms/event.py
+msgid ""
+"Any sessions you have scheduled already will be moved if you change the "
+"event dates. You will have to release a new schedule version to notify all "
+"speakers."
+msgstr ""
+"Any interviews you have scheduled already will be moved if you change the "
+"call dates. You will have to release a new interview schedule version to "
+"notify all applicants."
+
+#: pretalx/event/interfaces/forms/event.py
+msgid "Choose all languages that your event should be available in."
+msgstr "Choose all languages that your call should be available in."
+
+#: pretalx/event/interfaces/forms/event.py
+msgid ""
+"The organiser running the event can copy settings from previous events and "
+"share team permissions across all or multiple events."
+msgstr ""
+"The organiser running the call can copy settings from previous calls and "
+"share team permissions across all or multiple calls."
+
+#: pretalx/event/interfaces/forms/event.py
+msgid ""
+"This is the address your event will be available at. Should be short, only "
+"contain lowercase letters and numbers, and must be unique. We recommend some"
+" kind of abbreviation with less than 30 characters that can be easily "
+"remembered."
+msgstr ""
+"This is the address your call will be available at. Should be short, only "
+"contain lowercase letters and numbers, and must be unique. We recommend some"
+" kind of abbreviation with less than 30 characters that can be easily "
+"remembered."
+
+#: pretalx/event/interfaces/forms/event.py
+msgid ""
+"You can copy settings from previous events here, such as email settings, "
+"session types, and email templates. Please check those settings once the "
+"event has been created!"
+msgstr ""
+"You can copy settings from previous calls here, such as email settings, "
+"interview types, and email templates. Please check those settings once the "
+"call has been created!"
+
+#: pretalx/event/interfaces/forms/event.py
+msgid ""
+"The default deadline for your Call for Proposals. You can assign additional "
+"deadlines to individual session types, which will take precedence over this "
+"deadline."
+msgstr ""
+"The default deadline for your Application form. You can assign additional "
+"deadlines to individual interview types, which will take precedence over "
+"this deadline."
+
+#: pretalx/event/models/event.py
+#, python-brace-format
+msgid "Invalid event slug – this slug is reserved: {value}."
+msgstr "Invalid call slug – this slug is reserved: {value}."
+
+#: pretalx/event/models/event.py
+msgid "Event is public"
+msgstr "Call is public"
+
+#: pretalx/event/models/event.py
+msgid "Event start date"
+msgstr "Call start date"
+
+#: pretalx/event/models/event.py
+msgid "Event end date"
+msgstr "Call end date"
+
+#: pretalx/event/models/event.py
+msgid ""
+"All event dates will be localised and interpreted to be in this timezone."
+msgstr ""
+"All call dates will be localised and interpreted to be in this timezone."
+
+#: pretalx/event/models/event.py
+msgid "Enter a custom domain, such as https://my.event.example.org"
+msgstr "Enter a custom domain, such as https://my.call.example.org"
+
+#: pretalx/event/models/event.py
+msgid "Main event colour"
+msgstr "Main call colour"
+
+#: pretalx/event/models/event.py
+msgid ""
+"Provide a hex value like #00ff00 if you want to style pretalx in your "
+"event’s colour scheme."
+msgstr ""
+"Provide a hex value like #00ff00 if you want to style pretalx in your call’s"
+" colour scheme."
+
+#: pretalx/event/models/event.py
+msgid "Custom Event CSS"
+msgstr "Custom Call CSS"
+
+#: pretalx/event/models/event.py
+msgid ""
+"If you provide a logo image, your event’s name will not be shown in the "
+"event header. The logo will be scaled down to a height of 140px."
+msgstr ""
+"If you provide a logo image, your call’s name will not be shown in the call "
+"header. The logo will be scaled down to a height of 140px."
+
+#: pretalx/event/models/event.py
+msgid ""
+"If you provide a header image, it will be displayed instead of your event’s "
+"color and/or header pattern at the top of all event pages. It will be "
+"center-aligned, so when the window shrinks, the center parts will continue "
+"to be displayed, and not stretched."
+msgstr ""
+"If you provide a header image, it will be displayed instead of your call’s "
+"color and/or header pattern at the top of all call pages. It will be center-"
+"aligned, so when the window shrinks, the center parts will continue to be "
+"displayed, and not stretched."
+
+#: pretalx/event/models/event.py
+msgid ""
+"This image will be shown as a preview when links to your event are shared on"
+" social media or messaging apps. For best results, use an image at least "
+"1200x630 pixels. If not set, the logo or header image will be used instead."
+msgstr ""
+"This image will be shown as a preview when links to your call are shared on "
+"social media or messaging apps. For best results, use an image at least "
+"1200x630 pixels. If not set, the logo or header image will be used instead."
+
+#: pretalx/event/models/event.py
+msgid ""
+"This text will be shown on the landing page, alongside with links to the CfP"
+" and schedule, if appropriate."
+msgstr ""
+"This text will be shown on the landing page, alongside with links to the "
+"application form and interview schedule, if appropriate."
+
+#: pretalx/event/models/event.py
+msgid "Featured sessions text"
+msgstr "Featured interviews text"
+
+#: pretalx/event/models/event.py
+msgid ""
+"This text will be shown at the top of the featured sessions page instead of "
+"the default text."
+msgstr ""
+"This text will be shown at the top of the featured interviews page instead "
+"of the default text."
+
+#: pretalx/event/models/organiser.py
+msgid ""
+"Apply permissions to all events by this organiser (including newly created "
+"ones)"
+msgstr ""
+"Apply permissions to all calls by this organiser (including newly created "
+"ones)"
+
+#: pretalx/event/models/organiser.py pretalx/person/models/auth_token.py
+msgid "Limit permissions to these events"
+msgstr "Limit permissions to these calls"
+
+#: pretalx/event/models/organiser.py pretalx/person/models/information.py
+#: pretalx/submission/models/review.py
+msgid "Limit to tracks"
+msgstr "Limit to application streams"
+
+#: pretalx/event/models/organiser.py
+msgid "Can create events"
+msgstr "Can create calls"
+
+#: pretalx/event/models/organiser.py
+msgid "Can change event settings"
+msgstr "Can change call settings"
+
+#: pretalx/event/models/organiser.py
+msgid "Can work with and change proposals"
+msgstr "Can work with and change applications"
+
+#: pretalx/event/models/organiser.py
+msgid "Always hide speaker names"
+msgstr "Always hide applicant names"
+
+#: pretalx/event/models/organiser.py
+msgid ""
+"Normally, anonymisation is configured in the event review settings. This "
+"setting will <strong>override the event settings</strong> and always hide "
+"speaker names for this team."
+msgstr ""
+"Normally, anonymisation is configured in the call review settings. This "
+"setting will <strong>override the call settings</strong> and always hide "
+"applicant names for this team."
+
+#: pretalx/event/validators/event.py
+msgid ""
+"This short name is already taken, please choose another one (or ask the "
+"owner of that event to add you to their team)."
+msgstr ""
+"This short name is already taken, please choose another one (or ask the "
+"owner of that call to add you to their team)."
+
+#: pretalx/event/validators/event.py
+msgid "Please do not choose the default domain as custom event domain."
+msgstr "Please do not choose the default domain as custom call domain."
+
+#: pretalx/event/validators/organiser.py
+msgid "Nobody on your teams has the permission to create new events."
+msgstr "Nobody on your teams has the permission to create new calls."
+
+#: pretalx/event/validators/organiser.py
+#, python-brace-format
+msgid ""
+"There must be at least one team with access to every event. Currently, "
+"nobody has access to {event_name}."
+msgstr ""
+"There must be at least one team with access to every call. Currently, nobody"
+" has access to {event_name}."
+
+#: pretalx/event/validators/organiser.py
+#, python-brace-format
+msgid ""
+"Nobody on your teams has the permissions to change settings for the event "
+"{event_name}"
+msgstr ""
+"Nobody on your teams has the permissions to change settings for the call "
+"{event_name}"
+
+#: pretalx/mail/domain/context.py
+msgid "The event’s full name"
+msgstr "The call’s full name"
+
+#: pretalx/mail/domain/context.py
+msgid "The event’s short form, used in URLs"
+msgstr "The call’s short form, used in URLs"
+
+#: pretalx/mail/domain/context.py
+msgid "The event’s public base URL"
+msgstr "The call’s public base URL"
+
+#: pretalx/mail/domain/context.py
+msgid "The event’s public schedule URL"
+msgstr "The call’s publicly visible interview schedule URL"
+
+#: pretalx/mail/domain/context.py
+msgid "The event’s public CfP URL"
+msgstr "The call’s public application form URL"
+
+#: pretalx/mail/domain/context.py
+msgid "URL to a user’s list of proposals"
+msgstr "URL to a user’s list of applications"
+
+#: pretalx/mail/domain/context.py
+msgid "The general CfP deadline"
+msgstr "The general application form deadline"
+
+#: pretalx/mail/domain/context.py
+msgid "The proposal’s unique ID"
+msgstr "The application’s unique ID"
+
+#: pretalx/mail/domain/context.py
+msgid "The proposal’s public URL"
+msgstr ""
+"The application’s public URL (do not share unless publication is authorised)"
+
+#: pretalx/mail/domain/context.py
+msgid "The speaker’s edit page for the proposal"
+msgstr "The applicant’s edit page for the application"
+
+#: pretalx/mail/domain/context.py
+msgid "Link to confirm a proposal after it has been accepted."
+msgstr ""
+"Link to confirm interview attendance after an application has been "
+"shortlisted."
+
+#: pretalx/mail/domain/context.py
+msgid "Link to withdraw the proposal"
+msgstr "Link to withdraw the application"
+
+#: pretalx/mail/domain/context.py
+msgid "This Is a Proposal Title"
+msgstr "This Is a Application Title"
+
+#: pretalx/mail/domain/context.py
+msgid "The proposal’s title"
+msgstr "The application’s title"
+
+#: pretalx/mail/domain/context.py
+msgid "The name(s) of all speakers in this proposal."
+msgstr "The name(s) of all applicants in this application."
+
+#: pretalx/mail/domain/context.py
+msgid "Session Type A"
+msgstr "Interview Type A"
+
+#: pretalx/mail/domain/context.py
+msgid "The proposal’s session type"
+msgstr "The application’s interview type"
+
+#: pretalx/mail/domain/context.py
+msgid "Track A"
+msgstr "Application stream A"
+
+#: pretalx/mail/domain/context.py
+msgid "The track the proposal belongs to"
+msgstr "The application stream the application belongs to"
+
+#: pretalx/mail/domain/context.py
+msgid ""
+"First review, agreeing with the proposal.\n"
+"\n"
+"--------- \n"
+"\n"
+"Second review, containing heavy criticism!"
+msgstr ""
+"First review, agreeing with the application.\n"
+"\n"
+"--------- \n"
+"\n"
+"Second review, containing heavy criticism!"
+
+#: pretalx/mail/domain/context.py
+msgid "All review texts for this proposal"
+msgstr "All review texts for this application"
+
+#: pretalx/mail/domain/context.py
+msgid "The session’s start date"
+msgstr "The interview’s start date"
+
+#: pretalx/mail/domain/context.py
+msgid "The session’s start time"
+msgstr "The interview’s start time"
+
+#: pretalx/mail/domain/context.py
+msgid "The session’s end date"
+msgstr "The interview’s end date"
+
+#: pretalx/mail/domain/context.py
+msgid "The session’s end time"
+msgstr "The interview’s end time"
+
+#: pretalx/mail/domain/context.py
+msgid "Room 101"
+msgstr "Interview room 101"
+
+#: pretalx/mail/domain/context.py
+msgid "The session’s room"
+msgstr "The interview room"
+
+#: pretalx/mail/domain/context.py
+#, python-brace-format
+msgid ""
+"- Your session “Title” will take place at {time} in Room 101.\n"
+"- Your session “Other Title” has been moved to {time2} in Room 102."
+msgstr ""
+"- Your interview “Title” will take place at {time} in Interview room 101.\n"
+"- Your interview “Other Title” has been moved to {time2} in Interview room 102."
+
+#: pretalx/mail/domain/context.py
+msgid ""
+"A list of all changes to the user’s schedule in the current schedule "
+"version."
+msgstr ""
+"A list of all changes to the user’s interview schedule in the current "
+"interview schedule version."
+
+#: pretalx/mail/domain/context.py
+#, python-brace-format
+msgid ""
+"- Your session “Title” will take place at {time} in Room 101.\n"
+"- Your session “Other Title” will take place at {time2} in Room 102."
+msgstr ""
+"- Your interview “Title” will take place at {time} in Interview room 101.\n"
+"- Your interview “Other Title” will take place at {time2} in Interview room 102."
+
+#: pretalx/mail/domain/context.py
+msgid "Times and locations for this user’s publicly visible sessions."
+msgstr "Times and locations for this applicant’s publicly visible interviews."
+
+#: pretalx/mail/enums.py
+msgid "Acknowledge proposal submission"
+msgstr "Acknowledge application submission"
+
+#: pretalx/mail/enums.py
+msgid "New proposal (organiser notification)"
+msgstr "New application (organiser notification)"
+
+#: pretalx/mail/enums.py
+msgid "Proposal accepted"
+msgstr "Application shortlisted"
+
+#: pretalx/mail/enums.py
+msgid "Proposal rejected"
+msgstr "Application not shortlisted"
+
+#: pretalx/mail/enums.py
+msgid "Add a speaker to a proposal (new account)"
+msgstr "Add an applicant to an application (new account)"
+
+#: pretalx/mail/enums.py
+msgid "Add a speaker to a proposal (existing account)"
+msgstr "Add an applicant to an application (existing account)"
+
+#: pretalx/mail/enums.py
+#: pretalx/orga/templates/orga/mails/send_draft_reminders.html
+msgid "Draft proposal reminder"
+msgstr "Draft application reminder"
+
+#: pretalx/mail/enums.py
+msgid "New schedule published"
+msgstr "New interview schedule published"
+
+#: pretalx/mail/interfaces/forms/compose.py
+msgid ""
+"Select proposals that should receive the email regardless of the other "
+"filters."
+msgstr ""
+"Select applications that should receive the email regardless of the other "
+"filters."
+
+#: pretalx/mail/interfaces/forms/compose.py
+msgid ""
+"Select speakers that should receive the email regardless of the other "
+"filters."
+msgstr ""
+"Select applicants that should receive the email regardless of the other "
+"filters."
+
+#: pretalx/mail/interfaces/forms/compose.py
+msgid ""
+"If you provide only one language, that language will be used for all emails."
+" If you provide multiple languages, the best fit for each speaker will be "
+"used."
+msgstr ""
+"If you provide only one language, that language will be used for all emails."
+" If you provide multiple languages, the best fit for each applicant will be "
+"used."
+
+#: pretalx/mail/interfaces/forms/compose.py
+msgid ""
+"Please select at least one filter or specific proposals/speakers as "
+"recipients."
+msgstr ""
+"Please select at least one filter or specific applications/applicants as "
+"recipients."
+
+#: pretalx/mail/interfaces/forms/config.py
+msgid ""
+"Reply-To address. If this setting is empty and you have no custom sender, "
+"your event email address will be used as Reply-To address."
+msgstr ""
+"Reply-To address. If this setting is empty and you have no custom sender, "
+"your call email address will be used as Reply-To address."
+
+#: pretalx/mail/interfaces/forms/config.py
+msgid ""
+"All email related to your event will be sent over the SMTP server specified "
+"by you."
+msgstr ""
+"All email related to your call will be sent over the SMTP server specified "
+"by you."
+
+#: pretalx/mail/template_phrases.py
+#, python-brace-format
+msgid "Your proposal: {submission_title}"
+msgstr "Your application: {submission_title}"
+
+#: pretalx/mail/template_phrases.py
+#, python-brace-format
+msgid ""
+"Hi!\n"
+"\n"
+"We have received your proposal “{submission_title}” to\n"
+"{event_name}. We will notify you once we have had time to consider all\n"
+"proposals, but until then you can see and edit your proposal at\n"
+"{submission_url}.\n"
+"\n"
+"Please do not hesitate to contact us if you have any questions!\n"
+"\n"
+"The {event_name} organisers"
+msgstr ""
+"Hi!\n"
+"\n"
+"We have received your application “{submission_title}” to\n"
+"{event_name}. We will notify you once we have had time to consider all\n"
+"applications, but until then you can see and edit your application at\n"
+"{submission_url}.\n"
+"\n"
+"Please do not hesitate to contact us if you have any questions!\n"
+"\n"
+"The {event_name} organisers"
+
+#: pretalx/mail/template_phrases.py
+#, python-brace-format
+msgid ""
+"Hi!\n"
+"\n"
+"We are happy to tell you that we accept your proposal “{submission_title}”\n"
+"to {event_name}. Please click this link to confirm your attendance:\n"
+"\n"
+"{confirmation_link}\n"
+"\n"
+"We look forward to seeing you at {event_name} - Please contact us if you have any\n"
+"questions! We will reach out again before the conference to tell you details\n"
+"about your slot in the schedule and technical details concerning the room\n"
+"and presentation tech.\n"
+"\n"
+"See you there!\n"
+"The {event_name} organisers"
+msgstr ""
+"Hello,\n"
+"\n"
+"We are pleased to tell you that your application “{submission_title}” has been shortlisted for {event_name}. Please use this link to confirm that you wish to attend an interview:\n"
+"\n"
+"{confirmation_link}\n"
+"\n"
+"We will send your interview time and location separately. Please contact us if you have any questions.\n"
+"\n"
+"Kind regards,\n"
+"The {event_name} recruitment team"
+
+#: pretalx/mail/template_phrases.py
+#, python-brace-format
+msgid ""
+"Hi!\n"
+"\n"
+"We are sorry to tell you that we cannot accept your proposal\n"
+"“{submission_title}” to {event_name}. There were just too many great\n"
+"proposals - we hope to see you at {event_name} as an attendee instead\n"
+"of a speaker!\n"
+"\n"
+"The {event_name} organisers"
+msgstr ""
+"Hello,\n"
+"\n"
+"Thank you for your application “{submission_title}” to {event_name}. We are sorry to let you know that your application has not been shortlisted.\n"
+"\n"
+"Kind regards,\n"
+"The {event_name} recruitment team"
+
+#: pretalx/mail/template_phrases.py
+msgid "New schedule!"
+msgstr "New interview schedule!"
+
+#: pretalx/mail/template_phrases.py
+#, python-brace-format
+msgid ""
+"Hi!\n"
+"\n"
+"We have released a new schedule version, and wanted to tell you:\n"
+"\n"
+"{speaker_schedule_new}\n"
+"\n"
+"We look forward to seeing you, and please contact us if there is any problem with your session or assigned slot.\n"
+"\n"
+"The {event_name} organisers"
+msgstr ""
+"Hi!\n"
+"\n"
+"We have released a new interview schedule version, and wanted to tell you:\n"
+"\n"
+"{speaker_schedule_new}\n"
+"\n"
+"We look forward to seeing you, and please contact us if there is any problem with your interview or assigned interview slot.\n"
+"\n"
+"The {event_name} organisers"
+
+#: pretalx/mail/template_phrases.py
+msgid "We have some questions about your proposal"
+msgstr "We have some questions about your application"
+
+#: pretalx/mail/template_phrases.py
+#, python-brace-format
+msgid ""
+"Hi!\n"
+"\n"
+"We have some open questions about yourself and your proposal that we’d\n"
+"like to ask you to answer:\n"
+"\n"
+"{questions}\n"
+"\n"
+"You can answer them at {url}.\n"
+"\n"
+"Please do not hesitate to contact us if you have any questions in turn!\n"
+"\n"
+"The {event_name} organisers"
+msgstr ""
+"Hi!\n"
+"\n"
+"We have some open questions about yourself and your application that we’d\n"
+"like to ask you to answer:\n"
+"\n"
+"{questions}\n"
+"\n"
+"You can answer them at {url}.\n"
+"\n"
+"Please do not hesitate to contact us if you have any questions in turn!\n"
+"\n"
+"The {event_name} organisers"
+
+#: pretalx/mail/template_phrases.py
+#, python-brace-format
+msgid "New proposal: {proposal_title}"
+msgstr "New application: {proposal_title}"
+
+#: pretalx/mail/template_phrases.py
+#, python-brace-format
+msgid ""
+"Hi,\n"
+"\n"
+"you have received a new proposal for your event {event_name}:\n"
+"“{submission_title}” by {speakers}.\n"
+"You can see details at\n"
+"\n"
+"  {orga_url}\n"
+"\n"
+"All the best,\n"
+"your {event_name} CfP system.\n"
+msgstr ""
+"Hi,\n"
+"\n"
+"you have received a new application for your call {event_name}:\n"
+"“{submission_title}” by {speakers}.\n"
+"You can see details at\n"
+"\n"
+"  {orga_url}\n"
+"\n"
+"All the best,\n"
+"your {event_name} application form system.\n"
+
+#: pretalx/mail/template_phrases.py
+#, python-brace-format
+msgid "You have been added to a proposal for {event_name}"
+msgstr "You have been added to an application for {event_name}"
+
+#: pretalx/mail/template_phrases.py
+#, python-brace-format
+msgid ""
+"Hi!\n"
+"\n"
+"You have been added to a proposal of {event_name}, titled “{proposal_title}”.\n"
+"An account has been created for you – please follow this link to set your account password.\n"
+"\n"
+"{invitation_link}\n"
+"\n"
+"Afterwards, you can edit your user profile and see the state of your proposal.\n"
+"\n"
+"The {event} orga crew"
+msgstr ""
+"Hi!\n"
+"\n"
+"You have been added to an application of {event_name}, titled “{proposal_title}”.\n"
+"An account has been created for you – please follow this link to set your account password.\n"
+"\n"
+"{invitation_link}\n"
+"\n"
+"Afterwards, you can edit your user profile and see the state of your application.\n"
+"\n"
+"The {event} orga crew"
+
+#: pretalx/mail/template_phrases.py
+#, python-brace-format
+msgid ""
+"Hi!\n"
+"\n"
+"You have been added to a proposal of {event_name}, titled “{proposal_title}”.\n"
+"Please follow this link to edit your user profile and see the state of your proposal:\n"
+"\n"
+"{proposal_url}\n"
+"\n"
+"The {event_name} organisers"
+msgstr ""
+"Hi!\n"
+"\n"
+"You have been added to an application of {event_name}, titled “{proposal_title}”.\n"
+"Please follow this link to edit your user profile and see the state of your application:\n"
+"\n"
+"{proposal_url}\n"
+"\n"
+"The {event_name} organisers"
+
+#: pretalx/mail/template_phrases.py
+msgid "Reminder: Submit your proposal"
+msgstr "Reminder: Submit your application"
+
+#: pretalx/mail/template_phrases.py
+#, python-brace-format
+msgid ""
+"Hi!\n"
+"\n"
+"You have started a proposal \"{submission_title}\" for {event_name},\n"
+"but you haven't submitted it yet. Please go to\n"
+"\n"
+"{submission_url}\n"
+"\n"
+"to complete and submit your proposal.\n"
+"\n"
+"Please do not hesitate to contact us if you have any questions!\n"
+"\n"
+"The {event_name} organisers"
+msgstr ""
+"Hi!\n"
+"\n"
+"You have started an application \"{submission_title}\" for {event_name},\n"
+"but you haven't submitted it yet. Please go to\n"
+"\n"
+"{submission_url}\n"
+"\n"
+"to complete and submit your application.\n"
+"\n"
+"Please do not hesitate to contact us if you have any questions!\n"
+"\n"
+"The {event_name} organisers"
+
+#: pretalx/mail/template_phrases.py
+#, python-brace-format
+msgid ""
+"Hi,\n"
+"\n"
+"just writing you to let you know that your Call for Proposals is now\n"
+"closed. Here is a list of links that should be useful in the next days:\n"
+"\n"
+"- You’ll find a list of all your {submission_count} proposals here:\n"
+"  {event_submissions}\n"
+"- You can add reviewers here:\n"
+"  {event_team}\n"
+"- You can review proposals here:\n"
+"  {event_review}\n"
+"- And create your schedule here, once you have accepted proposals:\n"
+"  {event_schedule}\n"
+msgstr ""
+"Hi,\n"
+"\n"
+"just writing you to let you know that your Application form is now\n"
+"closed. Here is a list of links that should be useful in the next days:\n"
+"\n"
+"- You’ll find a list of all your {submission_count} applications here:\n"
+"  {event_submissions}\n"
+"- You can add reviewers here:\n"
+"  {event_team}\n"
+"- You can review applications here:\n"
+"  {event_review}\n"
+"- And create your interview schedule here, once you have accepted applications:\n"
+"  {event_schedule}\n"
+
+#: pretalx/mail/template_phrases.py
+#, python-brace-format
+msgid ""
+"Hi,\n"
+"\n"
+"congratulations, your event is over! Hopefully it went well. Here are some\n"
+"statistics you might find interesting:\n"
+"\n"
+"- You had {submission_count} proposals,\n"
+"- Of which you selected {talk_count} sessions.\n"
+"- The reviewers wrote {review_count} reviews.\n"
+"- You released {schedule_count} schedules in total.\n"
+"- Over the course of the event, you sent {mail_count} emails.\n"
+"\n"
+"If there is anything you’re missing, come tell us about it\n"
+"at https://github.com/pretalx/pretalx/issues/new or via an\n"
+"email to support@pretalx.com!\n"
+msgstr ""
+"Hi,\n"
+"\n"
+"congratulations, your call is over! Hopefully it went well. Here are some\n"
+"statistics you might find interesting:\n"
+"\n"
+"- You had {submission_count} applications,\n"
+"- Of which you selected {talk_count} interviews.\n"
+"- The reviewers wrote {review_count} reviews.\n"
+"- You released {schedule_count} interview schedules in total.\n"
+"- Over the course of the call, you sent {mail_count} emails.\n"
+"\n"
+"If there is anything you’re missing, come tell us about it\n"
+"at https://github.com/pretalx/pretalx/issues/new or via an\n"
+"email to support@pretalx.com!\n"
+
+#: pretalx/orga/forms/admin.py
+msgid ""
+"During the update check, pretalx will report a random (but stable) "
+"installation ID, the current version of pretalx and of your installed "
+"plugins, your Python version and database engine, and the number of events "
+"in your installation to servers operated by the pretalx developers. We use "
+"this information to decide which versions to support and which features and "
+"bug fixes to prioritise."
+msgstr ""
+"During the update check, pretalx will report a random (but stable) "
+"installation ID, the current version of pretalx and of your installed "
+"plugins, your Python version and database engine, and the number of calls in"
+" your installation to servers operated by the pretalx developers. We use "
+"this information to decide which versions to support and which features and "
+"bug fixes to prioritise."
+
+#: pretalx/orga/forms/cfp.py
+msgid "Send email on new proposal"
+msgstr "Send email on new application"
+
+#: pretalx/orga/forms/cfp.py
+msgid ""
+"If this setting is checked, you will receive an email to the organiser "
+"address for every received proposal."
+msgstr ""
+"If this setting is checked, you will receive an email to the organiser "
+"address for every received application."
+
+#: pretalx/orga/forms/cfp.py
+msgid "Allow submitters to share their proposal publicly"
+msgstr "Allow applicants to create public application links"
+
+#: pretalx/orga/forms/cfp.py
+msgid "Allow submitters to share a secret link to their proposal with others."
+msgstr ""
+"Allow applicants to create a secret link that gives other people access to "
+"their application."
+
+#: pretalx/orga/forms/cfp.py
+msgid "Allow speakers to edit their proposals and profiles"
+msgstr "Allow applicants to edit their applications and profiles"
+
+#: pretalx/orga/forms/cfp.py
+#, python-brace-format
+msgid ""
+"If disabled, speakers cannot edit their proposals regardless of the proposal"
+" state. This setting overrides the {review_phase_link} for speaker editing."
+msgstr ""
+"If disabled, applicants cannot edit their applications regardless of the "
+"application state. This setting overrides the {review_phase_link} for "
+"applicant editing."
+
+#: pretalx/orga/forms/cfp.py
+msgid "Show the time and date the CfP ends to potential speakers."
+msgstr ""
+"Show the time and date the application form ends to potential applicants."
+
+#: pretalx/orga/forms/cfp.py
+msgid "Maximum speakers"
+msgstr "Maximum applicants"
+
+#: pretalx/orga/forms/cfp.py
+msgid "Maximum number of speakers per proposal (including submitter)."
+msgstr ""
+"Maximum number of applicants per application (including the main applicant)."
+
+#: pretalx/orga/forms/export.py
+msgid ""
+"How do you want to separate data within a single cell (for example, multiple"
+" speakers in one session/multiple sessions for one speaker)?"
+msgstr ""
+"How do you want to separate data within a single cell (for example, multiple"
+" applicants in one interview/multiple interviews for one applicant)?"
+
+#: pretalx/orga/forms/export.py
+msgid "Speaker IDs"
+msgstr "Applicant IDs"
+
+#: pretalx/orga/forms/export.py
+msgid "The unique ID of a speaker is used in the speaker URL and in exports"
+msgstr ""
+"The unique ID of an applicant is used in the applicant URL and in exports"
+
+#: pretalx/orga/forms/export.py
+msgid "Speaker names"
+msgstr "Applicant names"
+
+#: pretalx/orga/forms/export.py
+msgid ""
+"Resources provided by the speaker, either as links or as uploaded files"
+msgstr ""
+"Resources provided by the applicant, either as links or as uploaded files"
+
+#: pretalx/orga/forms/export.py
+msgid "Just speakers with accepted and confirmed proposals"
+msgstr "Only applicants with shortlisted applications or confirmed interviews"
+
+#: pretalx/orga/forms/export.py
+msgid "Proposal IDs"
+msgstr "Application IDs"
+
+#: pretalx/orga/forms/export.py
+msgid "The link to the speaker’s profile picture"
+msgstr "The link to the applicant’s profile picture"
+
+#: pretalx/orga/forms/review.py
+msgid ""
+"The uploaded file must contain a JSON object mapping reviewers to lists of "
+"proposals, or proposals to lists of reviewers."
+msgstr ""
+"The uploaded file must contain a JSON object mapping reviewers to lists of "
+"applications, or applications to lists of reviewers."
+
+#: pretalx/orga/forms/submission.py
+#: pretalx/orga/templates/orga/tables/review_table.html
+msgid ""
+"If you mark state changes as pending, they will not be visible to speakers "
+"right away. You can always apply pending changes for some or all proposals "
+"in one go once you are ready to make your decisions public."
+msgstr ""
+"If you mark state changes as pending, they will not be visible to applicants"
+" right away. You can always apply pending changes for some or all "
+"applications in one go once you are ready to make your decisions public."
+
+#: pretalx/orga/forms/submission.py
+msgid ""
+"The email address of the speaker holding the session. They will be invited "
+"to create an account."
+msgstr ""
+"The email address of the applicant holding the interview. They will be "
+"invited to create an account."
+
+#: pretalx/orga/forms/submission.py
+msgid "Speaker name"
+msgstr "Applicant name"
+
+#: pretalx/orga/forms/submission.py
+msgid "The name of the speaker that should be displayed publicly."
+msgstr "The name of the applicant that should be displayed publicly."
+
+#: pretalx/orga/forms/submission.py
+msgid "The language in which the speaker will receive their invitation email."
+msgstr ""
+"The language in which the applicant will receive their invitation email."
+
+#: pretalx/orga/phrases.py
+msgid "The event end cannot be before the start."
+msgstr "The call end cannot be before the start."
+
+#: pretalx/orga/phrases.py
+msgid ""
+"Attendee signup cannot be combined with multi-slot scheduling (sessions "
+"taking place multiple times)."
+msgstr ""
+"Attendee signup cannot be combined with multi-interview slot scheduling "
+"(interviews taking place multiple times)."
+
+#: pretalx/orga/phrases.py
+msgid "Schedule display format"
+msgstr "Interview schedule display format"
+
+#: pretalx/orga/phrases.py
+msgid ""
+"Your token needs \"action\" permissions to access the predefined schedule "
+"exports via the API."
+msgstr ""
+"Your token needs \"action\" permissions to access the predefined interview "
+"schedule exports via the API."
+
+#: pretalx/orga/phrases.py
+msgid ""
+"If you are looking for exports of proposals, sessions or schedule data, "
+"please head here:"
+msgstr ""
+"If you are looking for exports of applications, interviews or interview "
+"schedule data, please head here:"
+
+#: pretalx/orga/phrases.py
+msgid "This field is currently active, it will be asked during submission."
+msgstr "This field is currently active, it will be asked during application."
+
+#: pretalx/orga/phrases.py
+msgid ""
+"This field is currently inactive, and will not be asked during submission."
+msgstr ""
+"This field is currently inactive, and will not be asked during application."
+
+#: pretalx/orga/tables/admin.py pretalx/submission/interfaces/exporters.py
+msgid "Submissions"
+msgstr "Applications"
+
+#: pretalx/orga/tables/cfp.py
+msgid "Go to pre-filled CfP form"
+msgstr "Go to pre-filled application form form"
+
+#: pretalx/orga/tables/feedback.py pretalx/schedule/phrases.py
+msgid "There has been no feedback for this session yet."
+msgstr "There has been no feedback for this interview yet."
+
+#: pretalx/orga/tables/feedback.py
+msgid "There has been no feedback for sessions in this event yet."
+msgstr "There has been no feedback for interviews in this call yet."
+
+#: pretalx/orga/tables/organiser.py
+#: pretalx/orga/templates/orga/admin/user_detail.html
+#: pretalx/orga/templates/orga/user.html
+msgid "All events"
+msgstr "All calls"
+
+#: pretalx/orga/tables/schedule.py
+msgid "Please add at least one place in which sessions can take place."
+msgstr "Please add at least one place in which interviews can take place."
+
+#: pretalx/orga/templates/orga/admin/user_detail.html
+msgid "User hasn't submitted any proposals"
+msgstr "User hasn't submitted any applications"
+
+#: pretalx/orga/templates/orga/base.html
+msgid "View event"
+msgstr "View call"
+
+#: pretalx/orga/templates/orga/base.html
+msgid "Unreleased schedule changes"
+msgstr "Unreleased interview schedule changes"
+
+#: pretalx/orga/templates/orga/cfp/editor.html
+#: pretalx/orga/templates/orga/cfp/text.html
+msgid "CfP Editor"
+msgstr "application form Editor"
+
+#: pretalx/orga/templates/orga/cfp/editor.html
+#: pretalx/orga/templates/orga/cfp/text.html
+msgid "CfP Settings"
+msgstr "application form Settings"
+
+#: pretalx/orga/templates/orga/cfp/editor.html
+msgid ""
+"This will reset all CfP field settings, custom labels, help texts, and field"
+" ordering to their default values. This action cannot be undone."
+msgstr ""
+"This will reset all application form field settings, custom labels, help "
+"texts, and field ordering to their default values. This action cannot be "
+"undone."
+
+#: pretalx/orga/templates/orga/cfp/editor.html
+msgid "No session fields configured."
+msgstr "No interview fields configured."
+
+#: pretalx/orga/templates/orga/cfp/editor.html
+msgid "No speaker fields configured."
+msgstr "No applicant fields configured."
+
+#: pretalx/orga/templates/orga/cfp/editor.html
+msgid "Session fields"
+msgstr "Interview fields"
+
+#: pretalx/orga/templates/orga/cfp/editor.html
+msgid "Speaker fields"
+msgstr "Applicant fields"
+
+#: pretalx/orga/templates/orga/cfp/question/_form.html
+msgid "Limit to specific proposals"
+msgstr "Limit to specific applications"
+
+#: pretalx/orga/templates/orga/cfp/question/list.html
+msgid ""
+"Custom fields can help you sort out additional details with speakers, such "
+"as clothing sizes, special requirements such as dietary needs, or "
+"accommodation. Custom fields can be configured either on a per-proposal "
+"level, or per speaker, as you see fit."
+msgstr ""
+"Custom fields can help you sort out additional details with applicants, such"
+" as clothing sizes, special requirements such as dietary needs, or "
+"accommodation. Custom fields can be configured either on a per-application "
+"level, or per applicant, as you see fit."
+
+#: pretalx/orga/templates/orga/cfp/question/update.html
+msgid ""
+"This custom field already has responses from some speakers – please consider"
+" carefully if modifying it would render those answers obsolete. You could "
+"also deactivate this field and create a new one instead."
+msgstr ""
+"This custom field already has responses from some applicants – please "
+"consider carefully if modifying it would render those answers obsolete. You "
+"could also deactivate this field and create a new one instead."
+
+#: pretalx/orga/templates/orga/cfp/submissiontype/list.html
+msgid ""
+"Different session types may help to guide speakers into different slot "
+"lengths (short sessions vs long sessions) or different presentation formats "
+"(talk vs workshop vs metal concert)."
+msgstr ""
+"Interview types let you offer different durations or formats, such as a "
+"standard interview, presentation interview or practical exercise."
+
+#: pretalx/orga/templates/orga/cfp/submitteraccesscode/list.html
+msgid ""
+"Access codes can be used to allow proposals even when the CfP is over. You "
+"can also use them for hidden tracks or hidden session types, which can only "
+"be seen with a matching access code."
+msgstr ""
+"Access codes can be used to allow applications even when the application "
+"form is over. You can also use them for hidden application streams or hidden"
+" interview types, which can only be seen with a matching access code."
+
+#: pretalx/orga/templates/orga/cfp/submitteraccesscode/update.html
+msgid "This access code was used for the following proposals:"
+msgstr "This access code was used for the following applications:"
+
+#: pretalx/orga/templates/orga/cfp/text.html
+msgid ""
+"A good Call for Proposals will engage potential speakers. Remember to "
+"include:"
+msgstr ""
+"A good Application form will engage potential applicants. Remember to "
+"include:"
+
+#: pretalx/orga/templates/orga/cfp/text.html
+msgid "The formats (sessions, workshops, panels) and their durations"
+msgstr "The formats (interviews, workshops, panels) and their durations"
+
+#: pretalx/orga/templates/orga/cfp/text.html
+msgid "The people coming to your conference: interests, experience level …"
+msgstr ""
+"The people coming to your recruitment process: interests, experience level …"
+
+#: pretalx/orga/templates/orga/cfp/text.html
+msgid ""
+"Do you offer financial or other support, e.g. support for first time "
+"speakers?"
+msgstr ""
+"Do you offer financial or other support, e.g. support for first time "
+"applicants?"
+
+#: pretalx/orga/templates/orga/cfp/text.html
+msgid "Some of your session types have different deadlines:"
+msgstr "Some of your interview types have different deadlines:"
+
+#: pretalx/orga/templates/orga/cfp/track/list.html
+msgid ""
+"Tracks are used to sort your sessions into categories. You can use the CfP "
+"settings to determine if speakers can select the track for their session "
+"themselves. Track colors are helpful to help attendees navigate your "
+"schedule."
+msgstr ""
+"Application streams group applications by project or recruitment route. In "
+"the application-form settings, you can decide whether applicants choose "
+"their own stream."
+
+#: pretalx/orga/templates/orga/event/dashboard.html
+msgid ""
+"Your event has been created and you’re ready to go! Check out the event "
+"settings, set up your Call for Proposals with session types and custom "
+"fields, and you’re ready to go!"
+msgstr ""
+"Your call has been created and you’re ready to go! Check out the call "
+"settings, set up your Application form with interview types and custom "
+"fields, and you’re ready to go!"
+
+#: pretalx/orga/templates/orga/event/dashboard.html
+msgid "Your event is currently"
+msgstr "Your call is currently"
+
+#: pretalx/orga/templates/orga/event/history.html
+msgid "Event History"
+msgstr "Call History"
+
+#: pretalx/orga/templates/orga/event/live.html
+msgid "Deactivate event"
+msgstr "Deactivate call"
+
+#: pretalx/orga/templates/orga/event/live.html
+msgid ""
+"Your event is currently live and publicly visible. If you take it down, it "
+"will only be visible to you and your team."
+msgstr ""
+"Your call is currently live and publicly visible. If you take it down, it "
+"will only be visible to you and your team."
+
+#: pretalx/orga/templates/orga/event/live.html
+msgid ""
+"Your event is currently only visible to you and your team. By going live, it"
+" will be publicly visible."
+msgstr ""
+"Your call is currently only visible to you and your team. By going live, it "
+"will be publicly visible."
+
+#: pretalx/orga/templates/orga/event/live.html
+msgid "Your event may not be ready for release yet!"
+msgstr "Your call may not be ready for release yet!"
+
+#: pretalx/orga/templates/orga/event/live.html
+msgid "There may be easy ways to improve your event before its release!"
+msgstr "There may be easy ways to improve your call before its release!"
+
+#: pretalx/orga/templates/orga/event/wizard/base.html
+msgid "New event"
+msgstr "New call"
+
+#: pretalx/orga/templates/orga/event/wizard/plugins.html
+msgid ""
+"Select which plugins you want to enable for this event. You can change this "
+"later in the event settings."
+msgstr ""
+"Select which plugins you want to enable for this call. You can change this "
+"later in the call settings."
+
+#: pretalx/orga/templates/orga/event_list.html
+msgid "Your upcoming events"
+msgstr "Your upcoming calls"
+
+#: pretalx/orga/templates/orga/event_list.html
+msgid "Create a new event"
+msgstr "Create a new call"
+
+#: pretalx/orga/templates/orga/event_list.html
+msgid "Your most recent events"
+msgstr "Your most recent calls"
+
+#: pretalx/orga/templates/orga/event_list.html
+msgid ""
+"You are currently in the organiser area of pretalx. To view your submitted "
+"proposals, please go directly to the event page:"
+msgstr ""
+"You are currently in the organiser area of pretalx. To view your submitted "
+"applications, please go directly to the call page:"
+
+#: pretalx/orga/templates/orga/includes/dashboard_block_event.html
+msgid "No proposals yet"
+msgstr "No applications yet"
+
+#: pretalx/orga/templates/orga/includes/mail_template_role.html
+msgctxt "email template: schedule change notification"
+msgid "Schedule update"
+msgstr "Interview schedule update"
+
+#: pretalx/orga/templates/orga/includes/mark_speakers_arrived.html
+msgid "Mark speaker as not arrived"
+msgstr "Mark applicant as not arrived"
+
+#: pretalx/orga/templates/orga/includes/mark_speakers_arrived.html
+msgid "Mark speaker as arrived"
+msgstr "Mark applicant as arrived"
+
+#: pretalx/orga/templates/orga/invitation.html
+#, python-format
+msgid ""
+"If you already have an account – either as a speaker or an organiser – at "
+"%(link)s, please log in now. Otherwise, create a new account to join the "
+"team!"
+msgstr ""
+"If you already have an account – either as an applicant or an organiser – at"
+" %(link)s, please log in now. Otherwise, create a new account to join the "
+"team!"
+
+#: pretalx/orga/templates/orga/mails/_mail_editor.html
+#, python-brace-format
+msgid ""
+"Emails where placeholders are invalid will <strong>not</strong> be created! "
+"For example, if you are using {session_room}, but some proposals don’t have "
+"a room yet, only emails for proposals with a scheduled room will be created."
+msgstr ""
+"Emails where placeholders are invalid will <strong>not</strong> be created! "
+"For example, if you are using {session_room}, but some applications don’t "
+"have an interview room yet, only emails for applications with a scheduled "
+"interview room will be created."
+
+#: pretalx/orga/templates/orga/mails/compose_choice.html
+#: pretalx/orga/templates/orga/mails/compose_session_mail_form.html
+msgid "Sessions, proposals, speakers"
+msgstr "Interviews, applications, applicants"
+
+#: pretalx/orga/templates/orga/mails/compose_choice.html
+msgid ""
+"Send an email to speakers, authors, submitters, based on their proposal "
+"status and other filters."
+msgstr ""
+"Send an email to applicants, authors, submitters, based on their application"
+" status and other filters."
+
+#: pretalx/orga/templates/orga/mails/compose_session_mail_form.html
+msgid ""
+"Submission-level placeholders (like &#123;proposal_title}) are not available"
+" when emailing speakers directly. Select proposals or a proposal filter if "
+"you need them."
+msgstr ""
+"Application-level placeholders (like &#123;proposal_title}) are not "
+"available when emailing applicants directly. Select applications or an "
+"application filter if you need them."
+
+#: pretalx/orga/templates/orga/mails/mailtemplate/list.html
+msgid ""
+"You can edit the default templates and your custom templates for emails "
+"here. If you want to send emails to some or all of your speakers, head over "
+"to the \"Send Emails\" tab. Mails queued for sending are in the \"Outbox\" "
+"tab."
+msgstr ""
+"You can edit the default templates and your custom templates for emails "
+"here. If you want to send emails to some or all of your applicants, head "
+"over to the \"Send Emails\" tab. Mails queued for sending are in the "
+"\"Outbox\" tab."
+
+#: pretalx/orga/templates/orga/mails/send_draft_reminders.html
+msgid "Send reminder to unsubmitted proposal drafts"
+msgstr "Send reminder to unsubmitted application drafts"
+
+#: pretalx/orga/templates/orga/review/assignment-import.html
+#, python-format
+msgid ""
+"You can upload your reviewer assignments from a JSON file here. You can "
+"either have the proposal codes (e.g. “UX3N1”) as keys, and user "
+"identification as values, or the other way around. User identification can "
+"be either the reviewer’s email address or their user code (e.g. “34KJN”). "
+"You can find an example file <a href=\"%(href)s\" >here</a>."
+msgstr ""
+"You can upload your reviewer assignments from a JSON file here. You can "
+"either have the application codes (e.g. “UX3N1”) as keys, and user "
+"identification as values, or the other way around. User identification can "
+"be either the reviewer’s email address or their user code (e.g. “34KJN”). "
+"You can find an example file <a href=\"%(href)s\" >here</a>."
+
+#: pretalx/orga/templates/orga/review/assignment.html
+msgid ""
+"As teams can belong to multiple events, teams are managed in your organiser "
+"settings."
+msgstr ""
+"As teams can belong to multiple calls, teams are managed in your organiser "
+"settings."
+
+#: pretalx/orga/templates/orga/review/assignment.html
+msgid "Limited to tracks"
+msgstr "Limited to application streams"
+
+#: pretalx/orga/templates/orga/review/assignment.html
+#, python-format
+msgid ""
+"Reviewers will be able to see and review <strong>all proposals</strong>, but"
+" their assigned reviews will appear highlighted, and they will be directed "
+"to them first. You can change this in your <a href=\"%(href)s\">review "
+"settings</a>."
+msgstr ""
+"Reviewers will be able to see and review <strong>all applications</strong>, "
+"but their assigned reviews will appear highlighted, and they will be "
+"directed to them first. You can change this in your <a "
+"href=\"%(href)s\">review settings</a>."
+
+#: pretalx/orga/templates/orga/review/dashboard.html
+msgid "You don’t have reviewer permissions for this event."
+msgstr "You don’t have reviewer permissions for this call."
+
+#: pretalx/orga/templates/orga/schedule/export.html
+#: pretalx/orga/templates/orga/schedule/export_waiting.html
+msgid "Export schedule data"
+msgstr "Export interview schedule data"
+
+#: pretalx/orga/templates/orga/schedule/export.html
+msgid "Speaker exports"
+msgstr "Applicant exports"
+
+#: pretalx/orga/templates/orga/schedule/export.html
+msgid ""
+"You haven’t released a schedule yet – many of these data exporters only work"
+" on a released schedule."
+msgstr ""
+"You haven’t released an interview schedule yet – many of these data "
+"exporters only work on a released interview schedule."
+
+#: pretalx/orga/templates/orga/schedule/export.html
+msgid ""
+"The event schedule can be exported to a static HTML dump, so you can upload "
+"it to a normal file-serving web server like nginx."
+msgstr ""
+"The call’s interview schedule can be exported as static HTML for a web "
+"server such as nginx."
+
+#: pretalx/orga/templates/orga/schedule/index.html
+msgid "Hide schedule"
+msgstr "Hide interview schedule"
+
+#: pretalx/orga/templates/orga/schedule/index.html
+msgid "Make schedule public"
+msgstr "Make interview schedule public"
+
+#: pretalx/orga/templates/orga/schedule/index.html
+msgid "Resend speaker notifications"
+msgstr "Resend applicant notifications"
+
+#: pretalx/orga/templates/orga/schedule/index.html
+msgid ""
+"You can start planning your schedule once you have configured some rooms for"
+" sessions to take place in."
+msgstr ""
+"You can start planning your interview schedule once you have configured some"
+" interview rooms for interviews to take place in."
+
+#: pretalx/orga/templates/orga/schedule/index.html
+msgid "Configure rooms"
+msgstr "Configure interview rooms"
+
+#: pretalx/orga/templates/orga/schedule/quick.html
+msgid "Schedule session"
+msgstr "Schedule interview"
+
+#: pretalx/orga/templates/orga/schedule/release.html
+msgid "Release new schedule"
+msgstr "Release new interview schedule"
+
+#: pretalx/orga/templates/orga/schedule/release.html
+msgid ""
+"There are still warnings about the release of this schedule. Please review "
+"them carefully!"
+msgstr ""
+"There are still warnings about the release of this interview schedule. "
+"Please review them carefully!"
+
+#: pretalx/orga/templates/orga/schedule/release.html
+#, python-format
+msgid "The previous schedule (%(prev)s) was released %(since)s ago."
+msgstr ""
+"The previous interview schedule (%(prev)s) was released %(since)s ago."
+
+#: pretalx/orga/templates/orga/schedule/release.html
+msgid "This will be the very first schedule release."
+msgstr "This will be the very first interview schedule release."
+
+#: pretalx/orga/templates/orga/schedule/release.html
+#, python-format
+msgid ""
+"When releasing this new schedule, <strong>one notifications email </strong> "
+"can be generated and placed in the outbox, to tell speakers about their "
+"session slots."
+msgid_plural ""
+"When releasing this new schedule, <strong>%(count)s notifications emails "
+"</strong> can be generated and placed in the outbox, to tell speakers about "
+"their session slots."
+msgstr[0] ""
+"When releasing this interview schedule, <strong>one notification "
+"email</strong> can be placed in the outbox to tell the applicant about their"
+" interview slot."
+msgstr[1] ""
+"When releasing this interview schedule, <strong>%(count)s notification "
+"emails</strong> can be placed in the outbox to tell applicants about their "
+"interview slots."
+
+#: pretalx/orga/templates/orga/schedule/release.html
+msgid "New schedule version"
+msgstr "New interview schedule version"
+
+#: pretalx/orga/templates/orga/schedule/release.html
+msgid ""
+"This schedule release would result in <strong>no notification "
+"emails</strong> for speakers."
+msgstr ""
+"This interview schedule release would result in <strong>no notification "
+"emails</strong> for applicants."
+
+#: pretalx/orga/templates/orga/schedule/release.html
+#, python-format
+msgid ""
+"One session is still <strong>unconfirmed</strong> and will not show up on "
+"the public schedule."
+msgid_plural ""
+"%(count)s sessions are still <strong>unconfirmed</strong> and will not show "
+"up on the public schedule."
+msgstr[0] ""
+"One interview is still <strong>unconfirmed</strong> and will not show up on "
+"the publicly visible interview schedule."
+msgstr[1] ""
+"%(count)s interviews are still <strong>unconfirmed</strong> and will not "
+"show up on the publicly visible interview schedule."
+
+#: pretalx/orga/templates/orga/schedule/release.html
+msgid "See all unconfirmed sessions."
+msgstr "See all unconfirmed interviews."
+
+#: pretalx/orga/templates/orga/schedule/release.html
+#, python-format
+msgid "One session has <strong>not yet been scheduled</strong>."
+msgid_plural ""
+"%(count)s sessions have <strong>not yet been scheduled</strong>."
+msgstr[0] "One interview has <strong>not yet been scheduled</strong>."
+msgstr[1] "%(count)s interviews have <strong>not yet been scheduled</strong>."
+
+#: pretalx/orga/templates/orga/schedule/release.html
+#, python-format
+msgid "One session has <strong>not yet been assigned a track</strong>."
+msgid_plural ""
+"%(count)s sessions have <strong>not yet been assigned a track</strong>."
+msgstr[0] ""
+"One interview has <strong>not yet been assigned an application "
+"stream</strong>."
+msgstr[1] ""
+"%(count)s interviews have <strong>not yet been assigned an application "
+"stream</strong>."
+
+#: pretalx/orga/templates/orga/schedule/release.html
+msgid "Sessions with room to spare"
+msgstr "Interviews with spare room capacity"
+
+#: pretalx/orga/templates/orga/schedule/release.html
+msgid ""
+"These sessions are scheduled in rooms that fit more attendees than the "
+"current session signup capacity. Tick the boxes for sessions where you want "
+"to expand the session capacity to match the room."
+msgstr ""
+"These interviews are scheduled in interview rooms that fit more attendees "
+"than the current interview signup capacity. Tick the boxes for interviews "
+"where you want to expand the interview capacity to match the interview room."
+
+#: pretalx/orga/templates/orga/schedule/release.html
+#, python-format
+msgid "Currently %(current)s seats, room %(room_name)s fits %(capacity)s."
+msgstr ""
+"Currently %(current)s seats, interview room %(room_name)s fits %(capacity)s."
+
+#: pretalx/orga/templates/orga/schedule/release.html
+msgid "Sessions with unlimited signups"
+msgstr "Interviews with unlimited signups"
+
+#: pretalx/orga/templates/orga/schedule/release.html
+msgid ""
+"These sessions require signup but have neither a session capacity nor a room"
+" capacity set, so they will accept unlimited signups."
+msgstr ""
+"These interviews require signup but have neither an interview capacity nor "
+"an interview room capacity set, so they will accept unlimited signups."
+
+#: pretalx/orga/templates/orga/schedule/release.html
+msgid "Sessions with more signups than seats"
+msgstr "Interviews with more signups than seats"
+
+#: pretalx/orga/templates/orga/schedule/release.html
+#, python-format
+msgid ""
+"%(count)s attendees have signed up, but room %(room_name)s only seats "
+"%(capacity)s."
+msgstr ""
+"%(count)s attendees have signed up, but interview room %(room_name)s only "
+"seats %(capacity)s."
+
+#: pretalx/orga/templates/orga/schedule/release.html
+msgid "Dropped sessions with signed-up attendees"
+msgstr "Dropped interviews with signed-up attendees"
+
+#: pretalx/orga/templates/orga/schedule/release.html
+msgid ""
+"These sessions were in the previous schedule release but are no longer in "
+"this one, even though they have signed-up attendees."
+msgstr ""
+"These interviews were in the previous interview schedule release but are no "
+"longer in this one, even though they have signed-up attendees."
+
+#: pretalx/orga/templates/orga/schedule/release.html
+msgid ""
+"This is how the new schedule version will appear in the public changelog and"
+" in the RSS feed."
+msgstr ""
+"This is how the new interview schedule version will appear in the public "
+"changelog and in the RSS feed."
+
+#: pretalx/orga/templates/orga/settings/form.html
+#: pretalx/orga/templates/orga/submission/content.html
+#: pretalx/schedule/phrases.py
+msgctxt "Schedule/program of the conference"
+msgid "Schedule"
+msgstr "Interview schedule"
+
+#: pretalx/orga/templates/orga/settings/form.html
+msgid ""
+"Any session matching one of the tracks or session types selected below will "
+"require attendees to sign up before they can attend. You can always override"
+" this setting on a per-session basis."
+msgstr ""
+"Any interview matching one of the application streams or interview types "
+"selected below will require attendees to sign up before they can attend. You"
+" can always override this setting on a per-interview basis."
+
+#: pretalx/orga/templates/orga/settings/form.html
+msgid ""
+"These links will be shown at the top of all your schedule-related pages, "
+"e.g. the schedule itself, speaker pages, session pages, etc. For example, "
+"you could link to your home page, your registration page, or your livestream"
+" here."
+msgstr ""
+"These links will be shown at the top of all your interview schedule-related "
+"pages, e.g. the interview schedule itself, applicant pages, interview pages,"
+" etc. For example, you could link to your home page, your registration page,"
+" or your livestream here."
+
+#: pretalx/orga/templates/orga/settings/widget.html
+msgid ""
+"You can configure a pretalx schedule widget to show your event schedule on "
+"your homepage, instead of using this page. If you want to disable the "
+"schedule on here entirely, please activate the setting below."
+msgstr ""
+"You can configure a pretalx interview schedule widget to show your call "
+"interview schedule on your homepage, instead of using this page. If you want"
+" to disable the interview schedule on here entirely, please activate the "
+"setting below."
+
+#: pretalx/orga/templates/orga/settings/widget.html
+msgid ""
+"The pretalx schedule widget is a way to embed your schedule into your event "
+"website. This way, your attendees can see your schedule without leaving your"
+" website, and you can style the schedule to fit right in with your website."
+msgstr ""
+"The pretalx interview schedule widget is a way to embed your interview "
+"schedule into your call website. This way, your attendees can see your "
+"interview schedule without leaving your website, and you can style the "
+"interview schedule to fit right in with your website."
+
+#: pretalx/orga/templates/orga/speaker/export.html
+msgid "Export speaker data"
+msgstr "Export applicant data"
+
+#: pretalx/orga/templates/orga/speaker/export.html
+msgid "Schedule exports"
+msgstr "Interview schedule exports"
+
+#: pretalx/orga/templates/orga/speaker/form.html
+msgid "No emails were sent to this speaker yet."
+msgstr "No emails were sent to this applicant yet."
+
+#: pretalx/orga/templates/orga/speaker/information_form.html
+#: pretalx/orga/views/speaker.py
+msgid "Speaker Information Note"
+msgid_plural "Speaker Information Notes"
+msgstr[0] "Applicant Information Note"
+msgstr[1] "Applicant Information Notes"
+
+#: pretalx/orga/templates/orga/submission/anonymise.html
+msgid ""
+"If a review phase with anonymisation is currently active, all reviewers who "
+"have no permissions to change this proposal will be shown the anonymised "
+"proposal content."
+msgstr ""
+"If a review phase with anonymisation is currently active, all reviewers who "
+"have no permissions to change this application will be shown the anonymised "
+"application content."
+
+#: pretalx/orga/templates/orga/submission/apply_pending.html
+#, python-format
+msgid ""
+"Please confirm that you really want to change the state of these %(count)s "
+"proposals."
+msgstr ""
+"Please confirm that you really want to change the state of these %(count)s "
+"applications."
+
+#: pretalx/orga/templates/orga/submission/speakers.html
+msgid "Add speaker"
+msgstr "Add applicant"
+
+#: pretalx/orga/templates/orga/submission/state_change.html
+msgid ""
+"Please confirm that you really want to change the state of this proposal."
+msgstr ""
+"Please confirm that you really want to change the state of this application."
+
+#: pretalx/orga/templates/orga/submission/stats.html
+msgid "Proposal Statistics"
+msgstr "Application Statistics"
+
+#: pretalx/orga/templates/orga/submission/stats.html
+msgid "Proposals by submission date"
+msgstr "Applications by application date"
+
+#: pretalx/orga/templates/orga/submission/stats.html
+msgid "Sessions by submission date"
+msgstr "Interviews by application date"
+
+#: pretalx/orga/templates/orga/submission/stats.html
+msgid "Total proposals"
+msgstr "Total applications"
+
+#: pretalx/orga/templates/orga/submission/stats.html
+msgid "Proposals by session type"
+msgstr "Applications by interview type"
+
+#: pretalx/orga/templates/orga/submission/stats.html
+msgid "Sessions by session type"
+msgstr "Interviews by interview type"
+
+#: pretalx/orga/templates/orga/submission/stats.html
+msgid "Proposals by track"
+msgstr "Applications by application stream"
+
+#: pretalx/orga/templates/orga/submission/stats.html
+msgid "Sessions by track"
+msgstr "Interviews by application stream"
+
+#: pretalx/orga/templates/orga/submission/stats.html
+msgid "Proposals by state"
+msgstr "Applications by state"
+
+#: pretalx/orga/templates/orga/submission/stats.html
+msgid "Sessions by state"
+msgstr "Interviews by state"
+
+#: pretalx/orga/templates/orga/tables/columns/review_count.html
+msgid "You have reviewed this proposal"
+msgstr "You have reviewed this application"
+
+#: pretalx/orga/templates/orga/tables/columns/review_count.html
+msgid "You have been assigned to this proposal"
+msgstr "You have been assigned to this application"
+
+#: pretalx/orga/templates/orga/tables/columns/submission_is_featured.html
+msgid "Show this proposal in the list of featured sessions."
+msgstr "Show this application in the list of featured interviews."
+
+#: pretalx/orga/templates/orga/token_edit.html
+msgid ""
+"You can only change which events this token applies to. You cannot change "
+"its endpoints and permissions: Please create a new token if you need "
+"different permissions."
+msgstr ""
+"You can only change which calls this token applies to. You cannot change its"
+" endpoints and permissions: Please create a new token if you need different "
+"permissions."
+
+#: pretalx/orga/views/cfp.py
+#, python-brace-format
+msgid ""
+"The following sessions were set to require attendees to sign up, because "
+"they already had signups: {titles}"
+msgstr ""
+"The following interviews were set to require attendees to sign up, because "
+"they already had signups: {titles}"
+
+#: pretalx/orga/views/cfp.py
+msgid "New session type"
+msgstr "New interview type"
+
+#: pretalx/orga/views/cfp.py
+msgid "This session type is in use in a proposal and cannot be deleted."
+msgstr ""
+"This interview type is in use in an application and cannot be deleted."
+
+#: pretalx/orga/views/cfp.py
+#, python-brace-format
+msgid "Are you sure you want to make “{name}” the default session type?"
+msgstr "Are you sure you want to make “{name}” the default interview type?"
+
+#: pretalx/orga/views/cfp.py
+msgid "New track"
+msgstr "New application stream"
+
+#: pretalx/orga/views/cfp.py
+msgid "This track is in use in a proposal and cannot be deleted."
+msgstr ""
+"This application stream is in use in an application and cannot be deleted."
+
+#: pretalx/orga/views/cfp.py
+msgid ""
+"This access code has been used for a proposal and cannot be deleted. To "
+"disable it, you can set its validity date to the past."
+msgstr ""
+"This access code has been used for an application and cannot be deleted. To "
+"disable it, you can set its validity date to the past."
+
+#: pretalx/orga/views/cfp.py
+msgid "tracks are disabled"
+msgstr "application streams are disabled"
+
+#: pretalx/orga/views/cfp.py
+msgid "no tracks exist"
+msgstr "no application streams exist"
+
+#: pretalx/orga/views/dashboard.py
+msgid "Go to CfP"
+msgstr "Go to application form"
+
+#: pretalx/orga/views/dashboard.py
+msgid "until the CfP ends"
+msgstr "until the application form ends"
+
+#: pretalx/orga/views/dashboard.py
+msgid "unsubmitted proposal draft"
+msgid_plural "unsubmitted proposal drafts"
+msgstr[0] "unsubmitted application draft"
+msgstr[1] "unsubmitted application drafts"
+
+#: pretalx/orga/views/dashboard.py
+msgid "day until event start"
+msgid_plural "days until event start"
+msgstr[0] "day until call start"
+msgstr[1] "days until call start"
+
+#: pretalx/orga/views/dashboard.py
+msgid "day since event end"
+msgid_plural "days since event end"
+msgstr[0] "day since call end"
+msgstr[1] "days since call end"
+
+#: pretalx/orga/views/dashboard.py
+msgid "current schedule"
+msgstr "current interview schedule"
+
+#: pretalx/orga/views/dashboard.py
+msgid "submission with pending changes"
+msgid_plural "submissions with pending changes"
+msgstr[0] "application with pending changes"
+msgstr[1] "applications with pending changes"
+
+#: pretalx/orga/views/event.py
+msgid "Delete event"
+msgstr "Delete call"
+
+#: pretalx/orga/views/event.py
+msgid "The CfP doesn’t have a full text yet."
+msgstr "The application form doesn’t have a full text yet."
+
+#: pretalx/orga/views/event.py
+msgid "The event doesn’t have a landing page text yet."
+msgstr "The call doesn’t have a landing page text yet."
+
+#: pretalx/orga/views/event.py
+msgid ""
+"You want submitters to choose the tracks for their proposals, but you do not"
+" offer tracks for selection. Add at least one track!"
+msgstr ""
+"You want submitters to choose the application streams for their "
+"applications, but you do not offer application streams for selection. Add at"
+" least one application stream!"
+
+#: pretalx/orga/views/event.py
+msgid "You have configured only one session type so far."
+msgstr "You have configured only one interview type so far."
+
+#: pretalx/orga/views/event.py
+msgid "This event was already live."
+msgstr "This call was already live."
+
+#: pretalx/orga/views/event.py
+msgid "This event is now public."
+msgstr "This call is now public."
+
+#: pretalx/orga/views/event.py
+msgid "This event was already hidden."
+msgstr "This call was already hidden."
+
+#: pretalx/orga/views/event.py
+msgid "This event is now hidden."
+msgstr "This call is now hidden."
+
+#: pretalx/orga/views/event.py
+#, python-brace-format
+msgid ""
+"Please consider including your event’s year in the slug, e.g. "
+"myevent{number}."
+msgstr ""
+"Please consider including your call’s year in the slug, e.g. "
+"myevent{number}."
+
+#: pretalx/orga/views/event.py
+msgid "Did you really mean to make your event take place in the past?"
+msgstr "Did you really mean to make your call take place in the past?"
+
+#: pretalx/orga/views/event.py
+msgid ""
+"ALL related data, such as proposals, and speaker profiles, and uploads, will"
+" also be deleted and cannot be restored."
+msgstr ""
+"ALL related data, such as applications, and applicant profiles, and uploads,"
+" will also be deleted and cannot be restored."
+
+#: pretalx/orga/views/mails.py
+#, python-brace-format
+msgid ""
+"Could not generate one email, most likely because the session has not been "
+"scheduled yet."
+msgid_plural ""
+"Could not generate {count} emails, most likely because their sessions have "
+"not been scheduled yet."
+msgstr[0] ""
+"Could not generate one email, most likely because the interview has not been"
+" scheduled yet."
+msgstr[1] ""
+"Could not generate {count} emails, most likely because their interviews have"
+" not been scheduled yet."
+
+#: pretalx/orga/views/organiser.py
+msgid ""
+"ALL related data for ALL events, such as proposals, and speaker profiles, "
+"and uploads, will also be deleted and cannot be restored."
+msgstr ""
+"ALL related data for ALL calls, such as applications, and applicant "
+"profiles, and uploads, will also be deleted and cannot be restored."
+
+#: pretalx/orga/views/review.py
+#, python-brace-format
+msgid ""
+"Success! {accepted} proposals were accepted, {rejected} proposals were "
+"rejected."
+msgstr ""
+"Success! {accepted} applications were shortlisted and {rejected} were not "
+"shortlisted."
+
+#: pretalx/orga/views/schedule.py
+msgid "You have to provide a new, unique schedule version!"
+msgstr "You have to provide a new, unique interview schedule version!"
+
+#: pretalx/orga/views/schedule.py
+msgid "Nice, your schedule has been released!"
+msgstr "Nice, your interview schedule has been released!"
+
+#: pretalx/orga/views/schedule.py
+msgid "You can only regenerate emails after the first schedule was released."
+msgstr ""
+"You can only regenerate emails after the first interview schedule was "
+"released."
+
+#: pretalx/orga/views/schedule.py
+msgid "The session has been scheduled."
+msgstr "The interview has been scheduled."
+
+#: pretalx/orga/views/schedule.py
+msgid "New room"
+msgstr "New interview room"
+
+#: pretalx/orga/views/schedule.py pretalx/schedule/models/slot.py
+msgid "Room"
+msgstr "Interview room"
+
+#: pretalx/orga/views/schedule.py
+#, python-brace-format
+msgid ""
+"{count} session in this room now has more signed-up attendees than the room "
+"can fit."
+msgid_plural ""
+"{count} sessions in this room now have more signed-up attendees than the "
+"room can fit."
+msgstr[0] ""
+"{count} interview in this interview room now has more signed-up attendees "
+"than the interview room can fit."
+msgstr[1] ""
+"{count} interviews in this interview room now have more signed-up attendees "
+"than the interview room can fit."
+
+#: pretalx/orga/views/schedule.py
+msgid ""
+"There is or was a session scheduled in this room. It cannot be deleted."
+msgstr ""
+"There is or was an interview scheduled in this interview room. It cannot be "
+"deleted."
+
+#: pretalx/orga/views/speaker.py
+msgid "New speaker information"
+msgstr "New applicant information"
+
+#: pretalx/orga/views/speaker.py
+msgid "Speaker Information Notes"
+msgstr "Applicant Information Notes"
+
+#: pretalx/orga/views/submission.py
+msgid ""
+"Somebody else was faster than you: this proposal was already in the state "
+"you wanted to change it to."
+msgstr ""
+"Somebody else was faster than you: this application was already in the state"
+" you wanted to change it to."
+
+#: pretalx/orga/views/submission.py
+msgid ""
+"There may be pending emails for this proposal that are now incorrect or "
+"outdated."
+msgstr ""
+"There may be pending emails for this application that are now incorrect or "
+"outdated."
+
+#: pretalx/orga/views/submission.py
+msgid ""
+"This session is part of the current schedule. All its schedule slots will "
+"also be deleted. You may want to set it to the \"withdrawn\" state instead."
+msgstr ""
+"This interview is part of the current interview schedule. All its interview "
+"slots will also be deleted. You may want to set it to the \"withdrawn\" "
+"state instead."
+
+#: pretalx/orga/views/submission.py
+msgid "The speaker has been removed from the proposal."
+msgstr "The applicant has been removed from the application."
+
+#: pretalx/orga/views/submission.py
+msgid "The speaker was not part of this proposal."
+msgstr "The applicant was not part of this application."
+
+#: pretalx/orga/views/submission.py
+msgid "The speaker has been added to the proposal."
+msgstr "The applicant has been added to the application."
+
+#: pretalx/orga/views/submission.py
+msgid "The proposal has been updated!"
+msgstr "The application has been updated!"
+
+#: pretalx/orga/views/submission.py
+msgid "This proposal is now marked as anonymised."
+msgstr "This application is now marked as anonymised."
+
+#: pretalx/orga/views/submission.py
+#, python-brace-format
+msgid "Changed {count} proposal states."
+msgstr "Changed {count} application states."
+
+#: pretalx/person/interfaces/exporters.py
+msgid "Speaker CSV"
+msgstr "Applicant CSV"
+
+#: pretalx/person/interfaces/forms/auth_token.py
+msgid "Select all events"
+msgstr "Select all calls"
+
+#: pretalx/person/interfaces/forms/filters.py
+msgid "Submitters and speakers"
+msgstr "Submitters and applicants"
+
+#: pretalx/person/models/auth_token.py
+msgid "Valid for all events you have access to (including newly created ones)"
+msgstr "Valid for all calls you have access to (including newly created ones)"
+
+#: pretalx/person/models/information.py
+msgid "All accepted speakers"
+msgstr "All shortlisted applicants"
+
+#: pretalx/person/models/information.py
+msgid "Only confirmed speakers"
+msgstr "Applicants with confirmed interviews"
+
+#: pretalx/person/models/information.py
+msgid "Leave empty to show this information to all tracks."
+msgstr "Leave empty to show this information to all application streams."
+
+#: pretalx/person/models/information.py
+msgid "Limit to proposal types"
+msgstr "Limit to application types"
+
+#: pretalx/person/models/information.py
+msgid "Leave empty to show this information for all proposal types."
+msgstr "Leave empty to show this information for all application types."
+
+#: pretalx/person/models/profile.py
+msgid "The speaker has arrived"
+msgstr "The applicant has arrived"
+
+#: pretalx/person/models/profile.py
+msgid "Unnamed speaker"
+msgstr "Unnamed applicant"
+
+#: pretalx/person/models/user.py
+msgid ""
+"Please enter the name you wish to be displayed publicly. This name will be "
+"used for all events you are participating in on this server."
+msgstr ""
+"Please enter the name you wish to be displayed publicly. This name will be "
+"used for all calls you are participating in on this server."
+
+#: pretalx/schedule/domain/warnings.py
+#, python-brace-format
+msgid "Room {room_name} is not available at the scheduled time."
+msgstr "Interview room {room_name} is not available at the scheduled time."
+
+#: pretalx/schedule/domain/warnings.py
+msgid "Another session in the same room overlaps with this one."
+msgstr "Another interview in the same interview room overlaps with this one."
+
+#: pretalx/schedule/domain/warnings.py
+#, python-brace-format
+msgid "{speaker} is not available at the scheduled time."
+msgstr "{speaker} is not available at the scheduled time."
+
+#: pretalx/schedule/domain/warnings.py
+#, python-brace-format
+msgid "{speaker} is scheduled for another session at the same time."
+msgstr "{speaker} is scheduled for another interview at the same time."
+
+#: pretalx/schedule/domain/warnings.py
+#, python-brace-format
+msgid ""
+"Room {room_name} has less space ({room_cap}) than the session’s signup "
+"capacity ({session_cap})."
+msgstr ""
+"Interview room {room_name} has less space ({room_cap}) than the interview’s "
+"signup capacity ({session_cap})."
+
+#: pretalx/schedule/interfaces/exporters.py
+msgid "iCal (full event)"
+msgstr "iCal (full call)"
+
+#: pretalx/schedule/interfaces/exporters.py
+msgid "iCal (your starred sessions)"
+msgstr "iCal (your starred interviews)"
+
+#: pretalx/schedule/interfaces/forms/room.py
+msgid ""
+"Please click and drag to mark your availability during the conference with "
+"green blocks. We will try to schedule your slot during these times. You can "
+"click a block twice to remove it."
+msgstr ""
+"Please click and drag to mark your availability during the recruitment "
+"process with green blocks. We will try to schedule your interview slot "
+"during these times. You can click a block twice to remove it."
+
+#: pretalx/schedule/interfaces/forms/room.py
+#, python-brace-format
+msgid "All times are in the event timezone, {tz}."
+msgstr "All times are in the call timezone, {tz}."
+
+#: pretalx/schedule/interfaces/forms/room.py
+msgid ""
+"If you set room availabilities, speakers will only be able to set their "
+"availability for when any room is available."
+msgstr ""
+"If you set interview room availabilities, applicants will only be able to "
+"set their availability for when any interview room is available."
+
+#: pretalx/schedule/interfaces/forms/room.py
+msgid "Room I"
+msgstr "Interview room I"
+
+#: pretalx/schedule/interfaces/forms/room.py
+msgid ""
+"Description, e.g.: Our main meeting place, Room I, enter from the right."
+msgstr ""
+"Description, e.g.: Our main meeting place, Interview room I, enter from the "
+"right."
+
+#: pretalx/schedule/interfaces/forms/room.py
+msgid "Information for speakers, e.g.: Projector has only HDMI input."
+msgstr "Information for applicants, e.g.: Projector has only HDMI input."
+
+#: pretalx/schedule/interfaces/forms/schedule.py
+msgid "Notify speakers of changes"
+msgstr "Notify applicants of changes"
+
+#: pretalx/schedule/interfaces/forms/schedule.py
+msgid "We released a new schedule version!"
+msgstr "We released a new interview schedule version!"
+
+#: pretalx/schedule/interfaces/forms/widget.py
+msgid "Show the widget even if the schedule is not public"
+msgstr "Show the widget even if the interview schedule is not public"
+
+#: pretalx/schedule/interfaces/forms/widget.py
+msgid ""
+"Set to allow external pages to show the schedule widget, even if the "
+"schedule is not shown here using pretalx."
+msgstr ""
+"Set to allow external pages to show the interview schedule widget, even if "
+"the interview schedule is not shown here using pretalx."
+
+#: pretalx/schedule/interfaces/forms/widget.py
+msgid "Limit rooms"
+msgstr "Limit interview rooms"
+
+#: pretalx/schedule/interfaces/forms/widget.py
+msgid ""
+"You can limit the rooms shown in the widget. Leave empty to show all rooms."
+msgstr ""
+"You can limit the interview rooms shown in the widget. Leave empty to show "
+"all interview rooms."
+
+#: pretalx/schedule/models/room.py
+msgid "Unique identifier (UUID) to help external tools identify the room."
+msgstr ""
+"Unique identifier (UUID) to help external tools identify the interview room."
+
+#: pretalx/schedule/models/room.py
+msgid ""
+"Information relevant for speakers scheduled in this room, for example room "
+"size, special directions, available adaptors for video input …"
+msgstr ""
+"Information relevant for applicants scheduled in this interview room, for "
+"example interview room size, special directions, available adaptors for "
+"video input …"
+
+#: pretalx/schedule/models/room.py
+msgid "How many people can fit in the room?"
+msgstr "How many people can fit in the interview room?"
+
+#: pretalx/schedule/models/slot.py
+msgid "The room this session is scheduled in, if any"
+msgstr "The interview room assigned to this interview, if any"
+
+#: pretalx/schedule/models/slot.py
+msgid "Slot type"
+msgstr "Interview slot type"
+
+#: pretalx/schedule/models/slot.py
+msgid ""
+"For non-submission slots: 'break' for public breaks, 'blocker' for hidden "
+"blockers"
+msgstr ""
+"For non-application interview slots: 'break' for public breaks, 'blocker' "
+"for hidden blockers"
+
+#: pretalx/schedule/models/slot.py
+msgid "When the session starts, if it is currently scheduled"
+msgstr "When the interview starts, if it is currently scheduled"
+
+#: pretalx/schedule/models/slot.py
+msgid "When the session ends, if it is currently scheduled"
+msgstr "When the interview ends, if it is currently scheduled"
+
+#: pretalx/schedule/phrases.py
+msgid "We released our first schedule!"
+msgstr "We released our first interview schedule!"
+
+#: pretalx/schedule/phrases.py
+msgid ""
+"You are currently viewing the editable schedule version, which is unreleased"
+" and may change at any time."
+msgstr ""
+"You are currently viewing the editable interview schedule version, which is "
+"unreleased and may change at any time."
+
+#: pretalx/schedule/phrases.py
+msgid "You are currently viewing an older schedule version."
+msgstr "You are currently viewing an older interview schedule version."
+
+#: pretalx/schedule/phrases.py
+msgid "The speaker's profile picture"
+msgstr "The applicant's profile picture"
+
+#: pretalx/schedule/templates/schedule/speaker_notification.txt
+#, python-format
+msgid ""
+"- Your session “%(title)s” will take place at %(start)s in %(location)s"
+msgstr ""
+"- Your interview “%(title)s” will take place at %(start)s in %(location)s"
+
+#: pretalx/schedule/templates/schedule/speaker_notification.txt
+#, python-format
+msgid "- Your session “%(title)s” has been moved to %(start)s in %(location)s"
+msgstr ""
+"- Your interview “%(title)s” has been moved to %(start)s in %(location)s"
+
+#: pretalx/schedule/validators/schedule.py
+msgid "This schedule version was used already, please choose a different one."
+msgstr ""
+"This interview schedule version was used already, please choose a different "
+"one."
+
+#: pretalx/schedule/validators/slot.py
+msgid "Scheduled times cannot be before the event starts."
+msgstr "Scheduled times cannot be before the call starts."
+
+#: pretalx/schedule/validators/slot.py
+msgid "Scheduled times cannot be after the event ends."
+msgstr "Scheduled times cannot be after the call ends."
+
+#: pretalx/submission/domain/signup.py
+msgid "Attendee signup is not enabled for this event."
+msgstr "Attendee signup is not enabled for this call."
+
+#: pretalx/submission/domain/signup.py
+msgid "This session does not require attendee signup."
+msgstr "This interview does not require attendee signup."
+
+#: pretalx/submission/domain/signup.py
+msgid "You cannot sign up for this session."
+msgstr "You cannot sign up for this interview."
+
+#: pretalx/submission/domain/submission.py
+msgid ""
+"Full proposal content:\n"
+"\n"
+msgstr ""
+"Full application content:\n"
+"\n"
+
+#: pretalx/submission/enums.py
+msgid "per proposal"
+msgstr "per application"
+
+#: pretalx/submission/enums.py
+msgid "per speaker"
+msgstr "per applicant"
+
+#: pretalx/submission/interfaces/forms/access_code.py
+#, python-brace-format
+msgid "Access code for the {event_name} CfP"
+msgstr "Access code for the {event_name} application form"
+
+#: pretalx/submission/interfaces/forms/access_code.py
+#, python-brace-format
+msgid ""
+"Hi!\n"
+"\n"
+"This is an access code for the {event_name} CfP."
+msgstr ""
+"Hi!\n"
+"\n"
+"This is an access code for the {event_name} application form."
+
+#: pretalx/submission/interfaces/forms/access_code.py
+#, python-brace-format
+msgid ""
+"It will allow you to submit a proposal to the following track(s): {tracks}."
+msgstr ""
+"It will allow you to submit an application to the following application "
+"stream(s): {tracks}."
+
+#: pretalx/submission/interfaces/forms/access_code.py
+#, python-brace-format
+msgid "It is valid for the following session type(s): {types}."
+msgstr "It is valid for the following interview type(s): {types}."
+
+#: pretalx/submission/interfaces/forms/access_code.py
+msgid "It will allow you to submit a proposal to our CfP."
+msgstr "It will allow you to submit an application to our application form."
+
+#: pretalx/submission/interfaces/forms/access_code.py
+#, python-brace-format
+msgid ""
+"\n"
+"Please follow this URL to use the code:\n"
+"\n"
+"  {url}\n"
+"\n"
+"I’m looking forward to your proposal!\n"
+"{inviting_speaker}"
+msgstr ""
+"\n"
+"Please follow this URL to use the code:\n"
+"\n"
+"  {url}\n"
+"\n"
+"I’m looking forward to your application!\n"
+"{inviting_speaker}"
+
+#: pretalx/submission/interfaces/forms/feedback.py
+msgid "All speakers"
+msgstr "All applicants"
+
+#: pretalx/submission/interfaces/forms/question.py
+msgid "Accepted or confirmed speakers"
+msgstr "Shortlisted applicants and applicants with confirmed interviews"
+
+#: pretalx/submission/interfaces/forms/question.py
+msgid "Confirmed speakers"
+msgstr "Applicants with confirmed interviews"
+
+#: pretalx/submission/interfaces/forms/review.py
+msgid "Enable submission comments"
+msgstr "Enable application comments"
+
+#: pretalx/submission/interfaces/forms/review.py
+msgid ""
+"Allow organisers and reviewers to comment on submissions, separate from "
+"reviews."
+msgstr ""
+"Allow organisers and reviewers to comment on applications, separate from "
+"reviews."
+
+#: pretalx/submission/interfaces/forms/review.py
+msgid "Change this in the CfP settings"
+msgstr "Change this in the application form settings"
+
+#: pretalx/submission/interfaces/forms/review.py
+#, python-brace-format
+msgid ""
+"Speaker editing is currently disabled at the event level. {link_tag} to "
+"enable speaker editing."
+msgstr ""
+"Applicant editing is currently disabled at the call level. {link_tag} to "
+"enable applicant editing."
+
+#: pretalx/submission/interfaces/forms/submission.py
+msgid ""
+"Please contact the organisers if you want to change how often you’re "
+"presenting this proposal."
+msgstr ""
+"Please contact the organisers if you want to change how often you’re "
+"presenting this application."
+
+#: pretalx/submission/interfaces/forms/submission.py
+msgid ""
+"If you have co-speakers, please add their email addresses here, and we will "
+"invite them to create an account."
+msgstr ""
+"If you have co-applicants, please add their email addresses here, and we "
+"will invite them to create an account."
+
+#: pretalx/submission/interfaces/forms/submission.py
+msgid "Proposal states"
+msgstr "Application states"
+
+#: pretalx/submission/interfaces/forms/submission.py
+msgid "You cannot assign a room without setting the start time as well."
+msgstr ""
+"You cannot assign an interview room without setting the start time as well."
+
+#: pretalx/submission/interfaces/forms/submission.py
+msgid "You cannot set a start time without assigning the room as well."
+msgstr ""
+"You cannot set a start time without assigning the interview room as well."
+
+#: pretalx/submission/interfaces/tables.py
+msgid "No attendees have signed up for this session yet."
+msgstr "No attendees have signed up for this interview yet."
+
+#: pretalx/submission/models/access_code.py
+msgid ""
+"You can restrict the access code to one or more tracks, or leave it open for"
+" all non-restricted tracks."
+msgstr ""
+"You can restrict the access code to one or more application streams, or "
+"leave it open for all non-restricted application streams."
+
+#: pretalx/submission/models/access_code.py
+msgid ""
+"You can restrict the access code to one or more session types, or leave it "
+"open for all non-restricted session types."
+msgstr ""
+"You can restrict the access code to one or more interview types, or leave it"
+" open for all non-restricted interview types."
+
+#: pretalx/submission/models/access_code.py
+msgid ""
+"Number of times this access code can be used to submit a proposal. Leave "
+"empty for no limit."
+msgstr ""
+"Number of times this access code can be used to submit an application. Leave"
+" empty for no limit."
+
+#: pretalx/submission/models/cfp.py
+msgid "Default session type"
+msgstr "Default interview type"
+
+#: pretalx/submission/models/cfp.py
+msgid ""
+"Please put in the date you want to start accepting proposals from users. "
+"Leave the date empty to start accepting proposals immediately once the event"
+" is live."
+msgstr ""
+"Please put in the date you want to start accepting applications from users. "
+"Leave the date empty to start accepting applications immediately once the "
+"call is live."
+
+#: pretalx/submission/models/cfp.py
+msgid "Please put in the last date you want to accept proposals from users."
+msgstr ""
+"Please put in the last date you want to accept applications from users."
+
+#: pretalx/submission/models/question.py
+msgid "Do you require an answer from every speaker or for every session?"
+msgstr "Do you require an answer from every applicant or for every interview?"
+
+#: pretalx/submission/models/question.py
+msgid ""
+"You can limit this field to some tracks. Leave empty to apply to all tracks."
+msgstr ""
+"You can limit this field to some application streams. Leave empty to apply "
+"to all application streams."
+
+#: pretalx/submission/models/question.py
+msgid ""
+"You can limit this field to some session types. Leave empty to apply to all "
+"session types."
+msgstr ""
+"You can limit this field to some interview types. Leave empty to apply to "
+"all interview types."
+
+#: pretalx/submission/models/question.py
+msgid "Minimum text length in characters or words (set in CfP settings)."
+msgstr ""
+"Minimum text length in characters or words (set in application form "
+"settings)."
+
+#: pretalx/submission/models/question.py
+msgid "Maximum text length in characters or words (set in CfP settings)."
+msgstr ""
+"Maximum text length in characters or words (set in application form "
+"settings)."
+
+#: pretalx/submission/models/question.py
+msgid "Responses will be shown on session or speaker pages as appropriate."
+msgstr ""
+"Responses will be shown on interview or applicant pages as appropriate."
+
+#: pretalx/submission/models/review.py
+msgid "Leave empty to use this category for all tracks."
+msgstr "Leave empty to use this category for all application streams."
+
+#: pretalx/submission/models/submission.py pretalx/submission/phrases.py
+msgid "Track"
+msgstr "Application stream"
+
+#: pretalx/submission/models/submission.py
+msgid "Proposal state"
+msgstr "Application state"
+
+#: pretalx/submission/models/submission.py
+msgid "Pending proposal state"
+msgstr "Pending application state"
+
+#: pretalx/submission/models/submission.py
+msgid "How often this session takes place."
+msgstr "How often this interview takes place."
+
+#: pretalx/submission/models/submission.py
+msgid "Override whether attendees must sign up to attend this session."
+msgstr "Override whether attendees must sign up to attend this interview."
+
+#: pretalx/submission/models/submission.py
+msgid "Override the room capacity for this session."
+msgstr "Override the interview room capacity for this interview."
+
+#: pretalx/submission/models/submission.py
+#, python-brace-format
+msgid "Invite to {submission} for {email}"
+msgstr "Invite to {submission} for {email}"
+
+#: pretalx/submission/models/tag.py
+msgid ""
+"Public tags can be selected by submitters in the CfP if you activate the "
+"tags field."
+msgstr ""
+"Public tags can be selected by submitters in the application form if you "
+"activate the tags field."
+
+#: pretalx/submission/models/tag.py
+msgid ""
+"In a future release of pretalx, public tags may also be shown in the public "
+"schedule."
+msgstr ""
+"In a future release of pretalx, public tags may also be shown in the "
+"publicly visible interview schedule."
+
+#: pretalx/submission/models/track.py
+msgid ""
+"This track will only be shown to submitters with a matching access code."
+msgstr ""
+"This application stream will only be shown to submitters with a matching "
+"access code."
+
+#: pretalx/submission/models/track.py pretalx/submission/models/type.py
+msgid ""
+"Sessions will require attendee signup by default. You can always override "
+"this setting for individual sessions."
+msgstr ""
+"Interviews will require attendee signup by default. You can always override "
+"this setting for individual interviews."
+
+#: pretalx/submission/models/type.py
+msgid ""
+"If you want a different deadline than the global deadline for this session "
+"type, enter it here."
+msgstr ""
+"If you want a different deadline than the global deadline for this interview"
+" type, enter it here."
+
+#: pretalx/submission/models/type.py
+msgid ""
+"This session type will only be shown to submitters with a matching access "
+"code."
+msgstr ""
+"This interview type will only be shown to submitters with a matching access "
+"code."
+
+#: pretalx/submission/validators/feedback.py
+msgid "This speaker is not a speaker of the given submission."
+msgstr "This applicant is not an applicant of the given application."
+
+#: pretalx/submission/validators/speaker.py
+#, python-brace-format
+msgid ""
+"This would exceed the maximum of {max} speakers per proposal. Currently: "
+"{current} speaker(s) and {pending} pending invitation(s)."
+msgstr ""
+"This would exceed the maximum of {max} applicants per application. "
+"Currently: {current} applicant(s) and {pending} pending invitation(s)."
+
+#: pretalx/submission/validators/speaker.py
+msgid "This person is already a speaker on this proposal."
+msgstr "This person is already an applicant on this application."
+
+#: pretalx/submission/validators/speaker.py
+msgid "This person has already been invited to this proposal."
+msgstr "This person has already been invited to this application."
+
+#: pretalx/submission/validators/submission.py
+msgid "Slot count may only be 1 in this event."
+msgstr "Interview slot count may only be 1 in this call."
+
+#: pretalx/submission/validators/submission.py
+msgid ""
+"You cannot disable signup for this session while it still has attendee "
+"signups."
+msgstr ""
+"You cannot disable signup for this interview while it still has attendee "
+"signups."
+
+#: pretalx/submission/validators/track.py
+msgid "You already have a track by this name!"
+msgstr "You already have an application stream by this name!"
+
+#: pretalx/submission/validators/type.py
+msgid "You already have a session type by this name!"
+msgstr "You already have an interview type by this name!"
+
+#: pretalx/cfp/templates/cfp/includes/user_submission_header.html
+msgid "Submitter"
+msgid_plural "Submitters"
+msgstr[0] "Applicant"
+msgstr[1] "Applicants"
+
+#: pretalx/orga/forms/cfp.py
+msgid ""
+"Additional instructions shown below the field. Note: Only public tags will "
+"be shown to submitters."
+msgstr ""
+"Additional instructions shown below the field. Note: Only public tags will "
+"be shown to applicants."
+
+#: pretalx/orga/templates/orga/cfp/editor.html
+msgid "Fields not shown to submitters. Click to add."
+msgstr "Fields not shown to applicants. Click to add."
+
+#: pretalx/orga/templates/orga/speaker/list.html
+#: pretalx/orga/views/dashboard.py
+msgid "submitter"
+msgid_plural "submitters"
+msgstr[0] "applicant"
+msgstr[1] "applicants"
+
+#: pretalx/person/interfaces/forms/filters.py
+msgid "Non-accepted submitters"
+msgstr "Applicants not shortlisted"
+
+#: pretalx/cfp/templates/cfp/event/fragment_state.html pretalx/common/log.py
+#: pretalx/submission/enums.py
+msgid "accepted"
+msgstr "shortlisted"
+
+#: pretalx/cfp/templates/cfp/event/fragment_state.html pretalx/common/log.py
+#: pretalx/orga/views/dashboard.py pretalx/submission/enums.py
+msgid "confirmed"
+msgstr "interview confirmed"
+
+#: pretalx/common/log.py pretalx/orga/views/dashboard.py
+#: pretalx/submission/enums.py
+msgid "rejected"
+msgstr "not shortlisted"
+
+#: pretalx/cfp/templates/cfp/event/user_submission_confirm.html
+msgid "Congratulations on your acceptance!"
+msgstr "You have been shortlisted!"
+
+#: pretalx/cfp/templates/cfp/event/user_submission_edit.html
+msgid "Confirm your attendance"
+msgstr "Confirm interview attendance"
+
+#: pretalx/agenda/templates/agenda/includes/signup.html
+#: pretalx/cfp/templates/cfp/event/user_submissions.html
+#: pretalx/cfp/views/user.py
+msgctxt "action: confirm attendance"
+msgid "Confirm"
+msgstr "Confirm interview attendance"
+
+#: pretalx/orga/templates/orga/tables/columns/review_actions.html
+#: pretalx/orga/templates/orga/tables/review_table.html
+msgctxt "action: accept a proposal"
+msgid "Accept"
+msgstr "Shortlist"
+
+#: pretalx/orga/templates/orga/tables/columns/review_actions.html
+#: pretalx/orga/templates/orga/tables/review_table.html
+msgctxt "action: reject a proposal"
+msgid "Reject"
+msgstr "Do not shortlist"
+
+#: pretalx/orga/templates/orga/tables/columns/review_actions_header.html
+msgid "Accept all"
+msgstr "Shortlist all"
+
+#: pretalx/orga/templates/orga/tables/columns/review_actions_header.html
+msgid "Reject all"
+msgstr "Do not shortlist any"
+
+#: pretalx/orga/templates/orga/tables/columns/review_actions.html
+msgid "Unset accept/reject vote"
+msgstr "Clear shortlist recommendation"
+
+#: pretalx/orga/templates/orga/tables/columns/review_actions_header.html
+msgid "Unset accept/reject vote for all"
+msgstr "Clear all shortlist recommendations"
+
+#: pretalx/orga/templates/orga/includes/mail_template_role.html
+msgctxt "email template: acceptance notification"
+msgid "Accept email"
+msgstr "Shortlist email"
+
+#: pretalx/orga/templates/orga/includes/mail_template_role.html
+msgctxt "email template: rejection notification"
+msgid "Reject email"
+msgstr "Not-shortlisted email"
+
+#: pretalx/orga/views/review.py
+#, python-format
+msgid ""
+"Do you really want to regenerate %(count)s acceptance and rejection emails? "
+"They will be placed in the outbox and not sent out directly."
+msgstr ""
+"Do you really want to regenerate %(count)s shortlist and not-shortlisted "
+"emails? They will be placed in the outbox and not sent immediately."

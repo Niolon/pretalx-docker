@@ -13,8 +13,24 @@ outdated. Please make sure you read the files before executing them, and check t
 
 ### For testing
 
-* Run ``docker-compose up -d``. After a few minutes the setup should be accessible at http://localhost/orga
-* Set up a user and an organizer by running ``docker exec -it pretalx pretalx init``.
+Use the development overlay so outgoing application and interview emails are
+captured locally by Mailpit:
+
+```shell
+docker compose -f docker-compose.yml -f compose.dev.yml up -d --build
+```
+
+The application is then available at <http://localhost:8088/orga> and the
+Mailpit inbox at <http://localhost:8026>. Mailpit's SMTP listener is also
+available on `localhost:1026`. Set up a user and an organiser with:
+
+```shell
+docker exec -it pretalx pretalx init
+```
+
+No messages are delivered externally in this setup. Override
+`ARC_PRETALX_PORT`, `ARC_MAILPIT_PORT`, or `ARC_SMTP_PORT` if a development
+port is already in use.
 
 ### For production
 

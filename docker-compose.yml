@@ -1,6 +1,11 @@
 services:
   pretalx:
-    image: pretalx/standalone:latest
+    image: arc/pretalx:latest
+    build:
+      context: .
+      dockerfile: Dockerfile.arc
+      args:
+        PRETALX_IMAGE: pretalx/standalone:latest
     # image: pretalx/dev
     # build: .
     container_name: pretalx
