@@ -26,7 +26,7 @@ The {event_name} recruitment team
 
 ## Shortlist
 
-**Subject:** `You have been shortlisted — {submission_type}`
+**Subject:** `You have been shortlisted — {event_name}`
 
 ```text
 Hello {name},

@@ -702,12 +702,12 @@ msgstr ""
 #: pretalx/agenda/templates/agenda/feed/description.html
 #, python-format
 msgid "A new %(event_name)s schedule has been released!"
-msgstr "A new %(event_name)s interview schedule has been released!"
+msgstr "A new %(event_name)s interview schedule has been finalised!"
 
 #: pretalx/agenda/templates/agenda/feed/description.html
 #, python-format
 msgid "The first %(event_name)s schedule has been released!"
-msgstr "The first %(event_name)s interview schedule has been released!"
+msgstr "The first %(event_name)s interview schedule has been finalised!"
 
 #: pretalx/agenda/templates/agenda/feedback.html
 msgid ""
@@ -1273,7 +1273,7 @@ msgstr "An interview room was deleted."
 
 #: pretalx/common/log.py
 msgid "A new schedule version was released."
-msgstr "A new interview schedule version was released."
+msgstr "A new interview schedule version was finalised."
 
 #: pretalx/common/log.py
 msgid "A proposal resource was added."
@@ -1431,7 +1431,7 @@ msgstr "Build your first interview schedule"
 
 #: pretalx/event/domain/stages.py
 msgid "Release schedules as needed"
-msgstr "Release interview schedules as needed"
+msgstr "Finalise interview arrangements as needed"
 
 #: pretalx/event/domain/stages.py
 msgid "Inform your speakers about the infrastructure"
@@ -1506,7 +1506,7 @@ msgstr "Publish featured applications"
 
 #: pretalx/event/interfaces/forms/event.py
 msgid "Until the first schedule is released"
-msgstr "Until the first interview schedule is released (not recommended)"
+msgstr "Until the first interview schedule is finalised (not recommended)"
 
 #: pretalx/event/interfaces/forms/event.py
 msgid ""
@@ -1594,10 +1594,7 @@ msgid ""
 "Any sessions you have scheduled already will be moved if you change the "
 "event dates. You will have to release a new schedule version to notify all "
 "speakers."
-msgstr ""
-"Any interviews you have scheduled already will be moved if you change the "
-"call dates. You will have to release a new interview schedule version to "
-"notify all applicants."
+msgstr "Any interviews you have scheduled already will be moved if you change the call dates. You will have to finalise updated interview arrangements to notify all applicants."
 
 #: pretalx/event/interfaces/forms/event.py
 msgid "Choose all languages that your event should be available in."
@@ -2141,16 +2138,7 @@ msgid ""
 "We look forward to seeing you, and please contact us if there is any problem with your session or assigned slot.\n"
 "\n"
 "The {event_name} organisers"
-msgstr ""
-"Hi!\n"
-"\n"
-"We have released a new interview schedule version, and wanted to tell you:\n"
-"\n"
-"{speaker_schedule_new}\n"
-"\n"
-"We look forward to seeing you, and please contact us if there is any problem with your interview or assigned interview slot.\n"
-"\n"
-"The {event_name} organisers"
+msgstr "Hi!\n\nWe have finalised a new interview schedule version, and wanted to tell you:\n\n{speaker_schedule_new}\n\nWe look forward to seeing you, and please contact us if there is any problem with your interview or assigned interview slot.\n\nThe {event_name} organisers"
 
 #: pretalx/mail/template_phrases.py
 msgid "We have some questions about your proposal"
@@ -2347,21 +2335,7 @@ msgid ""
 "If there is anything you’re missing, come tell us about it\n"
 "at https://github.com/pretalx/pretalx/issues/new or via an\n"
 "email to support@pretalx.com!\n"
-msgstr ""
-"Hi,\n"
-"\n"
-"congratulations, your call is over! Hopefully it went well. Here are some\n"
-"statistics you might find interesting:\n"
-"\n"
-"- You had {submission_count} applications,\n"
-"- Of which you selected {talk_count} interviews.\n"
-"- The reviewers wrote {review_count} reviews.\n"
-"- You released {schedule_count} interview schedules in total.\n"
-"- Over the course of the call, you sent {mail_count} emails.\n"
-"\n"
-"If there is anything you’re missing, come tell us about it\n"
-"at https://github.com/pretalx/pretalx/issues/new or via an\n"
-"email to support@pretalx.com!\n"
+msgstr "Hi,\n\ncongratulations, your call is over! Hopefully it went well. Here are some\nstatistics you might find interesting:\n\n- You had {submission_count} applications,\n- Of which you selected {talk_count} interviews.\n- The reviewers wrote {review_count} reviews.\n- You finalised {schedule_count} interview schedules in total.\n- Over the course of the call, you sent {mail_count} emails.\n\nIf there is anything you’re missing, come tell us about it\nat https://github.com/pretalx/pretalx/issues/new or via an\nemail to support@pretalx.com!\n"
 
 #: pretalx/orga/forms/admin.py
 msgid ""
@@ -2586,7 +2560,7 @@ msgstr "View call"
 
 #: pretalx/orga/templates/orga/base.html
 msgid "Unreleased schedule changes"
-msgstr "Unreleased interview schedule changes"
+msgstr "Interview changes awaiting finalisation"
 
 #: pretalx/orga/templates/orga/cfp/editor.html
 #: pretalx/orga/templates/orga/cfp/text.html
@@ -2926,9 +2900,7 @@ msgstr "Applicant exports"
 msgid ""
 "You haven’t released a schedule yet – many of these data exporters only work"
 " on a released schedule."
-msgstr ""
-"You haven’t released an interview schedule yet – many of these data "
-"exporters only work on a released interview schedule."
+msgstr "You haven’t finalised an interview schedule yet – many of these data exporters only work on a finalised interview schedule."
 
 #: pretalx/orga/templates/orga/schedule/export.html
 msgid ""
@@ -2968,25 +2940,22 @@ msgstr "Schedule interview"
 
 #: pretalx/orga/templates/orga/schedule/release.html
 msgid "Release new schedule"
-msgstr "Release new interview schedule"
+msgstr "Finalise interview arrangements"
 
 #: pretalx/orga/templates/orga/schedule/release.html
 msgid ""
 "There are still warnings about the release of this schedule. Please review "
 "them carefully!"
-msgstr ""
-"There are still warnings about the release of this interview schedule. "
-"Please review them carefully!"
+msgstr "There are still warnings about the finalisation of these interview arrangements. Please review them carefully!"
 
 #: pretalx/orga/templates/orga/schedule/release.html
 #, python-format
 msgid "The previous schedule (%(prev)s) was released %(since)s ago."
-msgstr ""
-"The previous interview schedule (%(prev)s) was released %(since)s ago."
+msgstr "The previous interview schedule (%(prev)s) was finalised %(since)s ago."
 
 #: pretalx/orga/templates/orga/schedule/release.html
 msgid "This will be the very first schedule release."
-msgstr "This will be the very first interview schedule release."
+msgstr "This will finalise the first set of interview arrangements. The interview schedule remains private."
 
 #: pretalx/orga/templates/orga/schedule/release.html
 #, python-format
@@ -2998,26 +2967,18 @@ msgid_plural ""
 "When releasing this new schedule, <strong>%(count)s notifications emails "
 "</strong> can be generated and placed in the outbox, to tell speakers about "
 "their session slots."
-msgstr[0] ""
-"When releasing this interview schedule, <strong>one notification "
-"email</strong> can be placed in the outbox to tell the applicant about their"
-" interview slot."
-msgstr[1] ""
-"When releasing this interview schedule, <strong>%(count)s notification "
-"emails</strong> can be placed in the outbox to tell applicants about their "
-"interview slots."
+msgstr[0] "When finalising this interview schedule, <strong>one notification email</strong> can be placed in the outbox to tell the applicant about their interview slot."
+msgstr[1] "When finalising this interview schedule, <strong>%(count)s notification emails</strong> can be placed in the outbox to tell applicants about their interview slots."
 
 #: pretalx/orga/templates/orga/schedule/release.html
 msgid "New schedule version"
-msgstr "New interview schedule version"
+msgstr "Interview arrangement update"
 
 #: pretalx/orga/templates/orga/schedule/release.html
 msgid ""
 "This schedule release would result in <strong>no notification "
 "emails</strong> for speakers."
-msgstr ""
-"This interview schedule release would result in <strong>no notification "
-"emails</strong> for applicants."
+msgstr "Finalising these arrangements would create <strong>no invitation or update emails</strong> for applicants."
 
 #: pretalx/orga/templates/orga/schedule/release.html
 #, python-format
@@ -3111,17 +3072,13 @@ msgstr "Dropped interviews with signed-up attendees"
 msgid ""
 "These sessions were in the previous schedule release but are no longer in "
 "this one, even though they have signed-up attendees."
-msgstr ""
-"These interviews were in the previous interview schedule release but are no "
-"longer in this one, even though they have signed-up attendees."
+msgstr "These interviews were in the previous finalised schedule but are no longer in this one, even though they have signed-up attendees."
 
 #: pretalx/orga/templates/orga/schedule/release.html
 msgid ""
 "This is how the new schedule version will appear in the public changelog and"
 " in the RSS feed."
-msgstr ""
-"This is how the new interview schedule version will appear in the public "
-"changelog and in the RSS feed."
+msgstr "Add an internal note about these interview arrangements. The schedule remains private."
 
 #: pretalx/orga/templates/orga/settings/form.html
 #: pretalx/orga/templates/orga/submission/content.html
@@ -3468,13 +3425,11 @@ msgstr "You have to provide a new, unique interview schedule version!"
 
 #: pretalx/orga/views/schedule.py
 msgid "Nice, your schedule has been released!"
-msgstr "Nice, your interview schedule has been released!"
+msgstr "Interview arrangements finalised. Any generated invitations are in the outbox for review."
 
 #: pretalx/orga/views/schedule.py
 msgid "You can only regenerate emails after the first schedule was released."
-msgstr ""
-"You can only regenerate emails after the first interview schedule was "
-"released."
+msgstr "You can only regenerate emails after the first interview schedule was finalised."
 
 #: pretalx/orga/views/schedule.py
 msgid "The session has been scheduled."
@@ -3700,7 +3655,7 @@ msgstr "Notify applicants of changes"
 
 #: pretalx/schedule/interfaces/forms/schedule.py
 msgid "We released a new schedule version!"
-msgstr "We released a new interview schedule version!"
+msgstr "We finalised a new interview schedule version!"
 
 #: pretalx/schedule/interfaces/forms/widget.py
 msgid "Show the widget even if the schedule is not public"
@@ -3769,15 +3724,13 @@ msgstr "When the interview ends, if it is currently scheduled"
 
 #: pretalx/schedule/phrases.py
 msgid "We released our first schedule!"
-msgstr "We released our first interview schedule!"
+msgstr "We finalised our first interview schedule!"
 
 #: pretalx/schedule/phrases.py
 msgid ""
 "You are currently viewing the editable schedule version, which is unreleased"
 " and may change at any time."
-msgstr ""
-"You are currently viewing the editable interview schedule version, which is "
-"unreleased and may change at any time."
+msgstr "You are currently viewing the editable interview schedule version, which is not yet finalised and may change at any time."
 
 #: pretalx/schedule/phrases.py
 msgid "You are currently viewing an older schedule version."
@@ -4273,3 +4226,12 @@ msgstr ""
 
 msgid "Talk"
 msgstr "Position"
+
+#: pretalx/orga/templates/orga/schedule/index.html
+msgid "New release"
+msgstr "Finalise interview arrangements"
+
+#: pretalx/orga/views/schedule.py
+msgctxt "action: publish the schedule"
+msgid "Release"
+msgstr "Finalise arrangements"

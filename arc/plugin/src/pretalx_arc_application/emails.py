@@ -15,7 +15,7 @@ TEMPLATES = {
         "We will contact you when shortlisting is complete. If you have any questions, please reply to this email." + SIGNOFF,
     ),
     Roles.SUBMISSION_ACCEPT: (
-        "You have been shortlisted — {submission_type}",
+        "You have been shortlisted — {event_name}",
         "Hello {name},\n\nWe are pleased to let you know that you have been shortlisted for {submission_type}.\n\n"
         "Please use the following link to confirm that you would like to proceed to interview:\n{confirmation_link}\n\n"
         "We will send your interview date, time and joining instructions separately. "
