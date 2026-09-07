@@ -902,14 +902,14 @@ msgstr ""
 #: pretalx/cfp/phrases.py
 msgid "Your session has been confirmed – we’re looking forward to seeing you!"
 msgstr ""
-"Your interview attendance is confirmed — we look forward to meeting you!"
+"Your interest in interviewing is confirmed — we look forward to meeting you!"
 
 #: pretalx/cfp/phrases.py
 msgid ""
 "This proposal has already been confirmed – we’re looking forward to seeing "
 "you!"
 msgstr ""
-"You have already confirmed your interview attendance — we look forward to "
+"You have already confirmed your interest in interviewing — we look forward to "
 "meeting you!"
 
 #: pretalx/cfp/phrases.py
@@ -1046,9 +1046,9 @@ msgid ""
 "proposal data, such as title, abstract, description, and any uploads you "
 "provided, can be made publicly available once the proposal is confirmed."
 msgstr ""
-"By confirming, you agree that you are willing and available to attend an "
-"interview for this application. Your application data must remain private "
-"unless you have explicitly agreed to publication."
+"By confirming, you tell us that you would like to proceed to interview. "
+"We will send your interview arrangements separately. Please reply to the "
+"invitation email if the assigned time is unsuitable. Your application remains private."
 
 #: pretalx/cfp/templates/cfp/event/user_submission_confirm.html
 msgid ""
@@ -2501,7 +2501,7 @@ msgstr "Applicant name"
 
 #: pretalx/orga/forms/submission.py
 msgid "The name of the speaker that should be displayed publicly."
-msgstr "The name of the applicant that should be displayed publicly."
+msgstr "The applicant’s name."
 
 #: pretalx/orga/forms/submission.py
 msgid "The language in which the speaker will receive their invitation email."
@@ -3617,8 +3617,8 @@ msgid ""
 "Please enter the name you wish to be displayed publicly. This name will be "
 "used for all events you are participating in on this server."
 msgstr ""
-"Please enter the name you wish to be displayed publicly. This name will be "
-"used for all calls you are participating in on this server."
+"Please enter your name. This name will be used for all applications you make "
+"on this server."
 
 #: pretalx/schedule/domain/warnings.py
 #, python-brace-format
@@ -4215,14 +4215,14 @@ msgstr "You have been shortlisted!"
 
 #: pretalx/cfp/templates/cfp/event/user_submission_edit.html
 msgid "Confirm your attendance"
-msgstr "Confirm interview attendance"
+msgstr "Confirm interest in interviewing"
 
 #: pretalx/agenda/templates/agenda/includes/signup.html
 #: pretalx/cfp/templates/cfp/event/user_submissions.html
 #: pretalx/cfp/views/user.py
 msgctxt "action: confirm attendance"
 msgid "Confirm"
-msgstr "Confirm interview attendance"
+msgstr "Confirm interest in interviewing"
 
 #: pretalx/orga/templates/orga/tables/columns/review_actions.html
 #: pretalx/orga/templates/orga/tables/review_table.html
@@ -4270,3 +4270,6 @@ msgid ""
 msgstr ""
 "Do you really want to regenerate %(count)s shortlist and not-shortlisted "
 "emails? They will be placed in the outbox and not sent immediately."
+
+msgid "Talk"
+msgstr "Position"

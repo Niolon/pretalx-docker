@@ -85,16 +85,6 @@ APPLICATION_QUESTIONS = (
         ),
     ),
     ApplicationQuestion(
-        identifier="arc_adjustments",
-        label="Interview adjustments or accessibility requirements (optional)",
-        variant=QuestionVariant.TEXT,
-        help_text=(
-            "Tell the organising team about adjustments that would help you "
-            "participate in an interview. This answer is hidden from reviewers."
-        ),
-        visible_to_reviewers=False,
-    ),
-    ApplicationQuestion(
         identifier="arc_declaration",
         label=(
             "I confirm that the information in this application is accurate and "
@@ -128,6 +118,9 @@ def configure_event(event):
     event.save(update_fields=["feature_flags"])
 
     cfp = event.cfp
+    if event.submission_types.count() == 1 and str(cfp.default_type.name) == "Talk":
+        cfp.default_type.name = {"en": "Position"}
+        cfp.default_type.save(update_fields=["name"])
     cfp.fields = _application_fields()
     cfp.settings = {**cfp.settings, "count_length_in": "words"}
     cfp.save(update_fields=["fields", "settings"])

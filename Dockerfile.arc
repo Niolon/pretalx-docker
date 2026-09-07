@@ -3,8 +3,8 @@ FROM ${PRETALX_IMAGE}
 
 USER root
 
-# Install the ARC workflow as an independent pretalx plugin. No upstream
-# Python modules or templates are patched.
+# Install the recruitment workflow as an independent pretalx plugin. Its
+# runtime adapters leave upstream source files unchanged.
 COPY arc/plugin /opt/pretalx-arc-application
 RUN python3 -m pip install --no-cache-dir --no-deps --no-build-isolation \
     /opt/pretalx-arc-application

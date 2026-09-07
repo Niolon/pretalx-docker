@@ -135,8 +135,9 @@ actual deployed routes. Direct database updates can bypass save signals.
 Question privacy is currently only initialised when the workflow is activated.
 An organiser can subsequently change “Show answers to reviewers”, “Publish
 answers” or team access. Keep ARC questions private; retain reviewer hiding for
-adjustments and the declaration. Limit adjustments to the staff who need them
-using the question's team restrictions. Consider enforcing these choices in code
+the declaration. Interview adjustments are requested only from invited applicants
+by reply to the interview email, not through the application form. Restrict that
+recruitment mailbox to staff who need access. Consider enforcing question privacy in code
 before delegating event-settings permissions.
 
 Give reviewers only the reviewer role for the specific recruitment call. Team
@@ -158,7 +159,17 @@ Encrypt backups, restrict restore/export access and test restoration
 in an isolated environment with outgoing mail disabled. Apply the recruitment
 retention period to documents, database records, exports, mail, logs and backups.
 
+## Outgoing update metadata
+
+The plugin defaults automatic update checks to disabled. If an administrator
+enables the upstream check, it sends instance, version and plugin metadata and
+event counts to pretalx.com. Keep it disabled if this deployment must not send
+that metadata, and arrange manual update monitoring separately.
+
 ## Checks before opening the call
+
+Review the [workflow fixes and validation](../arc/WORKFLOW_REVIEW.md) and repeat
+the checks below against the actual production proxy before opening applications.
 
 Use synthetic applications and separate applicant, reviewer and organiser
 accounts. Check through the actual HTTPS proxy:
@@ -177,8 +188,9 @@ accounts. Check through the actual HTTPS proxy:
 - Publish a test interview schedule and mark an application featured. Verify
   logged-out schedule pages, old versions, exports, feeds, widgets, profiles,
   public-review links and API responses reveal no applicant/interview data.
-- Check adjustments using a reviewer account, including exports and API access
-  where available. Review every team membership and question access setting.
+- Confirm the form does not request interview adjustments. Check reviewer-hidden
+  questions, including exports and API access where available. Review every team
+  membership and question access setting.
 - Verify HTTPS redirects and secure cookies, and ensure private responses are
   not served from shared caches. Use synthetic data to test error handling with
   debug disabled. Test email delivery and a backup restore.

@@ -33,6 +33,7 @@ def test_configure_event_creates_focused_private_schema():
             question.identifier for question in APPLICATION_QUESTIONS
         ]
         assert not questions.filter(is_public=True).exists()
+        assert not questions.filter(identifier="arc_adjustments").exists()
 
         configure_event(event)
         assert Question.all_objects.filter(identifier__startswith="arc_").count() == len(

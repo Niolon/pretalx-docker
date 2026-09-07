@@ -1,0 +1,9 @@
+{% load recruitment %}
+{% private_interviews submission request.user as interviews %}
+{% if interviews %}
+<section class="alert alert-info">
+    <h3>Your interview details</h3>
+    {% for details in interviews %}<p>{{ details|urlize|linebreaksbr }}</p>{% endfor %}
+    <p>Please reply to your invitation email if the time is unsuitable or you need any adjustments to take part.</p>
+</section>
+{% endif %}

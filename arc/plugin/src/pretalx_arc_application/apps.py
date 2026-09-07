@@ -3,11 +3,11 @@ from django.apps import AppConfig
 
 class ArcApplicationConfig(AppConfig):
     name = "pretalx_arc_application"
-    verbose_name = "ARC application workflow"
+    verbose_name = "Recruitment application workflow"
 
     class PretalxPluginMeta:
-        name = "ARC application workflow"
-        author = "ARC"
+        name = "Recruitment application workflow"
+        author = "Recruitment team"
         version = "0.1.0"
         visible = True
         description = (
@@ -21,6 +21,16 @@ class ArcApplicationConfig(AppConfig):
         from .storage import install_private_storage
 
         install_private_storage()
+
+        from .workflow import install_workflow
+
+        install_workflow()
+
+        from .emails import install_emails
+        from .decisions import install_decisions
+
+        install_emails()
+        install_decisions()
 
     def installed(self, event):
         from .schema import configure_event

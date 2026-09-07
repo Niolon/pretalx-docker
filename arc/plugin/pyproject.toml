@@ -21,3 +21,6 @@ addopts = "-ra"
 
 [tool.ruff.lint.per-file-ignores]
 "tests/**" = ["INP001", "S101"]
+
+[tool.setuptools.package-data]
+pretalx_arc_application = ["templates/**/*.html"]
