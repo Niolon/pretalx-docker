@@ -4,42 +4,49 @@ This guide is for the dedicated ARC recruitment image on a host you administer,
 with a reverse proxy providing HTTPS. The checked-in configuration is a development
 starting point. Do not collect real applications with it unchanged.
 
-## Resolve private file access before collecting applications
+## Private document downloads
 
-**The current image and example proxy do not provide authenticated downloads for
-uploaded application documents.** ARC makes questions private in the application,
-but upstream stores file answers under `/media/<event>/question_uploads/` and
-renders their storage URLs. The example nginx configuration serves all of
-`/media/` directly, without application permissions. Anyone who obtains a CV,
-transcript or reference URL can download it. Random filenames reduce discovery;
-they do not restrict access or revoke a copied link when team membership changes.
+The ARC plugin stores file answers under `DATA_DIR/arc-private` (normally
+`/data/arc-private`), outside public media storage. Its `/arc-files/` endpoint
+checks the logged-in user's access to the specific application and question
+before streaming an attachment. Copied URLs do not grant access. Responses are
+marked private and non-cacheable, and use a non-executable content type.
 
-Before launch, implement permission-checked downloads for these files, with
-storage inaccessible through a public media alias. Authorisation must check the
-specific application, event and question, including reviewer/team restrictions.
-A protected internal nginx location can deliver a file after the application
-authorises it. Merely requiring any logged-in account is insufficient: applicants
-must not be able to download each other's documents. An alternative is to collect
-documents through a separate approved system and remove these upload fields.
+Existing UI file links use this endpoint automatically. Applicants can download
+their own documents; staff need both access to the relevant application and
+visibility of the question. Reviewer assignments, tracks, review-phase visibility
+and question team restrictions apply. Anonymous users and unrelated applicants
+receive 404. Public-question settings do not grant document access.
 
-Until that work is complete, deny public access to question uploads at the proxy
-and use synthetic data only. This deliberately makes current document links fail;
-it is containment, not a working private-download implementation. For nginx:
+Temporary application-form uploads and cached API uploads/export archives also
+use private storage. Temporary files have no direct download access; generated
+exports continue through their originating organiser views. This protection is
+installed instance-wide, regardless of whether a call enables the ARC form.
+
+This deployment is new and has no existing uploads, so no data migration is
+needed. This plugin does not migrate old public files. If reusing a previously
+populated instance, stop and account for old documents, temporary uploads and
+cached exports before launch; changing storage does not remove public copies.
+
+The proxy must pass `/arc-files/` to pretalx and must never serve `/data` or
+`/data/arc-private` as a static directory. Do not cache these responses at the
+proxy or CDN. Keep a defensive block on the former public upload paths; nginx:
 
 ```nginx
-# Keep this ahead of other regex locations. Do not use a ^~ /media/ location
-# that would prevent this regex from being evaluated.
+# Keep these ahead of other regex locations. Do not use a ^~ /media/ location
+# that would prevent these regexes from being evaluated.
 location ~ ^/media/[^/]+/question_uploads/ {
+    return 404;
+}
+location ~ ^/media/(cfp_uploads|cachedfiles)/ {
     return 404;
 }
 ```
 
-Adapt this rule if the media URL changes. Check other media classes before using
-them for sensitive material. Do not enable directory listings. Disable shared
-proxy/CDN caching for private downloads and authenticated pages, and send
-`Cache-Control: private, no-store` for private responses. Previously public files
-also need cache purging and removal or URL rotation; changing a question setting
-does not recall downloaded copies.
+Adapt these rules if the media URL changes. Other media such as avatars and event
+logos remain public; do not use those fields for confidential documents. Do not
+enable directory listings. Disable shared proxy/CDN caching for authenticated
+pages and API responses as well. Previously downloaded copies cannot be recalled.
 
 ## Production configuration
 
@@ -103,9 +110,9 @@ protocol/client headers at the trusted proxy, and configure the application to
 trust only the actual proxy path. Test the direct origin as well as the public
 hostname if the hosting platform provides a separate origin URL.
 
-The nginx file in `reverse-proxy-examples/` is an old illustrative example, not a
-production configuration. Use current TLS syntax (`listen 443 ssl`), validate
-with `nginx -t`, and apply the private-upload restriction above. Serve permitted
+The nginx file in `reverse-proxy-examples/` is an illustrative example. Adapt its
+hostname, certificate and volume paths, validate with `nginx -t`, and retain the
+private-upload restrictions above. Serve permitted
 uploads as attachments with `X-Content-Type-Options: nosniff` and a non-executable
 content type. Keep the repository, config, database, logs, backups and `/data`
 outside every public document root. Serve only the intended static/media paths.
@@ -144,9 +151,10 @@ review while reviewers can read identifying CVs.
 ## Backups and retention
 
 Back up `pretalx-database`, `pretalx-data` (including `.secret`) and the uploaded
-media in `pretalx-public`. With this Compose configuration, `/public/media`
-contains original uploads, not regenerable output. `/public/static` is
-regenerable. Encrypt backups, restrict restore/export access and test restoration
+media in `pretalx-public`. With this Compose configuration, `/data/arc-private`
+contains private documents and `/public/media` contains original public uploads
+such as avatars. Neither is regenerable. `/public/static` is regenerable.
+Encrypt backups, restrict restore/export access and test restoration
 in an isolated environment with outgoing mail disabled. Apply the recruitment
 retention period to documents, database records, exports, mail, logs and backups.
 
@@ -163,9 +171,9 @@ accounts. Check through the actual HTTPS proxy:
   be publicly reachable.
 - Open a copied CV URL while logged out and as another applicant: both must
   fail. Verify the owner and authorised staff can download it, and that a
-  restricted reviewer cannot. Repeat after removing staff access. The current
-  proxy deny rule alone will also block authorised users; this check remains a
-  launch blocker until private downloads or an alternative workflow exist.
+  restricted reviewer cannot. Repeat after removing staff access. Confirm the
+  corresponding old `/media/` paths fail too, including temporary uploads and
+  cached archives. Do this through the proxy, not only Django's test client.
 - Publish a test interview schedule and mark an application featured. Verify
   logged-out schedule pages, old versions, exports, feeds, widgets, profiles,
   public-review links and API responses reveal no applicant/interview data.

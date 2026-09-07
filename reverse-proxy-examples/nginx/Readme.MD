@@ -10,11 +10,10 @@ server {
     return 301 https://pretalx.mydomain.com$request_uri;
 }
 server {
-    listen 443 default_server;
-    listen [::]:443 ipv6only=on default_server;
+    listen 443 ssl default_server;
+    listen [::]:443 ssl ipv6only=on default_server;
     server_name pretalx.mydomain.com;
 
-    ssl on;
     ssl_certificate /path/to/cert.chain.pem;
     ssl_certificate_key /path/to/key.pem;
 
@@ -25,16 +24,28 @@ server {
         proxy_set_header Host $http_host;
     }
 
+    # ARC file answers, temporary form uploads and cached exports are private.
+    # /arc-files/ goes through location / above for application authorisation.
+    # Never expose /data or /data/arc-private with an alias/root directive.
+    location ~ ^/media/[^/]+/question_uploads/ {
+      return 404;
+    }
+    location ~ ^/media/(cfp_uploads|cachedfiles)/ {
+      return 404;
+    }
+
     location /media/ {
       alias /path/to/pretalx/public/media/;
-      add_header Content-Disposition 'attachment; filename="$1"';
+      types { }
+      default_type application/octet-stream;
+      add_header Content-Disposition attachment always;
+      add_header X-Content-Type-Options nosniff always;
       expires 7d;
       access_log off;
     }
 
     location /static/ {
       alias /path/to/pretalx/public/static/;
-      add_header Content-Disposition 'attachment; filename="$1"';
       expires 7d;
       access_log off;
     }

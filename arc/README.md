@@ -43,3 +43,26 @@ privacy flags for every call in this dedicated ARC image, even before the
 workflow is activated for that call. Organisers can still use the work-in-
 progress schedule internally to arrange interviews; releasing a version does
 not make it publicly accessible.
+
+## Private documents
+
+The plugin installs private storage for file answers, temporary application-form
+uploads and cached files used by API uploads and export jobs. They live under
+`/data/arc-private`, not `/public/media`. Existing answer-file links automatically
+use `/arc-files/`, where each download checks the current user's ownership or
+application access and question visibility. Files are streamed as non-cacheable
+attachments; public-question settings never grant access to these downloads.
+
+This protection applies even when the ARC form is disabled for a call. Cached
+archives continue to use the existing organiser download views and cannot be
+downloaded directly through `/arc-files/`.
+
+At startup the plugin attaches Django field storage, form temporary storage and
+private-file cleanup hooks to the upstream classes. Replacements and deletions
+remove private files after transaction commit. This adapter is tested against
+pretalx 2026.2.1; repeat the plugin tests when upgrading the base image.
+
+Rebuild the ARC image to install this change. This is for a fresh deployment:
+no existing public files are migrated. Follow the
+[production guide](../deployment/PRODUCTION.md) to block old media upload paths,
+keep the private directory outside proxy document roots and verify permissions.

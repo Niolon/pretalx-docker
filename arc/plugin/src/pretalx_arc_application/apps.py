@@ -18,6 +18,9 @@ class ArcApplicationConfig(AppConfig):
 
     def ready(self):
         from . import signals  # noqa: F401
+        from .storage import install_private_storage
+
+        install_private_storage()
 
     def installed(self, event):
         from .schema import configure_event

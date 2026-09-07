@@ -36,7 +36,7 @@ port is already in use.
 
 Read the [ARC production deployment and privacy guide](deployment/PRODUCTION.md)
 before collecting real applications. It covers debug settings, network exposure,
-operator permissions and the private-document download work required before launch.
+operator permissions and verification of protected document downloads.
 
 * Edit ``conf/pretalx.cfg`` and fill in your own values (→ [configuration
   documentation](https://docs.pretalx.org/en/latest/administrator/configure.html))
@@ -70,8 +70,9 @@ operator permissions and the private-document download work required before laun
 ## Backups
 
 Back up the database (``pretalx-database``), ``pretalx-data`` and the uploaded media
-in ``pretalx-public``. In this configuration, original uploads live at
-``/public/media``; they are not regenerable. ``/public/static`` is regenerable.
+in ``pretalx-public``. Private application documents and temporary uploads live
+in ``/data/arc-private``; public uploads such as avatars live at ``/public/media``.
+Neither is regenerable. ``/public/static`` is regenerable.
 The data volume holds the instance's ``.secret`` file used to derive the Django
 ``SECRET_KEY``. Losing that secret invalidates signed values such as sessions and
 password-reset tokens. Treat all backups as sensitive recruitment data.
