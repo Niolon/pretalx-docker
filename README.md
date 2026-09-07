@@ -34,6 +34,10 @@ port is already in use.
 
 ### For production
 
+Read the [ARC production deployment and privacy guide](deployment/PRODUCTION.md)
+before collecting real applications. It covers debug settings, network exposure,
+operator permissions and the private-document download work required before launch.
+
 * Edit ``conf/pretalx.cfg`` and fill in your own values (→ [configuration
   documentation](https://docs.pretalx.org/en/latest/administrator/configure.html))
 * Edit ``docker-compose.yml`` and change the line to ``ports: - "127.0.0.1:8346:80"`` (if you use nginx). **Change the
@@ -65,11 +69,12 @@ port is already in use.
 
 ## Backups
 
-In addition to the database (``pretalx-database`` volume), make sure you back up the ``pretalx-data`` volume: it holds
-user-uploaded files (speaker avatars, uploaded slides, etc.) and the instance's ``.secret`` file used to derive the
-Django ``SECRET_KEY``. Losing the data volume means losing uploaded content and invalidating all signed values
-(sessions, password-reset tokens, etc.). The ``pretalx-public`` volume holds regenerable static/media output and does
-not need to be backed up.
+Back up the database (``pretalx-database``), ``pretalx-data`` and the uploaded media
+in ``pretalx-public``. In this configuration, original uploads live at
+``/public/media``; they are not regenerable. ``/public/static`` is regenerable.
+The data volume holds the instance's ``.secret`` file used to derive the Django
+``SECRET_KEY``. Losing that secret invalidates signed values such as sessions and
+password-reset tokens. Treat all backups as sensitive recruitment data.
 
 ## Other installations
 

@@ -1654,11 +1654,11 @@ msgstr "Call is public"
 
 #: pretalx/event/models/event.py
 msgid "Event start date"
-msgstr "Call start date"
+msgstr "Interview period start"
 
 #: pretalx/event/models/event.py
 msgid "Event end date"
-msgstr "Call end date"
+msgstr "Interview period end"
 
 #: pretalx/event/models/event.py
 msgid ""
