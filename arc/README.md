@@ -96,3 +96,13 @@ These runtime adapters target pretalx 2026.2.1. Run the regression suite and ins
 these seams before upgrading. Default templates are used for new calls and missing
 role templates; organisers' saved customisations are not overwritten. Automatic
 update metadata checks default to disabled; arrange manual update monitoring.
+
+
+## Manual email handover
+
+The development overlay enables a protected **Manual delivery** screen in orga.
+With an empty SMTP host (`PRETALX_MAIL_HOST=""`), email is prepared locally for an instance
+administrator to pass on, including reviewer invitations and account emails.
+No SMTP account or separate mailbox access is required. See the
+[manual delivery guide](../deployment/MANUAL_EMAIL.md) for collection, attachments,
+permissions and deployment settings.

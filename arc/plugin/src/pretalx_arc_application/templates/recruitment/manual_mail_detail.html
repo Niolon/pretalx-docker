@@ -1,0 +1,29 @@
+{% extends "orga/base.html" %}
+{% block extra_title %}Prepared email :: {% endblock %}
+{% block content %}
+<a href="{% url 'plugins:pretalx_arc_application:manual_mail' %}">Back to manual delivery</a>
+<h2>{{ mail.subject }}</h2>
+<dl>
+    <dt>From</dt><dd>{{ mail.sender }}</dd>
+    <dt>To</dt><dd>{{ mail.recipients|join:", " }}</dd>
+    {% if mail.cc %}<dt>CC</dt><dd>{{ mail.cc|join:", " }}</dd>{% endif %}
+    {% if mail.bcc %}<dt>BCC</dt><dd>{{ mail.bcc|join:", " }}</dd>{% endif %}
+    <dt>Prepared</dt><dd>{{ mail.created }}</dd>
+    <dt>Status</dt><dd>{% if mail.handed_over_at %}Marked as handed over on {{ mail.handed_over_at }}{% else %}Awaiting manual delivery{% endif %}</dd>
+</dl>
+{% if unavailable_reason %}
+<div class="alert alert-warning">{{ unavailable_reason }}</div>
+{% else %}
+<p>Copy the text below into your email client, or download the email file to retain attachments such as the interview calendar. Check the recipients before passing it on.</p>
+{% if mail.bcc %}<p>Add the BCC recipients separately when using the downloaded email file.</p>{% endif %}
+<label for="email-body">Email text</label>
+<textarea id="email-body" class="form-control" rows="20" readonly>{{ mail.body }}</textarea>
+<p><a class="btn btn-primary" href="{% url 'plugins:pretalx_arc_application:manual_mail_download' message_id=mail.pk %}">Download email (.eml)</a></p>
+{% if not mail.handed_over_at %}
+<form method="post">
+    {% csrf_token %}
+    <button class="btn btn-success" name="action" value="handed_over" type="submit">Mark as handed over</button>
+</form>
+{% endif %}
+{% endif %}
+{% endblock %}

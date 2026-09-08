@@ -199,3 +199,13 @@ Upstream references: [configuration](https://docs.pretalx.org/administrator/conf
 [installation and proxy requirements](https://docs.pretalx.org/administrator/installation/),
 [team permissions](https://docs.pretalx.org/user/organisers/), and
 [security support](https://docs.pretalx.org/legal/security/).
+
+
+## Email without SMTP access
+
+Use [manual email delivery](MANUAL_EMAIL.md) to prepare protected emails for an
+instance administrator to pass on through a separate mail environment. Set
+`PRETALX_MAIL_HOST=""` on both web and worker processes to leave server SMTP unconfigured. Email using those server settings,
+including account access and reviewer invitations, is captured inside the
+application rather than sent automatically. The mailbox needs the same protection
+and retention controls as the rest of the recruitment data.

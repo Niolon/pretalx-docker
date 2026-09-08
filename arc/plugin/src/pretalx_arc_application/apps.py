@@ -32,6 +32,10 @@ class ArcApplicationConfig(AppConfig):
         install_emails()
         install_decisions()
 
+        from .manual_mail import install_manual_mail
+
+        install_manual_mail()
+
     def installed(self, event):
         from .schema import configure_event
 

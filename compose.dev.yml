@@ -1,16 +1,11 @@
 services:
   pretalx:
-    depends_on:
-      mail:
-        condition: service_healthy
     environment:
-      # pretalx deliberately switches to its console mail backend in DEBUG
-      # mode, so keep this production-like test stack out of DEBUG.
+      # Prepare emails in the protected organiser mailbox for manual handover.
       PRETALX_DEBUG: "False"
       PRETALX_SITE_URL: http://localhost:${ARC_PRETALX_PORT:-8088}
       PRETALX_MAIL_FROM: applications@example.test
-      PRETALX_MAIL_HOST: mail
-      PRETALX_MAIL_PORT: "1025"
+      PRETALX_MAIL_HOST: ""
     ports: !override
       - "${ARC_PRETALX_PORT:-8088}:80"
 

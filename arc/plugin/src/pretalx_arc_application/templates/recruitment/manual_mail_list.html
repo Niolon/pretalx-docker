@@ -1,0 +1,21 @@
+{% extends "orga/base.html" %}
+{% block extra_title %}Manual delivery :: {% endblock %}
+{% block content %}
+<h2>Manual delivery</h2>
+<p>These emails have been prepared for you to pass on. These messages are not sent automatically when SMTP is configured later. Only instance administrators can access this mailbox.</p>
+<table class="table">
+    <thead><tr><th>Prepared</th><th>Recipients</th><th>Subject</th><th>Status</th></tr></thead>
+    <tbody>
+    {% for mail in page %}
+    <tr>
+        <td>{{ mail.created }}</td>
+        <td>{{ mail.recipients|join:", " }}</td>
+        <td><a href="{% url 'plugins:pretalx_arc_application:manual_mail_detail' message_id=mail.pk %}">{{ mail.subject }}</a></td>
+        <td>{% if mail.handed_over_at %}Marked as handed over{% else %}Awaiting manual delivery{% endif %}</td>
+    </tr>
+    {% empty %}<tr><td colspan="4">No emails have been prepared yet.</td></tr>{% endfor %}
+    </tbody>
+</table>
+{% if page.has_previous %}<a href="?page={{ page.previous_page_number }}">Previous</a>{% endif %}
+{% if page.has_next %}<a href="?page={{ page.next_page_number }}">Next</a>{% endif %}
+{% endblock %}
