@@ -2,5 +2,16 @@
 {% block content %}
 <h2>Recruitment privacy</h2>
 <p>Use Durham-approved policy values. Marking recruitment complete closes new applications and starts the retention clock. Withdrawal remains available.</p>
+<p>Changing lawful basis, retention period or hosting policy clears approval and closes intake until an administrator records approval again.</p>
 <form method="post">{% csrf_token %}{{ form.as_p }}<button class="btn btn-success" type="submit">Save</button></form>
+<h3>Approval</h3>
+{% if policy.approved %}<p>Approved by {{ policy.approved_by.get_display_name }} on {{ policy.approved_at }}. Reference: {{ policy.approval_reference }}</p>{% else %}<p>Not approved.</p>{% endif %}
+{% if approval_error %}<p class="alert alert-danger">{{ approval_error }}</p>{% endif %}
+{% if request.user.is_administrator %}
+<form method="post">{% csrf_token %}
+<label for="approval-reference">Approval reference</label><input id="approval-reference" name="approval_reference" maxlength="500" required>
+<button type="submit" name="action" value="approve" class="btn btn-success">Record approval of saved policy</button>
+</form>
+{% if policy.approved %}<form method="post">{% csrf_token %}<button type="submit" name="action" value="remove_approval" class="btn btn-danger">Remove approval</button></form>{% endif %}
+{% else %}<p>Only an instance administrator may record or remove approval.</p>{% endif %}
 {% endblock %}

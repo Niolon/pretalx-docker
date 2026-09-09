@@ -20,6 +20,8 @@ def policy_errors(event):
     if not policy:
         return ["Configure and approve the recruitment privacy notice."]
     errors = []
+    if policy.approved and (not policy.approval_reference.strip() or not policy.approved_at or not policy.approved_by_id):
+        errors.append("Record complete administrator approval metadata and reference.")
     if not policy.approved:
         errors.append("Durham approval of the privacy notice is required.")
     if not policy.lawful_basis.strip():
@@ -42,13 +44,13 @@ def notice_url(event):
 class PolicyForm(forms.ModelForm):
     class Meta:
         model = RecruitmentPolicy
-        fields = ["lawful_basis", "retention_days", "hosting_policy", "approved", "completed_on"]
+        fields = ["lawful_basis", "retention_days", "hosting_policy", "completed_on"]
         widgets = {"completed_on": forms.DateInput(attrs={"type": "date"})}
 
     def clean(self):
         data = super().clean()
-        if data.get("approved") and not all(data.get(k) for k in ("lawful_basis", "retention_days", "hosting_policy")):
-            raise ValidationError("Complete all policy values before recording approval.")
+        if set(self.data) & {"approved", "approved_at", "approved_by", "approval_reference"}:
+            raise ValidationError("Use the separate administrator approval action.")
         if data.get("completed_on") and data["completed_on"] > timezone.localdate():
             raise ValidationError("Recruitment completion cannot be in the future.")
         if data.get("retention_days") == 0:
@@ -75,12 +77,30 @@ def policy_settings(request, event):
     if not request.user.is_authenticated or not request.user.is_active or not request.user.has_perm("event.update_event", call):
         raise Http404
     policy = RecruitmentPolicy.objects.filter(event=call).first() or RecruitmentPolicy(event=call)
-    form = PolicyForm(request.POST if request.method == "POST" else None, instance=policy)
-    if request.method == "POST" and form.is_valid():
-        form.save()
-        messages.success(request, "Recruitment privacy settings saved.")
-        return redirect(request.path)
-    return render(request, "recruitment/privacy_settings.html", {"form": form, "event": call})
+    form = PolicyForm(request.POST if request.method == "POST" and request.POST.get("action", "save") == "save" else None, instance=policy)
+    error = None
+    if request.method == "POST":
+        action = request.POST.get("action", "save")
+        if action in {"approve", "remove_approval"}:
+            if not request.user.is_administrator:
+                raise Http404
+            try:
+                if not policy.pk:
+                    raise ValidationError("Save the policy values before recording approval.")
+                if action == "approve":
+                    policy.record_approval(request.user, request.POST.get("approval_reference", ""))
+                else:
+                    policy.remove_approval(request.user)
+            except ValidationError as exc:
+                error = " ".join(exc.messages)
+            else:
+                messages.success(request, "Recruitment policy approval updated.")
+                return redirect(request.path)
+        elif action == "save" and form.is_valid():
+            form.save()
+            messages.success(request, "Policy values saved. Changes to policy values clear existing approval.")
+            return redirect(request.path)
+    return render(request, "recruitment/privacy_settings.html", {"form": form, "event": call, "policy": policy, "approval_error": error})
 
 
 @receiver(footer_link, dispatch_uid="recruitment_privacy_footer")

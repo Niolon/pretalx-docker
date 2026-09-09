@@ -36,16 +36,18 @@ def call(settings, tmp_path):
 
 
 def approve(event):
-    return RecruitmentPolicy.objects.create(event=event, lawful_basis="SYNTHETIC TEST BASIS", hosting_policy="SYNTHETIC TEST HOSTING POLICY", retention_days=30, approved=True)
+    policy = RecruitmentPolicy.objects.create(event=event, lawful_basis="SYNTHETIC TEST BASIS", hosting_policy="SYNTHETIC TEST HOSTING POLICY", retention_days=30)
+    policy.record_approval(UserFactory(is_administrator=True), "SYNTHETIC TEST APPROVAL")
+    return policy
 
 
 def application(event, user=None):
     with scope(event=event):
-        speaker = SpeakerFactory(event=event, **({"user": user} if user else {}))
+        speaker = (user.profiles.filter(event=event).first() if user else None) or SpeakerFactory(event=event, **({"user": user} if user else {}))
         submission = SubmissionFactory(event=event)
         submission.speakers.add(speaker)
         answer = Answer.objects.create(question=event.questions.get(identifier="arc_cv"), submission=submission)
-        answer.answer_file.save("cv.pdf", ContentFile(b"%PDF synthetic"))
+        answer.answer_file.save("cv.pdf", ContentFile(b"%PDF-1.4 synthetic"))
     return submission, speaker.user, answer
 
 
@@ -255,7 +257,7 @@ def test_internal_and_account_mail_have_explicit_ownership(call, settings):
     assert not QueuedMail.objects.exists()
 
 
-def test_shared_mail_is_erased_in_full_without_erasing_other_application(call):
+def test_shared_mail_is_rejected(call):
     from pretalx.mail.domain.queue import save_draft
     from pretalx.mail.domain.render import render_to_mail
     first, _, _ = application(call)
@@ -263,10 +265,10 @@ def test_shared_mail_is_erased_in_full_without_erasing_other_application(call):
     mail = render_to_mail(event=call, subject_template="Panel summary", text_template="Shared private information")
     save_draft(mail, to="organiser@institution.test")
     ownership = MailSubjects.objects.get(mail=mail)
-    ownership.submissions.add(first, second)
-    result = erase_application(first.pk)
-    assert result["shared_messages"] == 1
-    assert not QueuedMail.objects.filter(pk=mail.pk).exists()
+    from django.core.exceptions import ValidationError
+    with pytest.raises(ValidationError), transaction.atomic():
+        ownership.submissions.add(first, second)
+    assert QueuedMail.objects.filter(pk=mail.pk).exists()
     assert Submission.all_objects.filter(pk=second.pk).exists()
 
 
@@ -387,3 +389,214 @@ def test_ordinary_state_changes_cannot_silently_erase_an_application(call):
     with pytest.raises(SubmissionError, match="confirmation"):
         set_pending_state(submission, "withdrawn")
     assert Submission.all_objects.filter(pk=submission.pk).exists()
+
+
+@pytest.mark.parametrize("field,value", [("lawful_basis", "Changed basis"), ("retention_days", 60), ("hosting_policy", "Changed hosting")])
+@pytest.mark.parametrize("method", ["save", "partial", "update", "form"])
+def test_policy_changes_immediately_close_intake(call, field, value, method):
+    policy = approve(call)
+    assert intake_open(call)
+    if method == "update":
+        RecruitmentPolicy.objects.filter(pk=policy.pk).update(**{field: value})
+    elif method == "form":
+        values = {key: getattr(policy, key) for key in policy.policy_fields}
+        values[field] = value
+        form = PolicyForm(values, instance=policy)
+        assert form.is_valid(), form.errors
+        form.save()
+    else:
+        setattr(policy, field, value)
+        policy.save(**({"update_fields": [field]} if method == "partial" else {}))
+    policy.refresh_from_db()
+    assert not policy.approved
+    assert not policy.approval_reference and not policy.approved_at and not policy.approved_by_id
+    assert not intake_open(call)
+    assert not call.cfp.is_open
+
+
+def test_approval_requires_administrator_and_complete_values(call):
+    from django.core.exceptions import PermissionDenied, ValidationError
+    policy = RecruitmentPolicy.objects.create(event=call)
+    admin = UserFactory(is_administrator=True)
+    ordinary = UserFactory()
+    with pytest.raises(PermissionDenied):
+        policy.record_approval(ordinary, "REFERENCE")
+    with pytest.raises(ValidationError):
+        policy.record_approval(admin, "REFERENCE")
+    policy.lawful_basis, policy.hosting_policy, policy.retention_days = "Basis", "Hosting", 30
+    policy.save()
+    with pytest.raises(ValidationError):
+        policy.record_approval(admin, "   ")
+    policy.record_approval(admin, "APPROVAL-123")
+    assert policy.approved_by == admin and policy.approved_at and policy.approval_reference == "APPROVAL-123"
+    with pytest.raises(PermissionDenied):
+        policy.remove_approval(ordinary)
+    with pytest.raises(ValueError):
+        RecruitmentPolicy.objects.filter(pk=policy.pk).update(approved=False)
+    policy.approved = False
+    with pytest.raises(ValidationError):
+        policy.save()
+    policy.refresh_from_db()
+    policy.remove_approval(admin)
+    assert not intake_open(call)
+
+
+def test_notice_escapes_configured_policy_and_links_to_official_information(call, client):
+    policy = approve(call)
+    policy.lawful_basis = '<script>alert("basis")</script>'
+    policy.hosting_policy = '<img src=x onerror="alert(1)">'
+    policy.save()
+    content = client.get(notice_url(call)).content.decode()
+    assert "&lt;script&gt;" in content and "&lt;img" in content
+    assert '<script>alert("basis")' not in content and '<img src=x' not in content
+    assert "privacy-notices/prospective-students/" in content
+    assert "information-governance/" in content
+    assert "https://ico.org.uk/for-the-public/" in content
+
+
+@pytest.mark.parametrize("same_user", [False, True])
+def test_bulk_mail_and_manual_copies_survive_other_application_withdrawal(call, settings, same_user):
+    from tests.factories import MailTemplateFactory
+    from pretalx.mail.domain.queue import bulk_create_drafts
+    from pretalx.mail.domain.send import send_draft
+    first, user, _ = application(call)
+    second, other, _ = application(call, user=user if same_user else None)
+    template = MailTemplateFactory(event=call, subject="Application update", text="Thank you for your application.")
+    mails, errors = bulk_create_drafts(template, [{"user_id": user.pk, "submission_id": first.pk}, {"user_id": other.pk, "submission_id": second.pk}])
+    assert errors == 0 and len(mails) == 2
+    settings.EMAIL_BACKEND = "pretalx_arc_application.manual_mail.ManualEmailBackend"
+    settings.EMAIL_HOST = ""
+    for mail in mails:
+        send_draft(mail)
+    survivor = mails[1]
+    copy = ManualMail.objects.get(source_mail=survivor)
+    path = copy.message.path
+    from pathlib import Path
+    assert Path(path).exists()
+    erase_application(first.pk)
+    assert not QueuedMail.objects.filter(pk=mails[0].pk).exists()
+    assert QueuedMail.objects.filter(pk=survivor.pk).exists()
+    assert ManualMail.objects.filter(pk=copy.pk).exists() and Path(path).exists()
+    assert Submission.all_objects.filter(pk=second.pk).exists()
+
+
+@pytest.mark.parametrize("identifier", ["arc_cv", "arc_cover_letter", "arc_degree_evidence"])
+@pytest.mark.parametrize("kind", ["renamed", "oversize", "wrong_type", "wrong_extension", "valid"])
+def test_document_validation_in_form_and_storage(call, identifier, kind):
+    from django.core.exceptions import ValidationError
+    from django.core.files.uploadedfile import SimpleUploadedFile
+    from pretalx.submission.interfaces.forms.question import build_question_field
+    from pretalx_arc_application.uploads import PDF_LIMIT
+    question = call.questions.get(identifier=identifier)
+    name = "document.txt" if kind == "wrong_extension" else "document.pdf"
+    content = b"<html>not PDF</html>" if kind == "renamed" else b"%PDF-1.4\nsynthetic"
+    if kind == "oversize":
+        content += b" " * PDF_LIMIT
+    mime = "text/html" if kind == "wrong_type" else "application/pdf"
+    field = build_question_field(question=question)
+    upload = SimpleUploadedFile(name, content, content_type=mime)
+    submission = SubmissionFactory(event=call)
+    answer = Answer.objects.create(question=question, submission=submission)
+    if kind == "valid":
+        assert field.clean(upload)
+        answer.answer_file.save(name, upload)
+        assert answer.answer_file.storage.exists(answer.answer_file.name)
+    else:
+        with pytest.raises(ValidationError):
+            field.clean(upload)
+        with pytest.raises(ValidationError):
+            answer.answer_file.save(name, upload)
+        answer.refresh_from_db()
+        assert not answer.answer_file
+
+
+def test_only_admin_can_approve_or_revoke_through_settings(call, client):
+    policy = approve(call)
+    admin = policy.approved_by
+    organiser = UserFactory()
+    team = TeamFactory(organiser=call.organiser, can_change_event_settings=True, all_events=True)
+    team.members.add(organiser)
+    url = reverse("plugins:pretalx_arc_application:privacy_settings", kwargs={"event": call.slug})
+    client.force_login(organiser)
+    assert client.get(url).status_code == 200
+    for action in ("approve", "remove_approval"):
+        assert client.post(url, {"action": action, "approval_reference": "SPOOF"}).status_code == 404
+    policy.refresh_from_db()
+    assert policy.approved and policy.approved_by == admin
+    values = {field: getattr(policy, field) for field in policy.policy_fields}
+    values["hosting_policy"] = "Changed by organiser"
+    assert client.post(url, values).status_code == 302
+    assert not intake_open(call)
+    client.force_login(admin)
+    assert client.post(url, {"action": "approve", "approval_reference": "TEST-HTTP"}).status_code == 302
+    assert intake_open(call)
+    assert client.post(url, {"action": "remove_approval"}).status_code == 302
+    assert not intake_open(call)
+
+
+@pytest.mark.parametrize("field,value", [("approved_at", None), ("approved_by_id", None), ("approval_reference", "")])
+def test_strict_readiness_rejects_incomplete_approval_metadata(call, field, value):
+    from django.db import connection
+    policy = approve(call)
+    # Simulate damaged/imported data outside the guarded model API.
+    with connection.cursor() as cursor:
+        cursor.execute(f'UPDATE pretalx_arc_application_recruitmentpolicy SET {field} = %s WHERE id = %s', [value, policy.pk])
+    out = StringIO()
+    with pytest.raises(CommandError):
+        call_command("arc_privacy_check", event=call.slug, strict=True, stdout=out)
+    assert "approval metadata" in out.getvalue()
+    assert not intake_open(call)
+
+
+@pytest.mark.parametrize("relation", ["queued", "subjects", "manual"])
+def test_database_blocks_bulk_insertion_of_shared_mail(call, relation):
+    from django.db import IntegrityError
+    from tests.factories import QueuedMailFactory
+    first, _, _ = application(call)
+    second, _, _ = application(call)
+    mail = QueuedMailFactory(event=call)
+    if relation == "queued":
+        parent, field = mail, "submissions"
+    elif relation == "subjects":
+        parent, field = MailSubjects.objects.create(mail=mail), "submissions"
+    else:
+        parent, field = ManualMail.objects.create(subject="Test", recipients=[]), "subject_submissions"
+    through = getattr(parent, field).through
+    parent_field = next(f for f in through._meta.fields if f.is_relation and f.remote_field.model == type(parent))
+    with pytest.raises(IntegrityError), transaction.atomic():
+        through.objects.bulk_create([through(**{parent_field.attname: parent.pk, "submission_id": obj.pk}) for obj in (first, second)])
+
+
+@pytest.mark.parametrize("placeholder", ["interview_details", "speaker_schedule_new", "speaker_schedule_full"])
+def test_interview_notifications_isolate_same_person_applications(call, placeholder):
+    from datetime import datetime, timezone as tz
+    from tests.factories import RoomFactory
+    from pretalx.schedule.domain.release import freeze_schedule
+    from pretalx_arc_application.emails import validate_mail
+    first, user, _ = application(call)
+    second, _, _ = application(call, user=user)
+    from pretalx.submission.domain.submission import set_submission_state
+    for submission in (first, second):
+        set_submission_state(submission, "accepted", orga=True)
+    room = RoomFactory(event=call, speaker_info="Join https://meet.example.test/interview")
+    start = datetime(2026, 10, 20, 9, tzinfo=tz.utc)
+    schedule = call.wip_schedule
+    for index, submission in enumerate((first, second)):
+        slot = schedule.talks.get(submission=submission)
+        slot.room, slot.start, slot.end = room, start + timedelta(hours=index), start + timedelta(hours=index, minutes=30)
+        slot.save()
+    template = call.mail_templates.get(role="schedule.new")
+    template.text = "Your interview: {" + placeholder + "}"
+    template.save()
+    freeze_schedule(schedule, "test-1", notify_speakers=True)
+    mails = list(call.queued_mails.filter(template__role="schedule.new"))
+    assert len(mails) == 2
+    for mail in mails:
+        submission = mail.submissions.get()
+        other = second if submission.pk == first.pk else first
+        assert str(submission.urls.user_base) in mail.text
+        assert str(other.urls.user_base) not in mail.text
+        assert len(mail.attachments) == 1
+        validate_mail(mail)
+    erase_application(first.pk)
+    assert call.queued_mails.filter(template__role="schedule.new", submissions=second).count() == 1

@@ -12,8 +12,9 @@ It does not determine those policy values or provide legal approval.
    information are not requested at this stage.
 2. Open **Settings → Recruitment privacy**. Enter the approved lawful basis,
    retention period in days, and the hosting information, including backup and
-   infrastructure-log expiry. Confirm approval only after Durham has approved
-   the notice and these values. Use the call's contact address for recruitment.
+   infrastructure-log expiry. Save these values, then ask an instance administrator
+   to record approval with the institutional reference after Durham has approved
+   the notice and values. Use the call's contact address for recruitment.
 3. Review the applicant-facing notice at `/<call>/recruitment/privacy/`.
    The fixed draft is in the plugin's `templates/recruitment/privacy.html`.
    It identifies Durham as controller and describes purposes, data, access,
@@ -51,8 +52,9 @@ The shared erasure path removes the application, answers/files, review records,
 assignments, interview slots across versions, application activity records and
 associated stored correspondence. Technical application titles use codes, not
 names. Manual-mail ownership survives deletion of the source outbox message.
-An email containing several applications is removed in full; retention output
-reports the shared-message count so unrelated correspondence can be regenerated.
+Each application has separate correspondence, including bulk actions and interview
+notifications. Database constraints prevent multiple application links per message.
+Withdrawal removes only that application’s messages; other correspondence survives.
 
 A user with another application or an organiser/reviewer role retains their
 account and unrelated records. An applicant-only account with no remaining
@@ -115,3 +117,26 @@ Image publishing depends on that job. Configure repository branch protection to
 require **Recruitment privacy tests** as well; workflow YAML cannot enforce branch
 protection by itself. Keep the passing test output and the actual deployment's
 strict readiness output with the draft/approved notice and DPIA evidence.
+
+
+## Approval controls and documents
+
+Organisers can edit policy values in **Settings → Recruitment privacy**. Changing
+lawful basis, retention days or hosting policy immediately clears approval and
+closes intake. An active instance administrator must use **Record approval** after
+saving all three values and supplying the institutional approval reference. The
+server records their account and the approval timestamp. Only instance
+administrators can explicitly remove approval. Strict readiness rejects missing
+approval metadata. The migration clears earlier approval booleans that have no
+provenance; it does not manufacture approval for them.
+
+CV, cover letter and degree evidence accept PDFs only, up to **10 MiB each**.
+The browser form and private-file save path validate the extension, declared type
+(PDF or generic binary) and PDF header signature. This is file-type validation,
+not malware scanning. Policy text is displayed as escaped plain text. The notice
+links to Durham applicant privacy information, general information governance
+and the ICO’s information for the public.
+
+The **Recruitment privacy tests** job runs for pull requests targeting main,
+pushes to main, tags and manual workflow runs. Docker publication depends on
+that job succeeding. Require this status check in branch protection.

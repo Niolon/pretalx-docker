@@ -21,6 +21,8 @@ class ArcApplicationConfig(AppConfig):
         from .storage import install_private_storage
 
         install_private_storage()
+        from .uploads import install_upload_validation
+        install_upload_validation()
 
         from .workflow import install_workflow
 

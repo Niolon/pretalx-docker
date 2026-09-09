@@ -166,7 +166,7 @@ def test_default_application_completes_and_uploads_survive_back_navigation(clien
         configure_event(event)
         questions = {q.identifier:q for q in event.questions.all()}
     from pretalx_arc_application.models import RecruitmentPolicy
-    RecruitmentPolicy.objects.create(event=event, lawful_basis="Synthetic test policy", retention_days=30, hosting_policy="Synthetic hosting policy", approved=True)
+    RecruitmentPolicy.objects.create(event=event, lawful_basis="Synthetic test policy", retention_days=30, hosting_policy="Synthetic hosting policy").record_approval(UserFactory(is_administrator=True), "SYNTHETIC TEST APPROVAL")
     response, url = start_wizard(client, event)
     assert not response.context["form"].fields
     response, questions_url = get_response_and_url(client, url, data={})

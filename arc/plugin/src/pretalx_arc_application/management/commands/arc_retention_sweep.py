@@ -52,7 +52,7 @@ class Command(BaseCommand):
             if not options["execute"]:
                 self.stdout.write(f"DRY RUN: {len(ids)} applications eligible; no data changed.")
                 return
-            totals = {"applications": 0, "accounts": 0, "messages": 0, "shared_messages": 0}
+            totals = {"applications": 0, "accounts": 0, "messages": 0}
             for pk in ids:
                 result = erase_application(pk)
                 for key, count in result.items():
@@ -61,5 +61,3 @@ class Command(BaseCommand):
             if remaining:
                 raise CommandError(f"Private-file cleanup incomplete: {remaining} pending. Retry after correcting storage access.")
             self.stdout.write("Deleted: " + ", ".join(f"{key}={value}" for key, value in totals.items()))
-            if totals["shared_messages"]:
-                self.stdout.write("Shared messages were removed in full; recreate unrelated correspondence if needed.")

@@ -26,20 +26,23 @@ def _erase_application(submission_id):
     with scopes_disabled(), transaction.atomic():
         initial = Submission.all_objects.filter(pk=submission_id).first()
         if initial is None:
-            return {"applications": 0, "accounts": 0, "messages": 0, "shared_messages": 0}
+            return {"applications": 0, "accounts": 0, "messages": 0}
         users = list(User.objects.filter(profiles__submissions=initial).order_by("pk").distinct())
         # Lock users first, then the application, then its mail rows.
         users = list(User.objects.filter(pk__in=[u.pk for u in users]).order_by("pk").select_for_update())
         submission = Submission.all_objects.select_for_update().filter(pk=submission_id).first()
         if submission is None:
-            return {"applications": 0, "accounts": 0, "messages": 0, "shared_messages": 0}
+            return {"applications": 0, "accounts": 0, "messages": 0}
         mail_ids = QueuedMail.objects.filter(Q(submissions=submission) | Q(recruitment_subjects__submissions=submission)).values("pk")
         mails = list(QueuedMail.objects.filter(pk__in=mail_ids).order_by("pk").select_for_update())
-        shared = sum(m.submissions.exclude(pk=submission.pk).exists() or Submission.all_objects.filter(mailsubjects__mail=m).exclude(pk=submission.pk).exists() for m in mails)
+        from .mail_isolation import require_single_application, require_manual_isolation
+        for mail in mails:
+            require_single_application(mail)
         answers = list(submission.answers.all()) + list(Answer.objects.filter(review__submission=submission))
         related = [submission, *answers, *submission.reviews.all(), *submission.slots.all(), *submission.resources.all(), *mails]
         erase_logs(related)
         for item in ManualMail.objects.filter(Q(source_mail__in=mails) | Q(subject_submissions=submission)).distinct():
+            require_manual_isolation(item)
             item.delete()
         QueuedMail.objects.filter(pk__in=[m.pk for m in mails]).delete()
         schedules = list(submission.event.schedules.all())
@@ -72,15 +75,17 @@ def _erase_application(submission_id):
             if has_role or Submission.all_objects.filter(speakers__user=user).exists() or user.profiles.exists():
                 continue
             # Explicit account ownership; never match an email address in body text.
-            account_mails = list(QueuedMail.objects.filter(Q(recruitment_subjects__users=user) | Q(to_users=user)).distinct())
-            for item in ManualMail.objects.filter(Q(source_mail__in=account_mails) | Q(subject_users=user)).distinct():
+            account_mails = list(QueuedMail.objects.filter(Q(recruitment_subjects__users=user) | Q(to_users=user)).filter(submissions__isnull=True, recruitment_subjects__submissions__isnull=True).distinct())
+            for item in ManualMail.objects.filter(Q(source_mail__in=account_mails) | Q(subject_users=user)).filter(subject_submissions__isnull=True).distinct():
+                if require_manual_isolation(item):
+                    continue
                 item.delete()
             erase_logs(account_mails)
             QueuedMail.objects.filter(pk__in=[m.pk for m in account_mails]).delete()
             ActivityLog.objects.filter(person=user).delete()
             shred_user(user)
             deleted_users += 1
-        return {"applications": 1, "accounts": deleted_users, "messages": len(mails), "shared_messages": shared}
+        return {"applications": 1, "accounts": deleted_users, "messages": len(mails)}
 
 
 def erase_application(submission_id):

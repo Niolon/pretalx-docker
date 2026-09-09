@@ -2,3 +2,14 @@
 !Dockerfile.arc
 !arc/
 !arc/**
+
+# Keep development artifacts and tests out of the runtime image build context.
+arc/**/*.md
+arc/plugin/tests/
+arc/**/__pycache__/
+arc/**/*.pyc
+arc/**/*.pyo
+arc/**/.pytest_cache/
+arc/**/*.egg-info/
+arc/plugin/build/
+arc/plugin/dist/

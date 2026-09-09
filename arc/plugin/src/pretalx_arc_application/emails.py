@@ -1,5 +1,10 @@
 """Recruitment correspondence: per-call copy and private interview details."""
 
+from contextvars import ContextVar
+
+_notification_context = ContextVar("recruitment_notification", default=None)
+_application_context = ContextVar("recruitment_mail_application", default=None)
+
 from django.db import transaction
 from i18nfield.strings import LazyI18nString
 
@@ -85,6 +90,12 @@ def send_initial_mails(submission, *, person):
 
 
 def validate_mail(mail):
+    from .mail_isolation import require_single_application
+    from django.core.exceptions import ValidationError
+    try:
+        require_single_application(mail)
+    except ValidationError as exc:
+        raise SendMailException("Message contains conflicting application ownership; prepare separate messages.") from exc
     role = mail.template.role if mail.template_id else None
     expected = {
         Roles.SUBMISSION_ACCEPT: {"accepted", "confirmed"},
@@ -153,7 +164,19 @@ def install_emails():
     replace_function(domain, "send_initial_mails", send_initial_mails)
     replace_function(notifications, "render_notifications", render_notifications)
     replace_function(notifications, "compute_speakers_concerned", compute_speakers_concerned)
-    original_generate = notifications.generate_notifications
+    for name in ("get_current_notifications", "get_full_notifications"):
+        original_notifications = getattr(notifications, name)
+        def scoped_notifications(user, event, _original=original_notifications):
+            data = _notification_context.get() or _original(user, event)
+            application_id = _application_context.get()
+            if application_id is None and (data.get("create") or data.get("update")):
+                raise SendMailException("Select one application before including interview details in a message.")
+            return {
+                "create": [slot for slot in data.get("create", []) if slot.submission_id == application_id],
+                "update": [item for item in data.get("update", []) if item["new_slot"].submission_id == application_id],
+            }
+        replace_function(notifications, name, scoped_notifications)
+
 
     def generate_notifications(schedule):
         with transaction.atomic():
@@ -165,9 +188,13 @@ def install_emails():
             schedule.event.queued_mails.filter(
                 state="draft", template__role=Roles.NEW_SCHEDULE, submissions__pk__in=affected,
             ).delete()
-            return original_generate(schedule)
+            return generate_individual_notifications(schedule)
 
     replace_function(notifications, "generate_notifications", generate_notifications)
+    def count_pending_notifications(schedule):
+        return sum(len({slot.submission_id for slot in list(data.get("create") or []) + [item["new_slot"] for item in data.get("update", [])]}) for data in schedule.speakers_concerned.values())
+    replace_function(notifications, "count_pending_notifications", count_pending_notifications)
+
     original_calendar = ical.build_slot_vevent
 
     def build_slot_vevent(slot, calendar, **kwargs):
@@ -210,7 +237,10 @@ def install_emails():
 
 def interview_placeholders(sender, **kwargs):
     from pretalx.mail.domain.placeholders import TrustedMarkdownMailTextPlaceholder, TrustedPlainMailTextPlaceholder
-    from pretalx.schedule.domain.notifications import get_current_notifications
+    from pretalx.schedule.domain.notifications import get_current_notifications as upstream_notifications
+
+    def get_current_notifications(user, event):
+        return _notification_context.get() or upstream_notifications(user, event)
 
     def changed(user, event):
         return bool(get_current_notifications(user, event).get("update"))
@@ -268,3 +298,33 @@ def compute_speakers_concerned(schedule):
             else:
                 result[speaker]["create"].append(slot)
     return result
+
+
+def generate_individual_notifications(schedule):
+    from collections import defaultdict
+    from pretalx.mail.domain.queue import save_draft
+    from pretalx.mail.domain.render import render_template_to_mail
+    from pretalx.mail.domain.template import mail_template_by_role
+    from pretalx.schedule.domain.ical import get_slot_ical
+    from pretalx.common.language import language
+    mails = []
+    for speaker, data in schedule.speakers_concerned.items():
+        groups = defaultdict(lambda: {"create": [], "update": []})
+        for slot in data.get("create", []):
+            groups[slot.submission_id]["create"].append(slot)
+        for change in data.get("update", []):
+            groups[change["new_slot"].submission_id]["update"].append(change)
+        for changes in groups.values():
+            slots = list(changes["create"]) + [c["new_slot"] for c in changes["update"]]
+            submission = slots[0].submission
+            locale = speaker.user.get_locale_for_event(schedule.event)
+            token = _notification_context.set(changes)
+            try:
+                with language(locale):
+                    attachments = [{"name": f"{slot.frab_slug}.ics", "content": get_slot_ical(slot).serialize(), "content_type": "text/calendar"} for slot in slots]
+                    mail = render_template_to_mail(mail_template_by_role(schedule.event, Roles.NEW_SCHEDULE), context_kwargs={"user": speaker.user, "submission": submission}, locale=locale)
+                save_draft(mail, to_users=[speaker.user], submissions=[submission], attachments=attachments)
+                mails.append(mail)
+            finally:
+                _notification_context.reset(token)
+    return mails

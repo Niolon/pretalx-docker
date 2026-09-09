@@ -13,16 +13,19 @@ outdated. Please make sure you read the files before executing them, and check t
 
 ### For testing
 
-Use the development overlay so outgoing application and interview emails are
-captured locally by Mailpit:
+Use the development overlay to prepare emails in the protected organiser
+**Manual delivery** screen:
 
 ```shell
 docker compose -f docker-compose.yml -f compose.dev.yml up -d --build
 ```
 
 The application is then available at <http://localhost:8088/orga> and the
-Mailpit inbox at <http://localhost:8026>. Mailpit's SMTP listener is also
-available on `localhost:1026`. Set up a user and an organiser with:
+Mailpit inbox at <http://localhost:8026>. The overlay leaves SMTP unconfigured,
+so Mailpit receives no messages by default. To test SMTP delivery, set the
+application service's `PRETALX_MAIL_HOST` to `mail` and `PRETALX_MAIL_PORT` to
+`1025`; Mailpit captures that mail locally. Its SMTP listener is also available
+on `localhost:1026`. Set up a user and an organiser with:
 
 ```shell
 docker exec -it pretalx pretalx init

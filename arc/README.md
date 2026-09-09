@@ -10,7 +10,7 @@ Enable **Recruitment application workflow** under a call's organiser settings. O
 activation, it hides the conference-specific built-in fields and adds private
 application fields for a CV, cover letter, evidence of the required degree,
 optional project repository and privacy acknowledgement. Interview adjustments are
-requested by email only from invited applicants. It also generates application titles in the form `Applicant — position`.
+requested by email only from invited applicants. It also generates application titles in the form `Application ABC123 — Position`.
 
 Recompile after editing the PO file:
 
@@ -69,11 +69,11 @@ no existing public files are migrated. Follow the
 [production guide](../deployment/PRODUCTION.md) to block old media upload paths,
 keep the private directory outside proxy document roots and verify permissions.
 
-## Workflow and email review
+## Email templates
 
-See the [workflow review](WORKFLOW_REVIEW.md) for the findings and their fixes, and
-[proposed email templates](EMAIL_TEMPLATES_DRAFT.md) for the installed defaults available for wording review.
-Email sign-offs use the individual recruitment call’s name.
+The installed defaults are maintained in the plugin's [email module](plugin/src/pretalx_arc_application/emails.py).
+Review and customise each call's templates in the organiser interface before
+sending. Email sign-offs use the individual recruitment call’s name.
 
 
 ## Workflow adapters

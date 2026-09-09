@@ -168,7 +168,7 @@ that metadata, and arrange manual update monitoring separately.
 
 ## Checks before opening the call
 
-Review the [workflow fixes and validation](../arc/WORKFLOW_REVIEW.md) and repeat
+Run the [plugin regression suite](../arc/plugin/tests/README.md) and repeat
 the checks below against the actual production proxy before opening applications.
 
 Use synthetic applications and separate applicant, reviewer and organiser
@@ -191,6 +191,11 @@ accounts. Check through the actual HTTPS proxy:
 - Confirm the form does not request interview adjustments. Check reviewer-hidden
   questions, including exports and API access where available. Review every team
   membership and question access setting.
+- Walk through advert → application → shortlist/pre-interview rejection →
+  interview invitation → withdrawal → retention sweep. Review email wording,
+  calendar attachments and document access with separate accounts. Applying
+  pending decisions makes them visible to applicants before email delivery;
+  apply decisions and send the reviewed outbox together.
 - Verify HTTPS redirects and secure cookies, and ensure private responses are
   not served from shared caches. Use synthetic data to test error handling with
   debug disabled. Test email delivery and a backup restore.

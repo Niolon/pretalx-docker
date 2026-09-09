@@ -3,6 +3,8 @@ name: Docker
 on:
   workflow_dispatch: # allows to be run manually
   push:
+    branches:
+      - 'main'
     tags:
       - '*'
   pull_request:

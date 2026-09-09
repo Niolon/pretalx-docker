@@ -10,7 +10,7 @@ From the repository root, after initialising the submodule:
 ```sh
 python -m pip install -e './pretalx[dev]' -e ./arc/plugin
 PRETALX_CONFIG_FILE="$PWD/pretalx/src/tests/ci_sqlite.cfg" \
-PRETALX_DB_BACKEND=sqlite3 \
+PRETALX_DB_TYPE=sqlite3 \
 PRETALX_DATA_DIR="$(mktemp -d)" \
 PYTHONPATH="$PWD/pretalx/src" \
 python -m pytest -c arc/plugin/pyproject.toml arc/plugin/tests
@@ -31,3 +31,10 @@ account isolation, mail ownership, stale retries, file-cleanup failures and stri
 readiness. The two concurrent delivery/erasure tests require PostgreSQL and skip
 on SQLite. CI runs on disposable PostgreSQL; external SMTP connections are
 blocked for every test.
+
+Real migrations run locally as well as in CI, so the single-application mail
+indexes are exercised. Approval tests cover administrator-only actions, missing
+metadata and immediate intake closure after policy edits. Bulk-mail regressions
+cover two applicants and one person with two applications, withdrawal and manual
+copies. Upload tests check all three required PDFs, renamed non-PDFs, incorrect
+MIME types, extensions and the 10 MiB limit at both form and storage boundaries.
