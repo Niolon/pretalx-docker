@@ -25,3 +25,9 @@ upstream base image changes: the plugin adapts upstream storage and cleanup hook
 
 Also perform the proxy checks in `deployment/PRODUCTION.md` at deployment time;
 Django tests cannot detect a hosting panel that publishes the private directory.
+
+Privacy regressions also cover notice/intake gates, withdrawal and retention,
+account isolation, mail ownership, stale retries, file-cleanup failures and strict
+readiness. The two concurrent delivery/erasure tests require PostgreSQL and skip
+on SQLite. CI runs on disposable PostgreSQL; external SMTP connections are
+blocked for every test.

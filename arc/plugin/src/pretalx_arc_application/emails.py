@@ -12,7 +12,7 @@ TEMPLATES = {
         "Application received — {submission_type}",
         "Hello {name},\n\nThank you for applying for {submission_type}. We have received your application.\n\n"
         "You can view your application here:\n{submission_url}\n\n"
-        "We will contact you when shortlisting is complete. If you have any questions, please reply to this email." + SIGNOFF,
+        "Privacy information: {recruitment_privacy_url}\n\nWe will contact you when shortlisting is complete. If you have any questions, please reply to this email." + SIGNOFF,
     ),
     Roles.SUBMISSION_ACCEPT: (
         "You have been shortlisted — {event_name}",
@@ -106,7 +106,7 @@ def validate_mail(mail):
             slots = submission.slots.filter(schedule=submission.event.current_schedule)
             for slot in slots:
                 slot_details(slot)
-                event = get_slot_ical(slot).vevent
+                event = vobject.readOne(get_slot_ical(slot).serialize()).vevent
                 expected_events[event.uid.value] = (
                     event.dtstart.value, event.dtend.value, event.location.value,
                     event.description.value, event.url.value,
@@ -199,6 +199,9 @@ def install_emails():
             # Share locks with decision transitions: a worker cannot deliver an
             # old decision concurrently with a new decision being committed.
             list(Submission.all_objects.filter(mails=mail).order_by("pk").select_for_update())
+            from pretalx.mail.models import QueuedMail
+            if not QueuedMail.objects.select_for_update().filter(pk=mail.pk).exists():
+                raise SendMailException("This message has been erased.")
             validate_mail(mail)
             return original_deliver(mail)
 
@@ -212,7 +215,14 @@ def interview_placeholders(sender, **kwargs):
     def changed(user, event):
         return bool(get_current_notifications(user, event).get("update"))
 
+    from .privacy import notice_url
+    from pretalx.common.urls import build_absolute_uri
     return [
+        TrustedPlainMailTextPlaceholder(
+            "recruitment_privacy_url", ["event"],
+            lambda event: build_absolute_uri("plugins:pretalx_arc_application:privacy", kwargs={"event": event.slug}),
+            "Recruitment privacy information",
+        ),
         TrustedPlainMailTextPlaceholder(
             "interview_subject", ["user", "event"],
             lambda user, event: "Updated interview details" if changed(user, event) else "Your interview details",

@@ -1,0 +1,7 @@
+{% extends "cfp/event/base.html" %}
+{% block content %}
+<h1>Permanently withdraw application {{ submission.code }}</h1>
+<p>This cannot be undone. Your application, answers, documents, reviews, interview arrangements and stored recruitment emails will be deleted from the live system. Your account will also be removed if it has no other purpose here.</p>
+<p>Backups and infrastructure logs expire under the <a href="{% url 'plugins:pretalx_arc_application:privacy' event=request.event.slug %}">approved hosting policy</a>. Already delivered emails and downloaded files cannot be recalled.</p>
+<form method="post">{% csrf_token %}<label><input type="checkbox" name="confirm_erasure" value="yes" required> I understand and want to permanently delete my live application.</label><button type="submit" class="btn btn-danger">Permanently withdraw and delete</button></form>
+{% endblock %}

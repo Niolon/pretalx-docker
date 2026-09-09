@@ -8,8 +8,8 @@ applicant templates.
 
 Enable **Recruitment application workflow** under a call's organiser settings. On
 activation, it hides the conference-specific built-in fields and adds private
-application fields for a CV, cover letter, transcript, project repository,
-referees, recommendation letter and declaration. Interview adjustments are
+application fields for a CV, cover letter, evidence of the required degree,
+optional project repository and privacy acknowledgement. Interview adjustments are
 requested by email only from invited applicants. It also generates application titles in the form `Applicant — position`.
 
 Recompile after editing the PO file:
@@ -106,3 +106,10 @@ administrator to pass on, including reviewer invitations and account emails.
 No SMTP account or separate mailbox access is required. See the
 [manual delivery guide](../deployment/MANUAL_EMAIL.md) for collection, attachments,
 permissions and deployment settings.
+
+## Recruitment privacy launch
+
+Configure Durham-approved policy values under **Settings → Recruitment privacy**.
+Intake remains closed until approval is recorded. See the
+[privacy launch and operations guide](../deployment/RECRUITMENT_PRIVACY.md) for
+withdrawal erasure, retention, reviewer defaults, readiness checks and CI evidence.

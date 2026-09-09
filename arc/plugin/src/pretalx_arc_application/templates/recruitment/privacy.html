@@ -1,0 +1,21 @@
+{% extends "cfp/event/base.html" %}
+{% block content %}
+<h1>Recruitment privacy information — {{ event.name }}</h1>
+{% if policy_errors %}<p><strong>Draft notice: applications cannot open until Durham approves the policy values below.</strong></p>{% endif %}
+<h2>Who is responsible</h2>
+<p>Durham University is the controller for this recruitment process. Contact the recruitment team at {{ event.email }} or Durham Information Governance at <a href="mailto:information.governance@durham.ac.uk">information.governance@durham.ac.uk</a>.</p>
+<h2>Purpose and information collected</h2>
+<p>We use your name, email address, CV, cover letter, evidence of your required degree and any optional project link to assess your application, shortlist candidates and arrange interviews. We also record the privacy acknowledgement, recruitment correspondence, reviewer assessments and interview arrangements. Please do not provide unnecessary contact details, dates of birth, identity or immigration documents, or health/EDI information. Interview adjustments are requested separately by email only for invited candidates.</p>
+<h2>Lawful basis</h2><p>{{ policy.lawful_basis|default:"Awaiting Durham approval."|linebreaksbr }}</p>
+<p>Your application checkbox acknowledges this information; it is not consent to processing.</p>
+<h2>Access and hosting</h2>
+<p>Authorised recruitment organisers and reviewers use this information for this recruitment exercise. Reviewers receive assigned applications and permitted questions. Instance administrators can access protected correspondence, including account-access emails. Authorised hosting administrators may have technical access. The service is hosted through Advanced Web Hosting.</p>
+<p>{{ policy.hosting_policy|default:"Hosting, backup and infrastructure-log expiry details await Durham approval."|linebreaksbr }}</p>
+<p>No AI or automated decision-making is used to assess applications in this tool. Recruitment decisions are made by people.</p>
+<h2>Retention and withdrawal</h2>
+<p>{% if policy.retention_days %}Live recruitment records are retained for {{ policy.retention_days }} days after the recruitment call is marked complete, then removed through the retention sweep.{% else %}The retention period awaits Durham approval.{% endif %}</p>
+<p>You can permanently withdraw and delete your live application at any stage, including after shortlisting or interview scheduling. Confirmation deletes the associated live recruitment records and documents. Your account is also removed if it has no other purpose here. Backups and infrastructure logs expire according to the approved hosting policy above. Emails already delivered and files already downloaded cannot be recalled by this tool.</p>
+<h2>Your rights and formal admissions</h2>
+<p>Contact Durham Information Governance to exercise applicable data-protection rights, including access, correction, erasure, restriction and objection, or to raise a concern. You may also complain to the Information Commissioner's Office. Which rights apply depends on the approved lawful basis and circumstances.</p>
+<p>This is a recruitment and shortlisting tool. Successful candidates are directed to Durham's formal postgraduate research admissions process, which has its own requirements and privacy information. Completing this application is not formal admission.</p>
+{% endblock %}

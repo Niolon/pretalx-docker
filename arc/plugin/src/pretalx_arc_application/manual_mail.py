@@ -61,6 +61,15 @@ class ManualEmailBackend(BaseEmailBackend):
                 with transaction.atomic():
                     item.message.save(f"{item.pk}.eml", ContentFile(raw), save=False)
                     item.save()
+                    if source:
+                        from .models import MailSubjects
+                        with scopes_disabled():
+                            item.subject_submissions.add(*source.submissions.all())
+                            item.subject_users.add(*source.to_users.all())
+                            ownership = MailSubjects.objects.filter(mail=source).first()
+                            if ownership:
+                                item.subject_submissions.add(*ownership.submissions.all())
+                                item.subject_users.add(*ownership.users.all())
             except Exception:
                 if item.message:
                     item.message.delete(save=False)

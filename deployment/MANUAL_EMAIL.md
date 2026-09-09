@@ -87,3 +87,8 @@ should reply to the recruitment address configured on the call.
 Configuring SMTP enables automatic delivery for new messages after restart.
 Previously prepared messages remain accessible in **Manual delivery** and are
 not sent automatically; complete their handover separately.
+
+Application withdrawal and retention also erase associated manual copies, even
+when their source outbox row has already been removed. See the
+[privacy operations guide](RECRUITMENT_PRIVACY.md). System/account messages retain
+explicit account ownership and remain inaccessible to ordinary call organisers.

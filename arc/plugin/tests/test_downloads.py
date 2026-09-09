@@ -61,7 +61,7 @@ def assert_document(response):
     assert response["X-Content-Type-Options"] == "nosniff"
     assert "no-store" in response["Cache-Control"]
     assert "private" in response["Cache-Control"]
-    response.close()
+    list(response.streaming_content)  # Django test-client iterator closes the response safely.
 
 
 def test_document_saved_outside_public_media_and_ui_link_is_protected(document, settings):
@@ -286,7 +286,7 @@ def test_head_requires_same_permissions_and_post_is_rejected(client, document):
     response = client.head(answer.answer_file.url)
     assert response.status_code == 200
     assert b"".join(response.streaming_content) == b""
-    response.close()
+    list(response.streaming_content)  # Django test-client iterator closes the response safely.
     assert client.post(answer.answer_file.url).status_code == 405
 
 

@@ -74,6 +74,9 @@ def schedule_private_cleanup(self, *, field, path):
 
     # Reject paths outside the private root, including symlink escapes.
     name = Path(path).resolve().relative_to(Path(storage.location)).as_posix()
+    from .file_erasure import schedule_erasure
+    if schedule_erasure(name):
+        return
     model = type(self)
 
     def remove_unreferenced_file():

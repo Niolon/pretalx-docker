@@ -1,0 +1,2 @@
+{% extends "cfp/event/submission_info.html" %}
+{% block buttons %}<p>Before submitting, read the <a href="{% url 'plugins:pretalx_arc_application:privacy' event=request.event.slug %}">recruitment privacy information</a>.</p>{{ block.super }}{% endblock %}

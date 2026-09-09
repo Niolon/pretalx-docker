@@ -10,7 +10,48 @@ on:
       - 'main'
 
 jobs:
+  recruitment_tests:
+    name: Recruitment privacy tests
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:15-alpine
+        env:
+          POSTGRES_USER: privacy_tests
+          POSTGRES_PASSWORD: privacy_tests
+          POSTGRES_DB: privacy_tests
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U privacy_tests"
+          --health-interval 5s --health-timeout 5s --health-retries 10
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          submodules: true
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.13'
+      - name: Install pinned upstream and plugin test dependencies
+        run: python -m pip install -e './pretalx[dev]' -e ./arc/plugin drf-spectacular
+      - name: Run recruitment regressions and strict readiness fixtures
+        env:
+          PRETALX_DB_TYPE: postgresql
+          PRETALX_DB_NAME: privacy_tests
+          PRETALX_DB_USER: privacy_tests
+          PRETALX_DB_PASS: privacy_tests
+          PRETALX_DB_HOST: localhost
+          PRETALX_DB_PORT: '5432'
+        run: |
+          export PRETALX_CONFIG_FILE="$PWD/pretalx/src/tests/ci_sqlite.cfg"
+          export PRETALX_DATA_DIR="$(mktemp -d)"
+          export PYTHONPATH="$PWD/pretalx/src"
+          python -m pytest -c arc/plugin/pyproject.toml arc/plugin/tests -q
+
   build_and_push:
+    needs: recruitment_tests
     name: Build and push Docker image to Docker Hub or GHCR
     runs-on: ubuntu-latest
     env:

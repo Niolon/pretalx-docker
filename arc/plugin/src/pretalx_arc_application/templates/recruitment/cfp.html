@@ -1,0 +1,2 @@
+{% extends "cfp/event/cfp.html" %}
+{% block content %}<p><a href="{% url 'plugins:pretalx_arc_application:privacy' event=request.event.slug %}">Read the recruitment privacy information</a></p>{{ block.super }}{% endblock %}

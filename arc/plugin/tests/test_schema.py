@@ -41,7 +41,7 @@ def test_configure_event_creates_focused_private_schema():
         )
 
 
-def test_generated_title_uses_applicant_and_position():
+def test_generated_title_uses_code_and_position():
     event = EventFactory(plugins="pretalx_arc_application")
     with scope(event=event):
         speaker = SpeakerFactory(event=event, name="Ada Lovelace")
@@ -53,7 +53,7 @@ def test_generated_title_uses_applicant_and_position():
             pk=submission.pk
         )
 
-        assert submission.title == f"Ada Lovelace — {submission.submission_type.name}"
+        assert submission.title == f"Application {submission.code} — {submission.submission_type.name}"
 
 
 def test_privacy_flags_are_locked_instance_wide():

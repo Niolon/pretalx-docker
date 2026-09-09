@@ -29,6 +29,9 @@ class ApplicationQuestion:
     visible_to_reviewers: bool = True
 
 
+ACKNOWLEDGEMENT = "I confirm that the information in this application is accurate and that I have read the privacy information for this recruitment process."
+MINIMISATION = "Do not include unnecessary phone numbers, home addresses, dates of birth, passport or visa documents, or health/EDI information. We will request any necessary additional information later."
+
 APPLICATION_QUESTIONS = (
     ApplicationQuestion(
         identifier="arc_cv",
@@ -48,13 +51,11 @@ APPLICATION_QUESTIONS = (
         ),
     ),
     ApplicationQuestion(
-        identifier="arc_transcript",
-        label="Academic transcript (if available)",
+        identifier="arc_degree_evidence",
+        label="Evidence of required degree",
         variant=QuestionVariant.FILE,
-        help_text=(
-            "Upload your latest transcript as a PDF. You may provide it later "
-            "if your institution has not issued it yet."
-        ),
+        required=True,
+        help_text="Upload a PDF of a degree certificate, final transcript showing the award, or official institutional confirmation.",
     ),
     ApplicationQuestion(
         identifier="arc_project_repository",
@@ -66,33 +67,11 @@ APPLICATION_QUESTIONS = (
         ),
     ),
     ApplicationQuestion(
-        identifier="arc_referees",
-        label="Referee details (if available)",
-        variant=QuestionVariant.TEXT,
-        help_text=(
-            "Provide each referee’s name, role, institution, relationship to "
-            "you and institutional email address. Do not upload a confidential "
-            "reference supplied directly to the University."
-        ),
-    ),
-    ApplicationQuestion(
-        identifier="arc_recommendation",
-        label="Recommendation letter (optional)",
-        variant=QuestionVariant.FILE,
-        help_text=(
-            "Upload a PDF only if the referee has authorised you to provide it. "
-            "Referees may otherwise send confidential references separately."
-        ),
-    ),
-    ApplicationQuestion(
         identifier="arc_declaration",
-        label=(
-            "I confirm that the information in this application is accurate and "
-            "may be processed for recruitment purposes"
-        ),
+        label=ACKNOWLEDGEMENT,
         variant=QuestionVariant.BOOLEAN,
         required=True,
-        help_text="You must confirm this declaration before submitting.",
+        help_text="This checkbox records acknowledgement of the privacy notice, not consent to processing.",
         visible_to_reviewers=False,
     ),
 )
@@ -117,6 +96,8 @@ def configure_event(event):
     event.feature_flags = {**event.feature_flags, **SAFE_FEATURE_FLAGS}
     event.save(update_fields=["feature_flags"])
 
+    event.review_phases.update(proposal_visibility="assigned", can_change_submission_state=False)
+
     cfp = event.cfp
     if event.submission_types.count() == 1 and str(cfp.default_type.name) == "Talk":
         cfp.default_type.name = {"en": "Position"}
@@ -132,7 +113,7 @@ def configure_event(event):
             defaults={
                 "active": True,
                 "contains_personal_data": True,
-                "help_text": definition.help_text,
+                "help_text": definition.help_text + (" " + MINIMISATION if definition.variant == QuestionVariant.FILE else ""),
                 "is_public": False,
                 "is_visible_to_reviewers": definition.visible_to_reviewers,
                 "position": position,

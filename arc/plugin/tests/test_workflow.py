@@ -100,7 +100,7 @@ def test_export_is_ephemeral_and_rejects_cached_ids(client, settings, tmp_path):
         response = client.get(url)
         assert response.status_code == 200
         body = b"".join(response.streaming_content)
-        response.close()
+        list(response.streaming_content)  # Django test-client iterator closes the response safely.
         with ZipFile(BytesIO(body)) as archive:
             assert len(archive.namelist()) == 1
             assert archive.read(archive.namelist()[0]) == b"PRIVATE PDF"
@@ -165,11 +165,14 @@ def test_default_application_completes_and_uploads_survive_back_navigation(clien
     with scope(event=event):
         configure_event(event)
         questions = {q.identifier:q for q in event.questions.all()}
+    from pretalx_arc_application.models import RecruitmentPolicy
+    RecruitmentPolicy.objects.create(event=event, lawful_basis="Synthetic test policy", retention_days=30, hosting_policy="Synthetic hosting policy", approved=True)
     response, url = start_wizard(client, event)
     assert not response.context["form"].fields
     response, questions_url = get_response_and_url(client, url, data={})
     assert "/questions/" in questions_url
     data = {
+        f"question_{questions['arc_degree_evidence'].pk}": SimpleUploadedFile("degree.pdf", b"%PDF-1.4 degree", content_type="application/pdf"),
         f"question_{questions['arc_cv'].pk}": SimpleUploadedFile("cv.pdf", b"%PDF-1.4 cv", content_type="application/pdf"),
         f"question_{questions['arc_cover_letter'].pk}": SimpleUploadedFile("letter.pdf", b"%PDF-1.4 letter", content_type="application/pdf"),
         f"question_{questions['arc_declaration'].pk}": "True",
@@ -187,8 +190,8 @@ def test_default_application_completes_and_uploads_survive_back_navigation(clien
     assert "/me/submissions/" in final_url, getattr(response.context.get("form"), "errors", None)
     with scope(event=event):
         submission = Submission.objects.get(event=event)
-        assert submission.title.startswith("Ada Applicant —")
-        assert submission.answers.filter(answer_file__gt="").count() == 2
+        assert submission.title.startswith(f"Application {submission.code} —")
+        assert submission.answers.filter(answer_file__gt="").count() == 3
 
 
 def test_incomplete_interview_cannot_be_released_for_notification():
@@ -272,7 +275,7 @@ def test_export_rechecks_user_and_question_access(client, settings, tmp_path):
         own_url = str(own.urls.download)
     response = client.get(own_url)
     assert response.status_code == 200
-    response.close()
+    list(response.streaming_content)  # Django test-client iterator closes the response safely.
     team.members.remove(user)
     assert client.get(own_url).status_code in {403, 404}
 
@@ -311,3 +314,16 @@ def test_mail_defaults_work_before_form_plugin_is_enabled():
         assert "https://meet.example.test/panel" in invitation.text
         assert "adjustments" in invitation.text
         validate_mail(invitation)
+
+
+def test_interview_validation_compares_serialized_calendar_precision():
+    event = EventFactory(plugins="pretalx_arc_application")
+    with scope(event=event):
+        speaker = SpeakerFactory(event=event)
+        submission = SubmissionFactory(event=event, state="accepted")
+        submission.speakers.add(speaker)
+        room = RoomFactory(event=event, speaker_info="Synthetic joining instructions")
+        start = datetime(2026, 10, 20, 9, 0, 0, 123456, tzinfo=timezone.utc)
+        slot = TalkSlotFactory(submission=submission, room=room, start=start, end=start+timedelta(minutes=30))
+        freeze_schedule(slot.schedule, "precision-check", notify_speakers=True)
+        validate_mail(event.queued_mails.get(template__role="schedule.new"))

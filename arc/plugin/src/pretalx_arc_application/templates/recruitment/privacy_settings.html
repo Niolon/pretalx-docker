@@ -1,0 +1,6 @@
+{% extends "orga/base.html" %}
+{% block content %}
+<h2>Recruitment privacy</h2>
+<p>Use Durham-approved policy values. Marking recruitment complete closes new applications and starts the retention clock. Withdrawal remains available.</p>
+<form method="post">{% csrf_token %}{{ form.as_p }}<button class="btn btn-success" type="submit">Save</button></form>
+{% endblock %}

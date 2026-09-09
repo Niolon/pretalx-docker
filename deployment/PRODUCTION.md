@@ -145,7 +145,7 @@ permissions are additive: joining a broader organiser team defeats reviewer-only
 restrictions. Restrict team invitations, settings, exports and API tokens to
 staff who need them. Check recipients and templates before sending bulk emails;
 exports and downloaded documents remain sensitive after they leave the server.
-Application titles include applicant names, so calendars and email subjects can
+Application titles use opaque application codes. Calendars and email subjects can
 identify applicants even without attached documents. Do not promise anonymous
 review while reviewers can read identifying CVs.
 
@@ -209,3 +209,10 @@ instance administrator to pass on through a separate mail environment. Set
 including account access and reviewer invitations, is captured inside the
 application rather than sent automatically. The mailbox needs the same protection
 and retention controls as the rest of the recruitment data.
+
+## Privacy launch gate
+
+Follow [Recruitment privacy launch and operations](RECRUITMENT_PRIVACY.md).
+Run `python -m pretalx arc_privacy_check --strict` against the deployment before
+opening recruitment. Record approved policy values, verify the hosting controls
+and require the **Recruitment privacy tests** status check for merges.

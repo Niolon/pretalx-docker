@@ -14,10 +14,8 @@ def _is_enabled(event):
 
 
 def _title(submission, speaker=None):
-    speaker = speaker or submission.sorted_speakers.first()
-    applicant = speaker.get_display_name() if speaker else "Application"
     position = str(submission.submission_type.name)
-    return f"{applicant} — {position}"[:1000]
+    return f"Application {submission.code} — {position}"[:1000]
 
 
 def update_application_title(submission, speaker=None):

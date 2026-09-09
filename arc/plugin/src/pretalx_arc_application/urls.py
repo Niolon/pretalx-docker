@@ -12,3 +12,9 @@ urlpatterns += [
     path("orga/manual-mail/<uuid:message_id>/", mailbox, name="manual_mail_detail"),
     path("orga/manual-mail/<uuid:message_id>/download/", download_message, name="manual_mail_download"),
 ]
+
+from .privacy import notice, policy_settings
+urlpatterns += [
+    path("<slug:event>/recruitment/privacy/", notice, name="privacy"),
+    path("orga/event/<slug:event>/settings/recruitment-privacy/", policy_settings, name="privacy_settings"),
+]

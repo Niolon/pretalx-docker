@@ -80,7 +80,7 @@ def test_mailbox_and_download_require_active_instance_admin(client, manual):
         assert response.status_code == 200
         assert "no-store" in response["Cache-Control"]
         if getattr(response, "streaming", False):
-            response.close()
+            list(response.streaming_content)  # Django test-client iterator closes the response safely.
     response = client.get(urls[1])
     assert b"tracker.example.test" not in response.content
     assert b"<script>alert" not in response.content
@@ -160,7 +160,8 @@ def test_reviewer_team_invitation_is_captured(manual):
         assert item.recipients == [invite.email]
         assert invite.invitation_url in item.body
         assert str(team.name) in item.body
-        assert item.source_mail_id is None
+        assert item.source_mail_id is not None
+        assert item.source_mail.event_id is None
         send_team_invite(invite)
         assert ManualMail.objects.count() == 2
         smtp.assert_not_called()

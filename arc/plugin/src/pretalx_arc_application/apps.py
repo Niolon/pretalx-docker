@@ -35,6 +35,12 @@ class ArcApplicationConfig(AppConfig):
         from .manual_mail import install_manual_mail
 
         install_manual_mail()
+        from .privacy import install_privacy
+        from .erasure import install_erasure
+        from .mail_privacy import install_mail_privacy
+        install_privacy()
+        install_erasure()
+        install_mail_privacy()
 
     def installed(self, event):
         from .schema import configure_event
